@@ -1,0 +1,15 @@
+INSERT INTO Genero (genero_obra) VALUES ('adventure');
+INSERT INTO Genero (genero_obra) VALUES ('family');
+INSERT INTO Genero (genero_obra) VALUES ('terror');
+INSERT INTO Genero (genero_obra) VALUES ('fiction');
+INSERT INTO Genero (genero_obra) VALUES ('action');
+INSERT INTO Genero (genero_obra) VALUES ('science-fiction');
+INSERT INTO Genero (genero_obra) VALUES ('sport');
+INSERT INTO Genero (genero_obra) VALUES ('musical');
+INSERT INTO Genero (genero_obra) VALUES ('thriller');
+INSERT INTO Genero (genero_obra) VALUES ('war');
+INSERT INTO Genero (genero_obra) VALUES ('comedy');
+INSERT INTO Genero (genero_obra) VALUES ('adult');
+INSERT INTO Genero (genero_obra) VALUES ('historic');
+INSERT INTO Genero (genero_obra) VALUES ('west');
+INSERT INTO Genero (genero_obra) VALUES ('drama');
