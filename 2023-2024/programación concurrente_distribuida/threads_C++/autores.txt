@@ -1,0 +1,27 @@
+Apellidos: Pascual Albericio
+Nombre: Irene
+
+Apellidos: Ros Alcázar
+Nombre: Sergio
+
+Comentarios: En esta práctica, nos ha resultado complicado entender el comportamiento de las funciones threads,
+             ya que al principio no entendiamos cómo podian ejecutarse varios hilos de manera concurrente, ni como 
+             paraban según la funcion .join(). Sin embargo, a medida que hemos avanzado con los ejercicios propuestos, hemos 
+             comprendido el uso y funcionamiento de los threads, asi como su utilidad en codigos más complejos, ya que puede
+             resultar más tedioso y menos eficiente.
+
+             En lo que respecta a la conducta del ejercicio primero, hemos llegado a la conclusión de que tanto la primera versión
+             como la segunda, funcionan correctamente. No obstante, la segunda es más eficiente y por tanto resulta más optimizada,
+             sobre todo para programas en los que el volumen de datos y código sea mayor, ya que usa un bucle para usar la funcion .join() 
+             sin tener que escribir un .join para cada hilo.
+             En cuanto al comportamiento de ambas, básicamente escribe por pantalla "soy" + un nombre + /n, durante x veces gracias a la 
+             saludo, la cual está especificada con nombre, tiempo de espera (retardo) y número de veces que se repite. Todo esto
+             lo hace de manera concurrente utilizando varios threads.
+
+             El fichero que contiene la solución al problema dos se denomina "parte1.cpp" y el que contiene la solucion para el tercer 
+             problema es "parte2.cpp".
+             Para compilarlo es hendrix, hemos hecho uso de: "g++ parte1.cpp/parte2.cpp -o parte1/parte2 -std=c++11
+             -pthreads". Para ejecutarlo, simplemente hay que introducir "./parte1" o "./parte2".
+             
+
+            

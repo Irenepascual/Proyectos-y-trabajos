@@ -1,0 +1,14 @@
+#------------------------------------------------------------------------------
+# Autores: Irene Pascual Albericio ; Sergio Ros Alcázar
+# Fecha:  Octubre 2023
+# Makefile para compilar y crear el ejecutable de "main_p2_e1"    
+#------------------------------------------------------------------------------
+all: main_p2_e1
+
+main_p2_e1.o: main_p2_e1.cpp
+	g++ -c main_p2_e1.cpp -std=c++11
+
+main_p2_e1: main_p2_e1.o
+	g++ main_p2_e1.o -o main_p2_e1 -pthread
+#------------------------------------------------------------------------------
+

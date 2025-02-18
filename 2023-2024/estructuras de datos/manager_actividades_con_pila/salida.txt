@@ -1,0 +1,57 @@
+-----LISTADO: 0
+-----
+INTRODUCIDO: [ 2023-05-12 11:00 ;;; 2023-05-16 11:08 ] ::: Hacer deporte ::: (5600) ::: Vamos a entrenar
+PERIODO NO VALIDO
+INTRODUCIDO: [ 2023-05-20 11:10 ;;; 2023-05-25 11:20 ] ::: Ver la tele ::: (321) ::: Ver neox
+-----LISTADO: 2
+[ 2023-05-12 11:00 ;;; 2023-05-16 11:08 -> 5768 ] ::: Hacer deporte ::: (5600) ::: Vamos a entrenar
+[ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ] ::: Ver la tele ::: (321) ::: Ver neox
+-----
+INSTANTE NO VALIDO
+PERIODO NO VALIDO
+INTRODUCIDO: [ 2020-04-12 15:30 ;;; 2020-04-12 15:40 ] ::: Esperar al cartero ::: (93) ::: Necesito el correo
+INSTANTE NO VALIDO
+PERIODO NO VALIDO
+-----LISTADO: 3
+[ 2020-04-12 15:30 ;;; 2020-04-12 15:40 -> 10 ] ::: Esperar al cartero ::: (93) ::: Necesito el correo
+[ 2023-05-12 11:00 ;;; 2023-05-16 11:08 -> 5768 ] ::: Hacer deporte ::: (5600) ::: Vamos a entrenar
+[ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ] ::: Ver la tele ::: (321) ::: Ver neox
+-----
+CAMBIADO: [ 2020-04-12 15:30 ;;; 2020-04-12 15:40 ] ::: Ver la tele ::: (93) ::: C				
+NO CAMBIADO: [ 2016-04-11 11:20 ;;; 2016-04-12 11:50 ] ::: Comida familiar ::: (302) ::: LT				
+****ACTIVIDAD: Ver la tele
+[ 2020-04-12 15:30 ;;; 2020-04-12 15:40 -> 10 ]
+[ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ]
+****TOTAL dedicados: 7220
+****ACTIVIDAD: Hacer deporte
+[ 2023-05-12 11:00 ;;; 2023-05-16 11:08 -> 5768 ]
+****TOTAL dedicados: 5768
+****ACTIVIDAD: Cocinar
+****TOTAL dedicados: 0
+LOCALIZADO: [ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ] ::: Ver la tele ::: (321) ::: Ver neox
+NO LOCALIZADO: [ 2023-05-12 11:15 ;;; 2023-05-16 11:20 ]
+SOLAPE con: [ 2023-05-12 11:00 ;;; 2023-05-16 11:08 ]
+SOLAPE con: [ 2020-04-12 15:37 ;;; 2020-04-12 15:40 ]
+NO SOLAPE con: [ 2030-01-20 15:40 ;;; 2030-01-26 16:05 ]
+-----LISTADO: 3
+[ 2020-04-12 15:30 ;;; 2020-04-12 15:40 -> 10 ] ::: Ver la tele ::: (93) ::: C				
+[ 2023-05-12 11:00 ;;; 2023-05-16 11:08 -> 5768 ] ::: Hacer deporte ::: (5600) ::: Vamos a entrenar
+[ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ] ::: Ver la tele ::: (321) ::: Ver neox
+-----
+BORRADO: [ 2023-05-12 11:00 ;;; 2023-05-16 11:08 ]
+-----LISTADO: 2
+[ 2020-04-12 15:30 ;;; 2020-04-12 15:40 -> 10 ] ::: Ver la tele ::: (93) ::: C				
+[ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ] ::: Ver la tele ::: (321) ::: Ver neox
+-----
+NO BORRADO: [ 2012-03-11 16:20 ;;; 2012-03-18 17:00 ]
+-----LISTADO: 2
+[ 2020-04-12 15:30 ;;; 2020-04-12 15:40 -> 10 ] ::: Ver la tele ::: (93) ::: C				
+[ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ] ::: Ver la tele ::: (321) ::: Ver neox
+-----
+BORRADO: [ 2020-04-12 15:30 ;;; 2020-04-12 15:40 ]
+-----LISTADO: 1
+[ 2023-05-20 11:10 ;;; 2023-05-25 11:20 -> 7210 ] ::: Ver la tele ::: (321) ::: Ver neox
+-----
+BORRADO: [ 2023-05-20 11:10 ;;; 2023-05-25 11:20 ]
+-----LISTADO: 0
+-----
