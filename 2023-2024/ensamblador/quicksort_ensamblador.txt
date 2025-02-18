@@ -1,0 +1,71 @@
+AREA codigo, CODE
+		EXPORT ordena
+ordena	;r0=@ de comienzo de la tabla a ordenar
+		;r1=numero de elementos de la tabla
+
+		PUSH {lr,fp}
+
+		mov r2,#0;
+		mov r3,r1
+		sub r3,r3,#1
+		
+		PUSH{r3}   				;apilamos r3 que sería n-1
+		PUSH{r2}				;apilamos r2 que sería 0
+		bl qsort
+		add sp,sp,#8
+
+		POP{lr,pc}
+
+fin		b fin
+
+qsort	PUSH{lr,fp}
+		mov fp,sp
+		PUSH{r1-r8}
+		LDR r1,[fp,#8]			;r1=i
+		LDR r2,[fp,#12]	  		;r2=j
+		mov r7,r1	   			;r7=iz
+		mov r8,r2				;r8=de
+		add r3,r7,r8			;r3=(iz+de)
+		mov r3,r3,LSR #1    	;r3=(iz+de)/2
+		ldr r3,[r0,r3,LSL #2]	;r3=T[(iz+de)/2]
+
+for1	ldr r4,[r0,r1,LSL #2]	;r4=T[i]
+		cmp r4,r3			 	;if(T[i]>=T[(iz+de)/2]), saltamos a for2
+		bge for2
+		add r1,r1,#1			;i++
+		b for1
+
+for2	ldr r5,[r0,r2,LSL #2]	;r5=T[j]
+		cmp r3,r5			  	;if(T[(iz+de)/2]>=T[j]), saltamos a sigue
+		bge sigue  ;BGE
+		sub r2,r2,#1			;j--
+		b for2
+
+sigue	cmp r1,r2			  	;if(i>j), saltamos a dowhile
+		bgt dowhile
+		mov r6,r4		  		;r6=T[i]
+		str r5,[r0,r1,LSL #2]	;T[i]=r5   (r5=T[j])
+		str r6,[r0,r2,LSL #2] 	;T[j]=r6   (r6=T[i])
+		add r1,r1,#1			;i++
+		sub r2,r2,#1			;j--
+
+dowhile	cmp r1,r2				
+		ble for1	  			;if(i<=j), saltamos a for1
+
+if1		cmp r7,r2				;if(iz>=j), saltamos a if2, sino llamamos a qsort(T,iz,j)
+		bge if2
+		PUSH{r2}				;apilamos r7 que sería iz
+		PUSH{r7}			  	;apilamos r2 que sería j
+		bl qsort				;LLAMAMOS A qsort
+		add sp,sp,#8
+
+if2		cmp r1,r8				;if(i>=de), saltamos a finSBR, sino llamamos a qsort(T,i,de)
+		bge finSBR	
+		PUSH{r8}				;apilamos r1 que sería de
+		PUSH{r1}				;apilamos r8 que sería i
+		bl qsort				;LLAMAMOS A qsort
+		add sp,sp,#8
+
+finSBR	POP{r1-r8,lr,pc}		;terminamos SBRqsort
+
+		END

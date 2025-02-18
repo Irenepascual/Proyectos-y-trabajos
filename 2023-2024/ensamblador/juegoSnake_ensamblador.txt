@@ -1,0 +1,903 @@
+				AREA datos,DATA
+VICIntEnable	EQU	0xFFFFF010		;activar IRQs 
+VICIntEnClr		EQU 0xFFFFF014		;desactivar IRQs
+VICVectAddr0	EQU	0xFFFFF100		;vector de interrupciones
+VICVectAddr		EQU	0xFFFFF030		;reg. para EOI
+
+RDAT			EQU	0xE0010000		;reg. datos teclado (UART1)
+T0_IR			EQU	0xE0004000		;reg. bajar IRQ[4]
+
+dirIni			EQU 0x40007E00		;inicio pantalla
+dirIni2			EQU 0x40007E20
+dirFin			EQU	0x40007FFF		;fin pantalla
+dirFin2			EQU 0x40008000	 
+dirMitad		EQU 0x40007EE0  
+ultFila			EQU 0x40007FE0		;Inicio de la ultima fila de la pantalla
+
+blanco			EQU	0x20202020
+pos1			EQU	0x40007E25
+pos2			EQU 0x40007FB0
+velMax			EQU 10
+velMin			EQU 80
+
+IOSET			EQU	0xE0010000		;GPIO (activar bits)
+IOCLR			EQU	0xE002800C		;GPIO (desactivar bits)
+dirFila			EQU 0x40007E00		;Direccion filas
+mascFila		EQU 2_111100000		;mascara para fila aleatoria
+mascColum		EQU 2_11111			;mascara para columna aleatoria
+vel_jugador		DCD 2000000			;
+tecl_so			DCD	0				;var para @RSI_TECL
+timer_so		DCD	0				;var para @RSI_TIMER
+
+terminar		DCD	0				;indicador terminaci n
+ticks			DCD 50
+contador		DCD	50				;contador para el timer
+posJugador1		DCD	0
+posJugador2		DCD	0
+dir1			DCD	0
+dir2			DCD	0
+
+contadorFallos1	DCB	0
+contadorFallos2	DCB	0
+
+puntos1			DCB	0
+puntos2			DCB	0
+
+
+;------------------------------------------------------------------------------------------
+
+				AREA codigo,CODE
+				EXPORT inicio				; forma de enlazar con el startup.s
+				IMPORT srand				; para poder invocar SBR srand
+				IMPORT rand					; para poder invocar SBR rand
+inicio			; se recomienda poner punto de parada (breakpoint) en la primera
+				; instruccion de c digo para poder ejecutar todo el Startup de golpe
+				LDR r0,= VICVectAddr0		;r0=@VI
+	
+
+				;PROGRAMAMOS @IRQ4->RSI_TIMER
+				LDR r0,= VICVectAddr0
+				LDR r1,=timer_so			;r1=@RSI_TIMER
+				mov r2,#4
+				ldr r3,[r0,r2,LSL #2]		;VI[4]=@RSI_TIMER
+				str r3,[r1]
+
+				ldr r1,=RSI_TIMER
+				str r1,[r0,r2,LSL #2]
+				;LDR r1,=VICIntEnable
+				;ldr r1,[r1]
+				;orr r1,r1,#2_10000
+				;str r2,[r1]
+
+
+				;PROGRAMAMOS @IRQ7->RSI_TECL
+				LDR r1,=tecl_so				;r1=@RSI_TECL
+				mov r2,#7
+				ldr r3,[r0,r2,LSL #2]
+				str r3,[r1]					;VI[7]=@RSI_TECL
+
+				ldr r1,=RSI_TECL
+				str r1,[r0,r2,LSL #2]
+				;LDR r1,=VICIntEnable		;r0=@VICIntEnable
+				;mov r2,#2_10000000			;r1=#2_10010000
+				;str r2,[r1] 				;activamos bits 4 y 7 del VICIntEnable para permitir sus interrupciones
+						
+
+				LDR r1,=VICIntEnable		;r0=@VICIntEnable
+				mov r2,#2_10010000			;r1=#2_10010000
+				str r2,[r1] 				;activamos bits 4 y 7 del VICIntEnable para permitir sus interrupciones
+
+		
+				LDR r1,=puntos1
+				mov r3,#0
+				str r3,[r1]
+				LDR r1,=puntos2
+				str r3,[r1]
+						
+
+;PANTALLA INICIAL
+nuevo			bl borra
+				
+				b escribirPant
+
+				;COLOCAMOS JUGADORES
+jugadores		sub sp,sp,#4
+				bl rand
+				POP {r0}
+				LDR r1, =mascFila
+				and r2,r0,r1
+				LDR r1, =dirFila
+				orr r2,r2,r1
+				LDR r1, =mascColum
+				and r1,r0,r1
+				orr r1,r2,r1		;posicion aleatoria jugador1
+				and r4,r1,#0xFFFFFFE0
+				LDR r5,=dirIni
+				cmp r4,r5
+				beq jugadores
+				mov r3,r1
+				LDR r0,=posJugador1
+				str r1,[r0]
+				;Calcular posicion inicial jugador2
+				
+iguales			add sp,sp,#4
+				bl rand
+				POP {r0}
+				
+				LDR r1, =mascFila
+				and r2,r0,r1
+				LDR r1, =dirFila
+				orr r2,r2,r1
+				LDR r1, =mascColum
+				and r1,r0,r1
+				orr r1,r2,r1		;posicion aleatoria jugador2
+				cmp r1,r3
+				beq iguales
+				and r4,r1,#0xFFFFFFE0
+				LDR r5,=dirIni
+				cmp r4,r5
+				beq jugadores
+				LDR r0,=posJugador2
+				str r1,[r0]
+				bl jugadores2
+
+				b dirsAleatIni
+		
+				;INICIO BUCLE PROGRAMA
+bucle			LDR r0,=terminar
+				ldr r1,[r0]
+				cmp r1,#1
+				beq terminarBuc
+
+				;COMPROBAMOS SI HA HABIDO TECLA PULSADA DE JUGADOR1
+				LDR r1,=contador
+				ldr r1,[r1]
+				cmp r1,#0
+				bne bucle
+				LDR r2,=dir1
+				ldrb r2,[r2]
+				LDR r7,=dir1
+				LDR r5,=contadorFallos1
+				LDR r0,=posJugador1
+				mov r9,#'X'
+				mov r10,#0
+
+				cmp r2,#1
+				beq moverIzq
+
+				cmp r2,#2
+				beq moverDer
+
+				cmp r2,#3
+				beq moverAbajo
+
+				cmp r2,#4
+				beq moverArriba
+
+comprobarJ2		
+				bne comprobarJ2
+				LDR r3,=dir2
+				ldrb r3,[r3]
+				LDR r7,=dir2
+				LDR r5,=contadorFallos2
+				LDR r0,=posJugador2
+				mov r9,#'O'
+				mov r10,#1
+
+				cmp r3,#1
+				beq moverIzq
+
+				cmp r3,#2
+				beq moverDer
+
+				cmp r3,#3
+				beq moverAbajo
+
+				cmp r3,#4
+				beq moverArriba
+
+continuar	 
+
+				b bucle
+		
+				;DESACTIVAR IRQ7 y IRQ4
+terminarBuc		bl borra
+				
+				b escribirPant
+
+terminaar		LDR r0,=VICIntEnClr			;r0=@VICIntClr
+				mov r1,#2_10010000		  	;r1=#2_10010000
+				str r1,[r0]					;desactivamos bits 4 y 7 del VICIntEnable
+		
+				;RECUPERAR VI[7]
+				LDR r1,=VICVectAddr0		;r0=@VI
+				LDR r0,=tecl_so
+				ldr r0,[r0]					;r1=@RSI_TECL
+				mov r2,#7					;r2=7
+				str r0,[r1,r2,LSL #2]		;VI[7]=@RSI_TECL
+		
+				;RECUPERAR VI[4]
+				LDR r0,=VICVectAddr0		;r0=@VI
+				LDR r1,=timer_so
+				ldr r1,[r1]		   			;r1=@RSI_TIMER
+				mov r2,#4				   	;r2=4
+				str r1,[r0,r2,LSL #2]	   	;VI[4]=@RSI_TIMER
+				b fin
+
+borra			PUSH {lr}
+				PUSH {r2}
+				PUSH {r1}
+				PUSH {r0}
+				LDR r0,=dirIni
+				LDR r1,=blanco
+				mov r2,#128
+buc 			str r1,[r0],#4
+				subs r2,r2,#1
+				bne buc
+				POP {r0}
+				POP {r1}
+				POP {r2}
+				POP {pc}
+
+jugadores2		PUSH {lr}
+				PUSH {r0-r1}
+				;Calcular posicion inicial jugador1
+				;Poner jugador2
+				LDR r0, =posJugador2
+				ldr r0,[r0]
+				mov r1, #'O'
+				strb r1,[r0]
+				;Poner jugador1
+				LDR r0, =posJugador1
+				ldr r0,[r0]
+				mov r1, #'X'
+				strb r1,[r0]
+				
+				POP{r0-r1,pc}
+
+escribirPant	LDR r2, =dirIni
+				mov r1,#'P'
+				strb r1,[r2],#1
+				mov r1,#'U'
+				strb r1,[r2],#1
+				mov r1,#'N'
+				strb r1,[r2],#1
+				mov r1,#'T'
+				strb r1,[r2],#1
+				mov r1,#'U'
+				strb r1,[r2],#1
+				mov r1,#'A'
+				strb r1,[r2],#1
+				mov r1,#'C'
+				strb r1,[r2],#1
+				mov r1,#'I'
+				strb r1,[r2],#1
+				mov r1,#'O'
+				strb r1,[r2],#1
+				mov r1,#'N'
+				strb r1,[r2],#1
+				mov r1,#':'
+				strb r1,[r2],#1
+				mov r1,#' '
+				strb r1,[r2],#1
+				mov r1,#' '
+				strb r1,[r2],#1
+				mov r1,#' '
+				strb r1,[r2],#1
+
+				LDR r1,=puntos1
+				ldrb r1,[r1]
+				cmp r1,#0
+				moveq r3,#'0'
+				strbeq r3,[r2],#1
+				cmp r1,#1
+				moveq r3,#'1'
+				strbeq r3,[r2],#1
+				cmp r1,#2
+				moveq r3,#'2'
+				strbeq r3,[r2],#1
+				cmp r1,#3
+				moveq r3,#'3'
+				strbeq r3,[r2],#1
+				cmp r1,#4
+				moveq r3,#'4'
+				strbeq r3,[r2],#1
+				cmp r1,#5
+				moveq r3,#'5'
+				strbeq r3,[r2],#1
+
+				mov r1,#'-'
+				strb r1,[r2],#1
+
+				LDR r1,=puntos2
+				ldrb r1,[r1]
+				cmp r1,#0
+				moveq r3,#'0'
+				strbeq r3,[r2],#1
+				cmp r1,#1
+				moveq r3,#'1'
+				strbeq r3,[r2],#1
+				cmp r1,#2
+				moveq r3,#'2'
+				strbeq r3,[r2],#1
+				cmp r1,#3
+				moveq r3,#'3'
+				strbeq r3,[r2],#1
+				cmp r1,#4
+				moveq r3,#'4'
+				strbeq r3,[r2],#1
+				cmp r1,#5
+				moveq r3,#'5'
+				strbeq r3,[r2],#1
+
+				LDR r4,=terminar
+				ldrb r4,[r4]
+				cmp r4,#1
+				bne jugadores
+
+				LDR r2,=dirMitad
+				mov r1,#'F'
+				strb r1,[r2,#14]!
+				mov r1,#'I'
+				strb r1,[r2,#1]!
+				mov r1,#'N'
+				strb r1,[r2,#1]!
+
+				b terminaar
+
+dirsAleatIni	sub sp,sp,#4
+				bl rand
+				POP {r4}
+				and r4,r4,#2_11		;Calculo el numero aleatorio entre 0-3
+				LDR r1,=dir1
+				cmp r4,#0
+				moveq r4,#1
+				cmp r4,#1
+				moveq r4,#2
+				cmp r4,#2
+				moveq r4,#3
+				cmp r4,#3
+				moveq r4,#4
+				strb r4,[r1]
+
+				sub sp,sp,#4
+				bl rand
+				POP {r4}
+				and r4,r4,#2_11		;Calculo el numero aleatorio entre 0-3
+				LDR r1,=dir2
+				cmp r4,#0
+				moveq r4,#1
+				cmp r4,#1
+				moveq r4,#2
+				cmp r4,#2
+				moveq r4,#3
+				cmp r4,#3
+				moveq r4,#4
+				strb r4,[r1]
+					
+				b bucle
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+				;CAMBIADO
+moverIzq		LDR r2, =vel_jugador
+				ldr r2,[r2]
+				ldr r3,[r0]
+				add r4,r3,#-1			;Cojo la direccion siguiente en r4
+				ldr r4,[r4]				;Cojo el valor
+				LDR r1,=mascColum
+				and r1,r1,r3
+				cmp r1,#2_00000			;comparo si es borde
+				beq choqueBordeI
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				addeq r3,r3,#-1
+				beq continuarI
+				b recalcularI
+
+choqueBordeI	LDR r2,=mascFila
+				LDR r6,=dirIni
+				and r4,r3,r2
+				orr r4,r4,r6 			;fila en la que estoy
+				add r4,r4,#31			;nueva fila
+				ldr r6,[r4]
+				and r6,r6,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r6,#' '
+				moveq r3,r4
+				beq continuarI
+				bne recalcularI
+
+recalcularI		ldrb r6,[r5]
+				cmp r6,#7
+				beq comprobarPunt
+				sub sp,sp,#4
+				bl rand
+				POP {r4}
+				and r4,r4,#2_11		;Calculo el numero aleatorio entre 0-7
+				cmp r4,#0	 		;derecha
+				beq recalcIder
+				cmp r4,#1
+				beq recalcIarr
+				cmp r4,#2
+				beq recalcIab
+				b recalcularI
+
+recalcIder		add r4,r3,#1
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_1
+				strb r6,[r5]
+				moveq r6,#2
+				streq r6,[r7]
+				bne recalcularI
+				beq continuarI
+
+recalcIab		add r4,r3,#32
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_10
+				strb r6,[r5]
+				moveq r6,#3
+				streq r6,[r7]
+				bne recalcularI
+				beq continuarI
+
+recalcIarr		add r4,r3,#-32
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_100
+				strb r6,[r5]
+				moveq r6,#4
+				streq r6,[r7]
+				bne recalcularI
+				beq continuarI
+
+continuarI		strb r9,[r3]
+				str r3,[r0]
+				cmp r10,#0
+				LDR r1,=contador
+				LDR r4,=ticks
+				ldr r4,[r4]
+				str r4,[r1]
+				beq comprobarJ2
+				bne continuar
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+				;CAMBIADO
+moverDer	 	LDR r2, =vel_jugador
+				ldr r2,[r2]
+				ldr r3,[r0]
+				add r4,r3,#1			;Cojo la direccion siguiente en r4
+				ldr r4,[r4]				;Cojo el valor
+				LDR r1,=mascColum
+				and r1,r1,r3
+				cmp r1,#2_11111			;comparo si es borde
+				beq choqueBordeD
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				addeq r3,r3,#1
+				beq continuarD
+				b recalcularD
+
+choqueBordeD	LDR r2,=mascFila
+				LDR r6,=dirIni
+				and r4,r3,r2
+				orr r4,r4,r6 			;fila en la que estoy
+				add r4,r4,#0			;nueva fila
+				ldr r6,[r4]
+				and r6,r6,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r6,#' '
+				moveq r3,r4
+				beq continuarD
+				bne recalcularD
+			
+
+recalcularD		ldrb r6,[r5]
+				cmp r6,#7
+				beq comprobarPunt
+				sub sp,sp,#4
+				bl rand
+				POP {r4}
+				and r4,r4,#2_11		;Calculo el numero aleatorio entre 0-2
+				cmp r4,#0	 		;derecha
+				beq recalcDizq
+				cmp r4,#1
+				beq recalcDarr
+				cmp r4,#2
+				beq recalcDab
+				b recalcularD
+
+recalcDizq		add r4,r3,#-1
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_1
+				strb r6,[r5]
+				moveq r6,#1
+				streq r6,[r7]
+				bne recalcularD
+				beq continuarD
+
+recalcDab		add r4,r3,#32
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_10
+				strb r6,[r5]
+				moveq r6,#3
+				streq r6,[r7]
+				bne recalcularD
+				beq continuarD
+
+recalcDarr		add r4,r3,#-32
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_100
+				strb r6,[r5]
+				moveq r6,#4
+				streq r6,[r7]
+				bne recalcularD
+				beq continuarD
+
+continuarD		strb r9,[r3]
+				str r3,[r0]
+				cmp r10,#0
+				LDR r1,=contador
+				LDR r4,=ticks
+				ldr r4,[r4]
+				str r4,[r1]
+				beq comprobarJ2
+				bne continuar
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+				;CAMBIADO
+moverAbajo		LDR r2, =vel_jugador
+				ldr r2,[r2]
+				ldr r3,[r0]	
+				add	r4,r3,#32
+				ldr r4,[r4]				;Cojo el valor
+				add r6,r3,#32			;Cojo la direccion siguiente en r4
+				and r6,r6,#0xFFFFFF00
+				LDR r2,=dirFin2
+				cmp r6,r2
+				beq choqueBordeAb
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				addeq r3,r3,#32
+				beq continuarAb
+				b recalcularAb
+
+choqueBordeAb	LDR r2,=dirIni2
+				LDR r6,=mascColum
+				and r4,r4,r6
+				orr r4,r4,r2
+				ldr r6,[r4]
+				and r6,r6,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r6,#' '
+				moveq r3,r4
+				beq continuarAb
+				bne recalcularAb
+
+recalcularAb	ldrb r6,[r5]
+				cmp r6,#7
+				beq comprobarPunt
+				sub sp,sp,#4
+				bl rand
+				POP {r4}
+				and r4,r4,#2_11		;Calculo el numero aleatorio entre 0-7
+				cmp r4,#0	 		;derecha
+				beq recalcAbizq
+				cmp r4,#1
+				beq recalcAbder
+				cmp r4,#2
+				beq recalcAbarr
+				b recalcularAb
+
+recalcAbizq		add r4,r3,#-1
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_1
+				strb r6,[r5]
+				moveq r6,#1
+				streq r6,[r7]
+				bne recalcularAb
+				beq continuarAb
+
+recalcAbder		add r4,r3,#1
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_10
+				strb r6,[r5]
+				moveq r6,#2
+				streq r6,[r7]
+				bne recalcularAb
+				beq continuarAb
+
+recalcAbarr		add r4,r3,#-32
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_100
+				strb r6,[r5]
+				moveq r6,#4
+				streq r6,[r7]
+				bne recalcularAb
+				beq continuarAb
+
+continuarAb		strb r9,[r3]
+				str r3,[r0]
+				cmp r10,#0
+				LDR r1,=contador
+				LDR r4,=ticks
+				ldr r4,[r4]
+				str r4,[r1]
+				beq comprobarJ2
+				bne continuar
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+				;CAMBIADO
+moverArriba		LDR r2, =vel_jugador
+				ldr r2,[r2]
+				ldr r3,[r0]
+				add r4,r3,#-32			;Cojo la direccion siguiente en r4
+				ldr r4,[r4]				;Cojo el valor
+				add r6,r3,#-32
+				and r8,r6,#0xFFFFFFE0
+				LDR r2,=dirIni
+				cmp r8,r2
+				beq choqueBordeArr
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				addeq r3,r3,#-32
+				beq continuarArr
+				b recalcularArr
+
+choqueBordeArr	LDR r2,=ultFila
+				LDR r4,=mascColum
+				and r6,r6,r4
+				orr r6,r6,r2
+				ldr r4,[r6]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r3,r6
+				beq continuarArr
+				bne recalcularArr
+
+recalcularArr	ldrb r6,[r5]
+				cmp r6,#7
+				beq comprobarPunt
+				sub sp,sp,#4
+				bl rand
+				POP {r4}
+				and r4,r4,#2_11		;Calculo el numero aleatorio entre 0-7
+				cmp r4,#0	 		;derecha
+				beq recalcArrizq
+				cmp r4,#1
+				beq recalcArrder
+				cmp r4,#2
+				beq recalcArrab
+				b recalcularArr
+
+recalcArrizq	add r4,r3,#-1
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_1
+				strb r6,[r5]
+				moveq r6,#1
+				streq r6,[r7]
+				bne recalcularArr
+				beq continuarArr
+
+recalcArrder	add r4,r3,#1
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_10
+				strb r6,[r5]
+				moveq r6,#2
+				streq r6,[r7]
+				bne recalcularArr
+				beq continuarArr
+
+recalcArrab		add r4,r3,#-32
+				ldr r4,[r4]
+				and r4,r4,#0xFF			;Cojo los dos ultimos bytes (para coger el caracter ASCII)
+				cmp r4,#' '
+				moveq r6,#0
+				orrne r6,r6,#2_100
+				strb r6,[r5]
+				moveq r6,#3
+				streq r6,[r7]
+				bne recalcularArr
+				beq continuarArr
+
+continuarArr	strb r9,[r3]
+				str r3,[r0]
+				cmp r10,#0
+				LDR r1,=contador
+				LDR r4,=ticks
+				ldr r4,[r4]
+				str r4,[r1]
+				beq comprobarJ2
+				bne continuar
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+comprobarPunt 	mov r6,#0
+				strb r6,[r5]
+				LDR r4,=terminar
+				LDR r7,=puntos2
+				LDR r6,=puntos1
+				cmp r10,#0
+				ldrbeq r8,[r7]
+				addeq r8,r8,#1
+				strbeq r8,[r7]
+				ldrbne r8,[r6]
+				addne r8,r8,#1
+				strbne r8,[r6]
+				cmp r8,#5
+				moveq r8,#1
+				streq r8,[r4]
+				beq bucle
+				bne nuevo
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+RSI_TECL		sub lr,lr,#4
+				PUSH{lr}
+				mrs r14,spsr
+				PUSH {r14}
+				msr cpsr_c,#2_01010010
+				PUSH {r0-r2}
+				
+				LDR r1,=RDAT
+				ldrb r0,[r1]
+				
+				cmp r0,#'+'
+				beq masVel
+				cmp r0,#'-'
+				beq menosVel
+				
+				bic r0,r0,#2_100000	   		;pasamos a may sculas
+				cmp r0,#'Q'					;si se ha pulsado la 'Q', terminaremos
+				bne continuarTec
+				LDR r1,=terminar			;final ('Q' pulsada)
+				mov r0,#1
+				str r0,[r1]
+				b finTecl
+
+continuarTec	;ver si cada letra es A,D,S,W   flecha_izq,der,abajo,arriba   '+' , '-'
+				cmp r0,#'A'
+				bne seguirDir1
+				LDR r1,=dir1
+				mov r0,#1
+				strb r0,[r1]
+				b finTecl
+
+seguirDir1		cmp r0,#'D'	
+				bne seguirDir2
+				LDR r1,=dir1
+				mov r0,#2
+				strb r0,[r1]
+				b finTecl
+							
+seguirDir2		cmp r0,#'S'
+				bne seguirDir3
+				LDR r1,=dir1
+				mov r0,#3
+				strb r0,[r1]
+				b finTecl
+
+seguirDir3		cmp r0,#'W'
+				bne seguirDir4
+				LDR r1,=dir1
+				mov r0,#4
+				strb r0,[r1]
+				b finTecl
+				
+seguirDir4		cmp r0,#'J'
+				bne seguirDir5
+				LDR r1,=dir2
+				mov r0,#1
+				strb r0,[r1]
+				b finTecl
+
+seguirDir5		cmp r0,#'L'	
+				bne seguirDir6
+				LDR r1,=dir2
+				mov r0,#2
+				strb r0,[r1]
+				b finTecl
+							
+seguirDir6		cmp r0,#'K'
+				bne seguirDir7
+				LDR r1,=dir2
+				mov r0,#3
+				strb r0,[r1]
+				b finTecl
+
+seguirDir7		cmp r0,#'I'
+				bne masVel
+				LDR r1,=dir2
+				mov r0,#4
+				strb r0,[r1]
+				b finTecl
+				;CAMBIADO
+masVel			LDR r1,=ticks
+				ldr r2,[r1]
+				mov r0,#15
+				sub r2,r2,r0
+				LDR r0,=velMax
+				cmp r2,r0
+				blt finTecl
+				str r2,[r1]
+				b finTecl
+				;CAMBIADO
+menosVel		LDR r1,=ticks
+				ldr r2,[r1]
+				mov r0,#15
+				add r2,r2,r0
+				LDR r0,=velMin
+				cmp r2,r0
+				bgt finTecl
+				str r2,[r1]
+
+finTecl			POP {r0-r2}
+				msr cpsr_c,#2_11010010
+				POP{r14}
+				msr spsr_fsxc,r14
+				LDR r14,=VICVectAddr
+				str r14,[r14]
+				POP {pc}^
+
+
+				;CAMBIADO
+RSI_TIMER		sub lr,lr,#4
+				PUSH{lr}
+				mrs r14,spsr
+				PUSH {r14}
+				msr cpsr_c,#2_01010010
+				PUSH {r0-r3}
+				
+				LDR r0,=T0_IR
+				mov r1,#1
+				str r1,[r0]
+	
+				LDR r2,=contador
+				ldr r3,[r2]
+				cmp r3,#0
+				subne r3,r3,#1
+				strne r3,[r2]					;contador++
+	
+				POP {r0-r3}
+	
+				POP{r14}
+				msr spsr_fsxc,r14
+				LDR r14,=VICVectAddr
+				str r14,[r14]
+				POP {pc}^
+				
+ ;
+fin				b fin
+
+				END

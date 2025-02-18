@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+        CONFIGURACIÓN MÁQUINAS VIRTUALES EN DEBIAN
+-------------------------------------------------------------------
+Autores: Irene Pascual Albericio ; Iván Vayad Díaz
+___________________________________________________________________
+Tras haber descargado la imagen, hemos procedido a instalar sudo y a clonar las 7 máquinas (una máquina extra para el host).
+Antes de cambiar en configuración los adaptadores en la red, hemos instalado el servidor apache en el debian2 (sudo apt-get update ; sudo apt install apache2 ; sudo systemctl start apache2.service) y el servidor ssh en debian5 (sudo apt-get update ; sudo apt install ssh ; sudo nano /etc/ssh/sshd_config --> 'PermitRootLogin no'). Finalmente reiniciamos las máquinas para asentar todos los cambios (sudo systemctl restart networking).
+
+Una vez ya tenemos los dos servidores instalados gracias al adaptador NAT, pasamos a definir qué adaptadores queremos realmente para cada máquina.
+	Debian0: Host-Only
+	Debian1: NAT ; Host-Only ; Red interna1 ; Red interna2
+	Debian2: Red interna1
+	Debian3: Red interna2
+	Debian4: Red interna2
+	Debian5: Red interna3
+	Debian6: Red interna2 ; Red interna3
+
+A continuación hemos modificado las interfaces para definir cómo cada interfaz de red debería ser configurada para iniciar y cómo se comporta en términos de su conexión a la red.
+En debian1 hemos añadido sobre lo que había (ya que así mantenemos la red NAT) lo siguiente:
+	(host-only)
+	auto enp0s8
+	iface enp0s8 inet static
+	  address    192.164.50.2
+	  netmask    255.255.255.0
+	  network    192.164.50.0
+	  broadcast  192.164.50.255
+	
+	(Red interna1)
+	auto enp0s9
+	iface enp0s9 inet static
+	  address   192.164.51.1
+	  netmask   255.255.255.0
+	  network   192.164.51.0
+
+	(Red interna2)
+	auto enp0s10
+	iface enp0s10 inet static
+	  address   192.164.52.1
+	  netmask   255.255.255.0
+	  network   192.164.52.0
+
+En debian2 hemos borrado las líneas que definían enp0s3 y hemos escrito lo siguiente:
+	(Red interna1)
+	auto enp0s3
+	iface enp0s3 inet static
+	  address   192.164.51.2
+	  netmask   255.255.255.0
+	  gateway   192.164.51.1
+
+En debian6 escribimos lo siguiente:
+	auto enp0s3
+	iface enp0s3 inet static
+	  address    192.164.52.6
+	  netmask    255.255.255.0
+
+	auto enp0s9
+	iface enp0s9 inet static
+	  address    192.164.53.6
+	  netmask    255.255.255.0
+
+En debian5 
+	auto enp0s3
+	iface enp0s3 inet static
+	  address    192.164.53.5
+	  netmask    255.255.255.0
+	  network    192.164.53.6
+
+Tanto para debian3 como para debian4, como deben ser IP's dinámicas (con dhcp), modificamos lo referente a enp0s3 y usamos lo siguiente:
+	auto enp0s3
+	allow-hotplug enp0s3
+	iface enp0s3 inet dhcp
+
+
+Una vez hemos logrado definir todas las interfaces de red, volvemos a reiniciar todas las máquinas (sudo systemctl restart networking), e instalamos en debian1 el servidor dhcp (sudo apt-get update ; sudo apt install isc-dhcp-server). Ahora abrimos el fichero de configuración y modificamos lo siguiente (sudo nano /etc/dhcp/dhcpd.conf):
+	subnet 192.164.52.0 netmask 255.255.255.0  {
+	   range 192.164.52.10 192.164.52.100; 
+	   option domain-servers ns1.internal.example.org;
+	   option domain-servers ns1.internal.example.org;
+	   option routers 192.164.52.1; 
+	}
+
+Después de guardar los cambios, asignamos la interfaz al servidor dhcp (sudo nano /etc/default/isc-dhcp-server --> modificamos la línea donde aparece INTERFACESv4 por 'INTERFACESv4="enp0s10"'.
+Finalmente reiniciamos el servicio (sudo systemctl restart isc-dhcp-server.service).
+
+
+Seguidamente, aseguraremos la comunicación y el enrutamiento adecuado entre distintos segmentos de una red (esto además es especialmente útil en este caso del trabajo donde tenemos diferentes subredes involucradas que no están directamente conectadas). Para ello, configuraremos rutas estáticas para asegurar que los paquetes que vayan destinados a ciertas máquinas, puedan llegar a su destino sin problema. Esto lo haremos en la mayoría de las máquinas:
+	Comando: up ip route add ... via ... dev ...
+	   up: prefijo para indicar que el comando se tiene que ejecutar cada vez que la interfaz asociada se activa.
+	   ip route add: añade nueva ruta a la tabla de enrutamiento.
+	   via: especifica que se debe enviar a ese gateway.
+	   dev: indica la interfaz de red a través de la cual se enviarán los paquetes. 
+Para permitir el reenvío de paquetes hemos descomentado la línea 'net.ipv4.ip_forward=1' (sudo nano /etc/sysctl.conf).
+
+
+Finalmente, la configuración del firewall para gestionar el tráfico de la red (y decidir qué tráfico es el que queremos que se permita) la realizaremos en debian1 (cuando terminemos, lo guardaremos en el fichero /etc/iptables/rules.v4).
+Este es el firewall que vamos a poner: 
+
+	#!/bin/bash
+
+	# Limpia todas las reglas existentes en todas las cadenas
+	iptables -F 
+
+	# Elimina cualquier cadena personalizada creada anteriormente
+	iptables -X   
+
+	# Resetea los contadores de bytes y paquetes a cero para todas las cadenas y reglas
+	iptables -Z   
+
+	# Vacía todas las reglas en la tabla NAT
+	iptables -t nat -F  
+
+	# Permite respuestas ICMP tipo "echo-reply" (ping respuesta) para la interfaz enp0s8
+	iptables -A FORWARD -i enp0s8 -p icmp --icmp-type echo-reply -j ACCEPT
+
+	# Permite el tráfico ICMP tipo "echo-request" (ping) entrante en la interfaz enp0s8
+	iptables -A INPUT -i enp0s8 -p icmp --icmp-type 0 -j ACCEPT
+
+	# Establece una política de rechazo para todo el tráfico entrante si no coincide con una regla
+	iptables -P INPUT DROP   
+
+	# Establece una política de rechazo para todo el tráfico de reenvío si no coincide con una regla
+	iptables -P FORWARD DROP 
+
+	# Aplica NAT para ocultar la IP original de los paquetes salientes de la red 192.164.52.0/24
+	iptables -t nat -A POSTROUTING -s 192.164.52.0/24 -o enp0s3 -j MASQUERADE
+
+	# Aplica NAT para ocultar la IP original de los paquetes salientes de la red 192.164.51.0/24
+	iptables -t nat -A POSTROUTING -s 192.164.51.0/24 -o enp0s3 -j MASQUERADE
+
+	# Aplica NAT para ocultar la IP original de los paquetes salientes de la red 192.164.53.0/24
+	iptables -t nat -A POSTROUTING -s 192.164.53.0/24 -o enp0s3 -j MASQUERADE
+
+	# Aplica SNAT para cambiar la dirección de origen a 192.164.50.2 para todo el tráfico saliente por enp0s8
+	iptables -t nat -A POSTROUTING -o enp0s8 -j SNAT --to 192.164.50.2
+
+	# Redirecciona todo el tráfico entrante en el puerto 22 a la dirección interna 192.164.50.2
+	iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 22 -j DNAT --to-destination 192.164.50.2
+
+	# Redirecciona todo el tráfico entrante en el puerto 80 a la dirección interna 192.164.50.2
+	iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.164.50.2
+
+	# Permite el tráfico hacia 192.164.53.5 por el puerto 22
+	iptables -A FORWARD -d 192.164.53.5 -p tcp --dport 22 -j ACCEPT
+
+	# Permite el tráfico hacia 192.164.51.2 por el puerto 80
+	iptables -A FORWARD -d 192.164.51.2 -p tcp --dport 80 -j ACCEPT
+
+	# Permite el tráfico hacia 192.164.51.2 por el puerto 443
+	iptables -A FORWARD -d 192.164.51.2 -p tcp --dport 443 -j ACCEPT
+
+	# Permite todo el tráfico entrante y saliente en la interfaz enp0s3
+	iptables -A FORWARD -i enp0s3 -p all -j ACCEPT
+
+	# Permite todo el tráfico entrante y saliente en la interfaz enp0s9
+	iptables -A FORWARD -i enp0s9 -p all -j ACCEPT
+
+	# Permite todo el tráfico entrante y saliente en la interfaz enp0s10
+	iptables -A FORWARD -i enp0s10 -p all -j ACCEPT
+
+	# Permite todo el tráfico entrante en la interfaz enp0s3
+	iptables -A INPUT -i enp0s3 -p all -j ACCEPT
+
+	# Permite todo el tráfico entrante en la interfaz enp0s9
+	iptables -A INPUT -i enp0s9 -p all -j

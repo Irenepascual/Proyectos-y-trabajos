@@ -1,0 +1,50 @@
+ALMACENAMIENTO, VOLÚMENES, DISCOS - Irene Pascual Albericio, Iván Vayad Díaz
+________________________________________________________________________________
+
+En esta práctica se ha utilizado un host (en WSL) y una máquina virtual, y se ha dividido tres partes, cada una diseñada para profundizar en diferentes aspectos de la administración de almacenamiento y particionado.
+_______________________________________________________________________________
+
+Parte I: Configuración y Montaje de Particiones
+En primer lugar creamos un nuevo disco desde la configuración de la máquina virtual. Después procedemos a crear una tabla de particiones en el disco /dev/sdb (que era el que hemos creado nuevo) y configuramos las particiones. 
+
+sudo parted /dev/sdb --script mklabel gpt
+sudo parted /dev/sdb mkpart para cada partición
+sudo mkfs -t para formatear las particiones como ext3 y ext4
+sudo mount para montar las particiones en directorios específicos.
+Se verificó que las particiones estaban alineadas con sudo parted /dev/sdb align-check optimal. 
+
+Las particiones las hemos configurado para que se monten automáticamente editando el archivo /etc/fstab gracias a añadir:
+	/dev/sdb1 /media/punto_montaje1 ext3, relatime 0 0
+	/dev/sdb2 /media/punto_montaje2 ext4, relatime 0 0 
+______________________________________________________________________________
+
+Parte II: Script de para verificar la configuración y uso de almacenamiento remotamente.
+
+Primero de todo, creé las claves de ssh en el host y luego las copié en la máquina virtual. Una vez comprobé que funcionaba el ssh con la ip de mi máquina virtual, continué con el script. 
+
+Script practica5_parte2.sh:
+ssh -n -i ~/.ssh/id_as_ed25519 as@"${1}" "sudo sfdisk -s && sudo sfdisk -l && df -hT | grep -v 'tmpfs'": Este comando realiza una conexión SSH a la máquina debian y ejecuta sfdisk -s para mostrar el tamaño total de los discos, sfdisk -l para listar todas las particiones, y df -hT para mostrar el uso del disco en un formato legible por humanos (excluyendo sistemas de archivos temporales como tmpfs).
+_______________________________________________________________________________
+
+Parte III: Gestión y manipulación de volúmenes lógicos y grupos de volúmenes.
+
+Configuración de LVM:
+
+sudo parted /dev/sdc mkpart primary 1MiB 100%: Creación de una partición que ocupa casi todo el nuevo disco, preparada para LVM. Aunque en un principio debía ser toda al completo, cuando creaba el disco con un tamaño concreto virtual, luego en la máquina me aparecía un ligero cambio en el tamaño final, por lo que para poder alinear sin problemas, decidimos empezar en una dirección aquí ya que este punto está alineado con los tamaños de bloque físico en la mayoría de los discos duros. 
+
+sudo parted /dev/sdc set 1 lvm on: Se configura la partición para usarla en LVM.
+sudo vgcreate vg_p5 /dev/sdc: Creación de un nuevo grupo de volúmenes llamado vg_p5.
+___________________________________
+Script para Extensión de Volumen:
+
+sudo vgextend vg_p5 /dev/sdb1 /dev/sdb2: Se añadieron dos particiones al grupo de volúmenes vg_p5, aumentando su capacidad.
+sudo vgdisplay vg_p5: Comando para mostrar el estado actual del grupo de volúmenes.
+
+Para poder eliminar los elementos creados y seguir probándolo, hemos usado los siguientes comandos para borrar: sudo vgreduce vg_p5 /dev/sdb1 ; sudo pvremove /dev/sdb1 (y lo mismo para /dev/sdb2).
+___________________________________
+Script practica5_parte3_lv.sh: 
+Se implementó para leer especificaciones de volúmenes lógicos desde la entrada estándar y crear (lvcreate) o extender (lvextend) volúmenes lógicos, montaje y configuración de fstab para montaje automático.
+
+La entrada estándar se la pasabamos mediante la redirección gracias a un archivo donde especificabamos el nombre del grupo del volumen, el nombre del volumen lógico, tamaño...
+
+Al igual que la anterior parte, para poder desmontar y eliminar las pruebas efectuadas, usamos estos comandos: lvremove, umount, y rmdir para limpiar el entorno.
