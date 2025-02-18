@@ -1,0 +1,236 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+// model Usuario {
+//   nom_usuario     String              @id @db.VarChar(50)
+//   correo          String              @unique @db.VarChar(100)
+//   contrasena      String              @db.VarChar(50)
+//   propietario     Propietario?
+//   registrado      Usuario_registrado?
+//   ingrediente     Ingrediente[]
+//   receta          Receta[]
+// }
+
+// model Propietario {
+//   nom_usuario_p   String              @id @db.VarChar(50)
+//   codigo          Int                 @unique
+//   usuario         Usuario             @relation(fields: [nom_usuario_p], references: [nom_usuario])
+//   ayuda           Ayuda[]
+//   responder_cons  Responder_consulta[]
+// }
+
+// model Usuario_registrado {
+//   nom_usuario_u   String              @id @db.VarChar(50)
+//   usuario         Usuario             @relation(fields: [nom_usuario_u], references: [nom_usuario])
+//   favoritos       Favoritos[]
+// }
+
+// model Ingrediente {
+//   nom_usuario_i String                @db.VarChar(50)
+//   nom_ingred    String                @db.VarChar(50)
+//   estado        String                @db.VarChar(11)
+//   usuario       Usuario               @relation(fields: [nom_usuario_i], references: [nom_usuario])
+//   tiene_Restr   Tiene_Restriccion[]
+//   utiliza       Utiliza[]
+//   @@id([nom_ingred, nom_usuario_i])
+// }
+
+// model Receta {
+//   nom_usuario_r      String           @db.VarChar(50)
+//   nom_receta         String           @db.VarChar(100)
+//   fecha_creac_receta DateTime  
+//   descripcion        String?          @db.VarChar(255) 
+//   foto               String?          @db.VarChar(255) 
+//   tiempo_prep        Int?      
+//   num_personas       Int?      
+//   estado             String           @db.VarChar(11)
+//   usuario            Usuario          @relation(fields: [nom_usuario_r], references: [nom_usuario]) 
+//   utiliza            Utiliza[]
+//   favoritos          Favoritos[]
+
+//   @@id([nom_usuario_r, nom_receta, fecha_creac_receta])
+// }
+
+// model Restriccion {
+//   nom_restr         String            @id @db.VarChar(30)
+//   tiene_Restr       Tiene_Restriccion[]
+// }
+
+// model Tiene_Restriccion {
+//   nom_restr_t       String            @db.VarChar(30)
+//   nom_usuario_t     String            @db.VarChar(50)
+//   nom_ingred_t      String            @db.VarChar(50)
+//   tiene             Boolean
+//   restriccion       Restriccion       @relation(fields: [nom_restr_t], references: [nom_restr])
+//   ingrediente       Ingrediente       @relation(fields: [nom_usuario_t, nom_ingred_t], references: [nom_usuario_i, nom_ingred])
+//   @@id([nom_restr_t, nom_usuario_t, nom_ingred_t])
+// }
+
+// model Utiliza {
+//   nom_usuario_i_ut  String            @db.VarChar(50)
+//   nom_ingred_ut     String            @db.VarChar(50)
+//   nom_usuario_r_ut  String            @db.VarChar(50)
+//   nom_receta_ut     String            @db.VarChar(100)
+//   fecha_creac_receta_ut  DateTime
+//   cantidad          Int
+//   unidad_med        String            @db.VarChar(50)
+//   ingrediente       Ingrediente       @relation(fields: [nom_usuario_i_ut, nom_ingred_ut], references: [nom_usuario_i, nom_ingred])
+//   receta            Receta            @relation(fields: [nom_usuario_r_ut, nom_receta_ut, fecha_creac_receta_ut], references: [nom_usuario_r, nom_receta, fecha_creac_receta])
+//   @@id([nom_usuario_i_ut, nom_ingred_ut, nom_usuario_r_ut, nom_receta_ut, fecha_creac_receta_ut])
+// }
+
+
+// model Favoritos {
+//   nom_usuario_u_f   String            @db.VarChar(50)
+//   nom_usuario_r_f   String            @db.VarChar(50)
+//   nom_receta_f      String            @db.VarChar(100)
+//   fecha_creac_receta_f  DateTime
+//   registrado        Usuario_registrado       @relation(fields: [nom_usuario_u_f], references: [nom_usuario_u])
+//   receta            Receta            @relation(fields: [nom_usuario_r_f, nom_receta_f, fecha_creac_receta_f], references: [nom_usuario_r, nom_receta, fecha_creac_receta])
+
+//   @@id([nom_usuario_u_f, nom_usuario_r_f, nom_receta_f, fecha_creac_receta_f])
+// }
+
+// model Ayuda {
+//   nom_usuario_a     String            @db.VarChar(50)
+//   pregunta          String            @db.Text
+//   propietario       Propietario       @relation(fields: [nom_usuario_a], references: [nom_usuario_p])
+  
+//   @@id([nom_usuario_a, pregunta])
+// }
+
+// model Consulta {
+//   correo            String            @db.VarChar(100)
+//   fecha_consulta    DateTime
+//   nombre            String?           @db.VarChar(50)
+//   asunto            String            @db.VarChar(100)
+//   pregunta          String            @db.VarChar(255)
+//   respondida        Boolean
+//   responder_consulta    Responder_consulta[]
+//   @@id([correo, fecha_consulta])
+// }
+
+// model Responder_consulta {
+//   nom_usuario_rc    String            @db.VarChar(50)
+//   correo_rc         String            @db.VarChar(100)
+//   respuesta_rc      String            @db.VarChar(255)
+//   fecha_consulta_rc DateTime
+//   propietario       Propietario       @relation(fields: [nom_usuario_rc], references: [nom_usuario_p])
+//   consulta          Consulta          @relation(fields: [correo_rc, fecha_consulta_rc], references: [correo, fecha_consulta])
+//   @@id([nom_usuario_rc, correo_rc, fecha_consulta_rc])
+// }
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario    String
+  correo         String            @unique
+  contrasena     String
+}
+
+model Propietario {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  codigo         Int               @unique
+  nom_usuario_p  String
+}
+
+model Usuario_registrado {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario_u  String
+}
+
+model Ingrediente {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario_i  String
+  nom_ingred     String
+  estado         String
+}
+
+model Receta {
+  id                   String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario_r        String
+  nom_receta           String
+  fecha_creac_receta   DateTime
+  descripcion          String?
+  foto                 String?
+  tiempo_prep          Int?
+  num_personas         Int?
+  estado               String
+}
+
+model Restriccion {
+  id          String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_restr   String
+}
+
+model Tiene_Restriccion {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_restr_t    String
+  nom_usuario_t  String
+  nom_ingred_t   String
+  tiene          Boolean
+}
+
+model Utiliza {
+  id                  String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario_i_ut    String
+  nom_ingred_ut       String
+  nom_usuario_r_ut    String
+  nom_receta_ut       String
+  fecha_creac_receta_ut DateTime
+  cantidad            Int
+  unidad_med          String
+}
+
+model Favoritos {
+  id                  String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario_u_f     String
+  nom_usuario_r_f     String
+  nom_receta_f        String
+  fecha_creac_receta_f DateTime
+}
+
+model Ayuda {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario_a  String
+  pregunta       String
+}
+
+model Consulta {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  correo         String
+  fecha_consulta DateTime
+  nombre         String?
+  asunto         String
+  pregunta       String
+  respondida     Boolean
+}
+
+model Responder_consulta {
+  id                  String            @id @default(auto()) @map("_id") @db.ObjectId
+  nom_usuario_rc      String
+  correo_rc           String
+  respuesta_rc        String
+  fecha_consulta_rc   DateTime
+}

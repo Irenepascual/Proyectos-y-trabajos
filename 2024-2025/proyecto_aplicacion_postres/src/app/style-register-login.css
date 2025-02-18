@@ -1,0 +1,96 @@
+/* Estilos para la página de login */
+.login-page {
+    background-color: rgb(254, 236, 239);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 2rem;
+}
+
+/* Estilos específicos para el formulario de login */
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    background-color:  white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
+.login-form h1 {
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+    padding-bottom: 32px;
+    text-align: center;
+}
+
+/* Estilos para el input */
+.login-form input {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 0.375rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    margin: 0 auto 1rem auto;
+    background-color: pink;
+    color: black;
+    font-size: 16px;
+    border: 1px solid #ccc;
+}
+
+/* Estilos para label */
+.login-form label {
+    font-size: 16px;
+    /* font-family: 'Franklin Gothic Light', sans-serif; */
+    font-weight: 500;
+    color: #333;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left; /* Alinea las etiquetas a la izquierda */
+    max-width: 350px;
+    margin: 0 auto 0.5rem auto; /* Centra las etiquetas */
+}
+
+/* Estilos para el botón de inicio de sesión */
+.login-button {
+    width: 60%;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin: 1rem auto;
+    cursor: pointer;
+}
+
+/* Estilos para el botón de registro */
+.register-link button {
+    width: 60%;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin: 1rem auto;
+    cursor: pointer;
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.error-message {
+    background-color: #f44336;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}

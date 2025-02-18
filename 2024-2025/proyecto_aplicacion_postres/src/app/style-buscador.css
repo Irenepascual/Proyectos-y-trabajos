@@ -1,0 +1,78 @@
+.contenedor-buscador {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    margin: 20px auto; /* Asegura que el contenedor esté centrado */
+    position: relative;
+    width: 50%;
+    max-width: 500px;
+}
+
+.buscador {
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Espacio a la derecha para el icono */
+    border-radius: 20px;
+    font-size: 15px;
+    border: 2px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.buscador:focus {
+    border-color: deeppink;
+    box-shadow: 0 0 8px deeppink;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px; /* Posición dentro del input */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    pointer-events: none;
+    color: #888;
+}
+
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-busq-restriccion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Centra los botones horizontalmente */
+}
+
+.boton-restriccion {
+    display: flex;
+    flex-direction: row;
+    background-color: pink;
+    padding: 7px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 19px;
+    cursor: pointer;
+}
+
+.boton-restriccion.-pulsado {
+    display: flex;
+    flex-direction: row;
+    background-color: #333;
+    color: white;
+    padding: 7px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 19px;
+    cursor: pointer;
+}
+
+.busq-emoji {
+    margin: 0;
+}
+
+.busq-texto {
+    margin: 0;
+}

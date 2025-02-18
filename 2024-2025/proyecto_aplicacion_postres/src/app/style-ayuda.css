@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
+
+
+/* Asegura que el cuerpo de la página no tenga scroll horizontal */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    background-color: rgb(254, 236, 239);
+}
+
+h1 {
+    font-size: 50px;
+    letter-spacing: 5px;
+    color: black;
+    font-weight: bold;
+    /* font-family: 'Purple Purse', cursive; */
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+h2 {
+    font-size: 35px;
+    /* font-family: 'Purple Purse', cursive; */
+    color: black;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 35px;
+    /* font-family: 'Arial', cursive; */
+    color: black;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+ul {
+    background-color: black;
+    width: 100%; 
+    margin-bottom: 2rem;
+}
+
+
+/* Ajustes de la cabecera horizontal */
+ul.lista-horizontal {
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+ul.lista-horizontal li {
+    list-style-type: none;
+    margin-right: 15px;
+}
+
+ul.lista-horizontal li a {
+    color: rgb(254, 236, 239);
+    font-size: 18px;
+    text-decoration: none;
+}
+
+ul.lista-horizontal li a:hover {
+    text-decoration: underline;
+}        
+
+
+/* Ajuste para el menú desplegable (dropdown) */
+.dropdown {
+    position: relative;
+    display: inline-block; 
+    color: black
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fcb9da;
+    color: black !important; 
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 5px 10px;
+}
+
+/* Mostrar el menú desplegable cuando se hace hover en la clase dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Ajuste de estilo en los elementos del menú */
+.dropdown-content li {
+    padding: 5px 10px;
+    white-space: nowrap;
+    color: black !important;
+}
+
+.dropdown-content li a {
+    color: black !important;
+    text-decoration: none !important;
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content li a:hover {
+    background-color: transparent;
+    color: black !important;
+}
+
+/* Efecto de subrayado al pasar el mouse */
+.dropdown-content li a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff69b4;
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-content li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Ajuste de iconos en la cabecera */
+.icono-cabecera {
+    margin-right: 10px;
+    height: 17px;
+    width: 17px;
+    color: rgb(254, 236, 239);
+}
+
+/* Estilos para el contenedor de las ayudas */
+.contenedor-ayudas {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: transparent;
+}
+
+/* Estilos para el contenedor de ayudas */
+.lista-ayudas {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    margin-top: 20px;
+    padding: 0;
+    justify-content: center; 
+}
+
+/* Cada ayuda individual */
+.ayuda-item {
+    background-color: #ff99cc;
+    padding: 20px;
+    /* font-family: 'Arial', cursive; */
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 1 1 250px; /* Establece un ancho mínimo de 250px y permite que crezca */
+    max-width: 300px; /* Limita el ancho máximo de las tarjetas */
+    
+}
+.ayuda-item:hover {
+    transform: scale(1.05);
+}
+
+.ayuda-item span {
+    font-weight: bold;
+    color: white;
+}
+
+.ayuda-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.ayuda-item a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo del formulario para crear ayuda */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    /* font-family: 'Arial', sans-serif; */
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+textarea:focus {
+    border-color: #ff99cc;
+    outline: none;
+    box-shadow: 0px 2px 8px rgba(255, 153, 204, 0.3);
+}
+
+/* Botón estilizado */
+button[type="submit"] {
+    background-color: #ff99cc;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    /* font-family: 'Arial', sans-serif; */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:hover {
+    background-color: #e087b5;
+}
+
+/* Estilo del spinner */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #ff99cc; /* Color del spinner */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto; /* Centrar el spinner */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Posiciona el spinner en el centro de la pantalla */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px; /* Ajusta según tu diseño */
+}
+
+.btn-eliminar {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-eliminar:hover {
+    background-color: #e60000;
+    transform: scale(1.05);
+}
+
+.btn-eliminar:active {
+    transform: scale(0.95);
+}

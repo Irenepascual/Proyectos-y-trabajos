@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
+
+.logo {
+    font-size: 50px;
+    letter-spacing: 5px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Purple Purse', cursive;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.logo:hover {
+    color: #ff69b4;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(254, 236, 239);
+}
+
+h1 {
+    font-size: 50px;
+    letter-spacing: 5px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Purple Purse', cursive;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+ul {
+    background-color: black;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    margin-bottom: 2rem;
+}
+
+a {
+    color: rgb(254, 236, 239);
+    font-size: 18px;
+    text-decoration: none;
+    padding-right: 16px;
+}
+
+.lista-horizontal {
+    list-style-type: none;
+    padding: 1rem;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.lista-horizontal li {
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.lista-horizontal li:l {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.lista-horizontal img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;   
+}
+
+.lista-horizontal li a {
+    color: rgb(254, 236, 239);
+    font-size: 18px;
+    text-decoration: none; /* Elimina el subrayado */
+    padding-right: 16px;
+}
+
+.lista-horizontal li a:hover {
+    text-decoration: none !important; /* Asegura que no se subraye al hacer hover */
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+
+/* Ajuste para el menú desplegable (dropdown) */
+.dropdown {
+    position: relative;
+    display: inline-block; /* Mantiene el formato en línea */
+    color: black
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fcb9da;
+    color: black !important; /* Asegura que el texto sea negro */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 5px 10px;
+}
+
+/* Mostrar el menú desplegable cuando se hace hover en la clase dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Ajuste de estilo en los elementos del menú */
+.dropdown-content li {
+    padding: 5px 10px;
+    white-space: nowrap; /* Mantiene el texto en una sola línea */
+    color: black !important;
+}
+
+.dropdown-content li a {
+    color: black !important;
+    text-decoration: none !important;
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content li a:hover {
+    background-color: transparent;
+    color: black !important;
+}
+
+/* Efecto de subrayado al pasar el mouse */
+.dropdown-content li a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff69b4;
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-content li a:hover::after {
+    transform: scaleX(1);
+}
+
+.icono-cabecera {
+    margin-right: 10px;
+    height: 17px;
+    width: 17px;
+}
+
+.confirm-delete-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.confirm-delete-box {
+    background: #ffc5d9;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-confirm {
+    background-color: #ff6b6b;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.btn-cancel {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Ajuste de estilo para la opción "Eliminar cuenta" */
+.eliminar-cuenta {
+    color: #ff6b6b !important;
+    font-weight: normal; /* Asegúrate de que no sea negrita */
+    text-decoration: underline; /* Puedes mantener el subrayado si lo deseas */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.eliminar-cuenta:hover {
+    color: #e85050; /* Cambia de color al hacer hover */
+}
+
+/* Ajuste para el menú desplegable */
+.dropdown-content li a {
+    color: black !important;
+    text-decoration: none !important;
+    display: inline-block;
+    position: relative;
+    font-weight: normal; /* Asegúrate de que todos los elementos tengan peso normal */
+}
+
+.dropdown-content li a:hover {
+    color: #ff69b4 !important;
+}

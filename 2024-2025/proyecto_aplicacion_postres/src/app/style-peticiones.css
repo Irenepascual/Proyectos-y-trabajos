@@ -1,0 +1,110 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap'); */
+
+/* Asegura que el cuerpo de la página no tenga scroll horizontal */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: rgb(254, 236, 239);
+}
+
+h1 {
+    font-size: 50px;
+    letter-spacing: 5px;
+    color: black;
+    font-weight: bold;
+    /* font-family: 'Purple Purse', cursive; */
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+h2 {
+    font-size: 35px;
+    /* font-family: 'Purple Purse', cursive; */
+    color: black;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 35px;
+    /* font-family: Arial, sans-serif; */
+    color: black;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos para el contenedor de las ayudas */
+.contenedor-ayudas {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: transparent;
+}
+
+.lista-ayudas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Cada ayuda individual */
+.ayuda-item {
+    background-color: #ff99cc;
+    padding: 20px;
+    /* font-family: Arial, sans-serif; */
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 1 1 250px;
+    max-width: 300px;
+}
+
+.ayuda-item:hover {
+    transform: scale(1.05);
+}
+
+.ayuda-item strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.ayuda-item p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.ayuda-item small {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilos para el botón de "Responder" */
+.ayuda-item button {
+    background-color: #ffffff;
+    color: #ff99cc;
+    border: 2px solid #ff99cc;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    /* font-family: Arial, sans-serif; */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.ayuda-item button:hover {
+    background-color: #ff99cc;
+    color: white;
+    border-color: #ffffff;
+}

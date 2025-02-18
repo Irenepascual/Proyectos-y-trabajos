@@ -1,0 +1,184 @@
+/* Ajuste global para evitar el scroll horizontal */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(254, 236, 239);
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+}
+
+h1 {
+    font-size: 50px;
+    letter-spacing: 5px;
+    color: black;
+    font-weight: bold;
+    /* font-family: 'Purple Purse', cursive; */
+    text-align: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+ul {
+    background-color: black;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: rgb(254, 236, 239);
+    font-size: 18px;
+    text-decoration: none;
+    padding-right: 16px;
+}
+
+.lista-horizontal {
+    list-style-type: none;
+    padding: 1rem;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lista-horizontal li {
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.icono-cabecera {
+    margin-right: 10px;
+    height: 17px;
+    width: 17px;
+}
+
+/* Ajuste para el menú desplegable (dropdown) */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fcb9da;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 5px 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content li {
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+.dropdown-content li a {
+    color: black !important;
+    text-decoration: none;
+}
+
+/* Estilos para centrar el formulario en la pantalla */
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    background-color: #ffe6f0;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 40vw;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Aislar estilos solo para el formulario de contacto */
+.formulario-contacto label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formulario-contacto input[type="text"],
+.formulario-contacto input[type="email"],
+.formulario-contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    /* font-family: Arial, sans-serif; */
+    box-sizing: border-box;
+}
+
+.formulario-contacto textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.formulario-contacto button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario-contacto button:hover {
+    background-color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    font-weight: bold;
+    color: black;
+}
+
+
+/* Ajuste para pantalla móvil */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .lista-horizontal {
+        justify-content: center;
+    }
+
+    .form-container {
+        max-width: 90vw;
+    }
+
+    button[type="submit"] {
+        font-size: 1rem;
+    }
+}
