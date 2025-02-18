@@ -1,0 +1,6 @@
+192.168.3.9_29270 -> 13:06:18.721807 raft.go:175: logger initialized
+192.168.3.9_29270 -> 13:06:18.722097 raft.go:202: raft.go: NuevoNodo(): se ha creado el nodo
+192.168.3.9_29270 -> 13:06:18.722374 main.go:37: main.go: despues de NuevoNodo(): &nr: 0x400009a460 mandato: 0
+192.168.3.9_29270 -> 13:06:21.272256 raft.go:302: raft.go: dentro de ObtenerEstadoNodo(): &nr: 0x4000206130
+192.168.3.9_29270 -> 13:06:21.272442 raft.go:227: raft.go: dentro de obtenerEstado(): &nr: 0x4000206138
+192.168.3.9_29270 -> 13:06:21.272499 raft.go:232: raft.go: obtenerEstado(): yo: 0 mandato: 0 esLider: false idLider -1

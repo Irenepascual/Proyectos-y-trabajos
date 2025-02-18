@@ -1,0 +1,3 @@
+192.168.3.12_29272 -> 12:52:22.661060 raft.go:175: logger initialized
+192.168.3.12_29272 -> 12:52:22.661311 raft.go:202: raft.go: NuevoNodo(): se ha creado el nodo
+192.168.3.12_29272 -> 12:52:22.661502 main.go:37: main.go: despues de NuevoNodo(): &nr: 0x4000040468 mandato: 0

@@ -1,0 +1,23 @@
+127.0.0.1_29271 -> 21:15:36.503620 raft.go:158: logger initialized
+127.0.0.1_29271 -> 21:15:36.503970 raft.go:536: Soy SEGUIDOR en el mandato 0
+127.0.0.1_29271 -> 21:15:36.504490 main.go:36: Replica escucha en: 1 de [127.0.0.1:29270 127.0.0.1:29271 127.0.0.1:29272]
+127.0.0.1_29271 -> 21:15:40.375474 raft.go:205: raft.go: obtenerEstado(): yo: 1 mandato: 0 mandatoActual: 0 esLider: false idLider: -1
+127.0.0.1_29271 -> 21:15:40.667204 raft.go:325: recibido PedirVoto de nodo 0 en el mandato 1
+127.0.0.1_29271 -> 21:15:40.667328 raft.go:326: nosotros tenemos mandato 0
+127.0.0.1_29271 -> 21:15:40.667383 raft.go:342: enviado el voto al candidato 0 porque tiene un mandato superior al nuestro
+127.0.0.1_29271 -> 21:15:40.672865 raft.go:421: AppendEntries: recibido un latido en mandato 1 del lider 0
+127.0.0.1_29271 -> 21:15:41.673482 raft.go:421: AppendEntries: recibido un latido en mandato 1 del lider 0
+127.0.0.1_29271 -> 21:15:42.384674 raft.go:205: raft.go: obtenerEstado(): yo: 1 mandato: 1 mandatoActual: 1 esLider: false idLider: 0
+127.0.0.1_29271 -> 21:15:44.394765 raft.go:205: raft.go: obtenerEstado(): yo: 1 mandato: 1 mandatoActual: 1 esLider: false idLider: 0
+127.0.0.1_29271 -> 21:15:46.403816 raft.go:205: raft.go: obtenerEstado(): yo: 1 mandato: 1 mandatoActual: 1 esLider: false idLider: 0
+127.0.0.1_29271 -> 21:15:46.781087 raft.go:545: soy seguidor y se me ha agotado el tiempo => candidato => eleccion
+127.0.0.1_29271 -> 21:15:46.781729 raft.go:556: Soy CANDIDATO en el mandato 1
+127.0.0.1_29271 -> 21:15:46.781832 raft.go:616: raft.go: yo 1 inicio una eleccion en el mandato 2
+127.0.0.1_29271 -> 21:15:46.782763 raft.go:496: raft.go: error al enviar PedirVoto al nodo 0
+127.0.0.1_29271 -> 21:15:46.785430 raft.go:499: raft.go: enviado PedirVoto correctamente al nodo 2
+127.0.0.1_29271 -> 21:15:46.785532 raft.go:502: raft.go: recibido de PedirVoto que SI nos han concedido el voto
+127.0.0.1_29271 -> 21:15:46.785607 raft.go:581: raft.go: tenemos 2 votos
+127.0.0.1_29271 -> 21:15:46.785661 raft.go:583: raft.go: tenemos mayoria de votos
+127.0.0.1_29271 -> 21:15:46.785710 raft.go:593: Soy LIDER en el mandato 2
+127.0.0.1_29271 -> 21:15:47.786769 raft.go:605: soy lider y se ha agotado el tiempo de latido
+127.0.0.1_29271 -> 21:15:48.410886 raft.go:205: raft.go: obtenerEstado(): yo: 1 mandato: 2 mandatoActual: 2 esLider: true idLider: 1
