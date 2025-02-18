@@ -1,0 +1,33 @@
+192.168.3.11_29272 -> 18:17:08.462918 raft.go:172: logger initialized
+192.168.3.11_29272 -> 18:17:08.463363 raft.go:839: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+192.168.3.11_29272 -> 18:17:08.463240 raft.go:628: Soy SEGUIDOR en el mandato 0
+192.168.3.11_29272 -> 18:17:08.463938 main.go:36: Replica escucha en: 2 de [192.168.3.9:29270 192.168.3.10:29271 192.168.3.11:29272]
+192.168.3.11_29272 -> 18:17:10.036060 raft.go:235: raft.go: obtenerEstado(): yo: 2 mandato: 0 mandatoActual: 0 esLider: false idLider: -1
+192.168.3.11_29272 -> 18:17:11.519250 raft.go:367: recibido PedirVoto de nodo 1 en el mandato 1
+192.168.3.11_29272 -> 18:17:11.519395 raft.go:368: nosotros tenemos mandato 0
+192.168.3.11_29272 -> 18:17:11.519448 raft.go:384: enviado el voto al candidato 1 porque tiene un mandato superior al nuestro
+192.168.3.11_29272 -> 18:17:11.522572 raft.go:457: AppendEntries1: recibido un latido
+192.168.3.11_29272 -> 18:17:11.522658 raft.go:483: AppendEntries2: recibido un latido en mandato 1 del lider 1
+192.168.3.11_29272 -> 18:17:12.051630 raft.go:235: raft.go: obtenerEstado(): yo: 2 mandato: 1 mandatoActual: 1 esLider: false idLider: 1
+192.168.3.11_29272 -> 18:17:12.523855 raft.go:496: AppendEntries1: recibida la ENTRADA: índice: 0 mandato: 1 operación: escribir clave: variable0 valor: 0
+192.168.3.11_29272 -> 18:17:12.523957 raft.go:527: AppendEntries2: tenemos mismo mandato
+192.168.3.11_29272 -> 18:17:12.524012 raft.go:537: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}}] indiceReg: 0
+192.168.3.11_29272 -> 18:17:13.524693 raft.go:496: AppendEntries1: recibida la ENTRADA: índice: 1 mandato: 1 operación: escribir clave: variable3 valor: 3
+192.168.3.11_29272 -> 18:17:13.524803 raft.go:527: AppendEntries2: tenemos mismo mandato
+192.168.3.11_29272 -> 18:17:13.524862 raft.go:546: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}}] indiceReg: 1
+192.168.3.11_29272 -> 18:17:14.526033 raft.go:496: AppendEntries1: recibida la ENTRADA: índice: 2 mandato: 1 operación: escribir clave: variable2 valor: 2
+192.168.3.11_29272 -> 18:17:14.526164 raft.go:527: AppendEntries2: tenemos mismo mandato
+192.168.3.11_29272 -> 18:17:14.526286 raft.go:546: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}} {2 1 {escribir variable2 2}}] indiceReg: 2
+192.168.3.11_29272 -> 18:17:15.527199 raft.go:496: AppendEntries1: recibida la ENTRADA: índice: 3 mandato: 1 operación: escribir clave: variable1 valor: 1
+192.168.3.11_29272 -> 18:17:15.527309 raft.go:527: AppendEntries2: tenemos mismo mandato
+192.168.3.11_29272 -> 18:17:15.527362 raft.go:546: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}} {2 1 {escribir variable2 2}} {3 1 {escribir variable1 1}}] indiceReg: 3
+192.168.3.11_29272 -> 18:17:16.527447 raft.go:496: AppendEntries1: recibida la ENTRADA: índice: 4 mandato: 1 operación: escribir clave: variable4 valor: 4
+192.168.3.11_29272 -> 18:17:16.527564 raft.go:527: AppendEntries2: tenemos mismo mandato
+192.168.3.11_29272 -> 18:17:16.527670 raft.go:546: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}} {2 1 {escribir variable2 2}} {3 1 {escribir variable1 1}} {4 1 {escribir variable4 4}}] indiceReg: 4
+192.168.3.11_29272 -> 18:17:17.527991 raft.go:457: AppendEntries1: recibido un latido
+192.168.3.11_29272 -> 18:17:17.528096 raft.go:483: AppendEntries2: recibido un latido en mandato 1 del lider 1
+192.168.3.11_29272 -> 18:17:18.528351 raft.go:457: AppendEntries1: recibido un latido
+192.168.3.11_29272 -> 18:17:18.528449 raft.go:483: AppendEntries2: recibido un latido en mandato 1 del lider 1
+192.168.3.11_29272 -> 18:17:19.529478 raft.go:457: AppendEntries1: recibido un latido
+192.168.3.11_29272 -> 18:17:19.529593 raft.go:483: AppendEntries2: recibido un latido en mandato 1 del lider 1
+192.168.3.11_29272 -> 18:17:20.065626 raft.go:297: HE CAIDO

@@ -1,0 +1,35 @@
+127.0.0.1_29272 -> 21:17:21.621734 raft.go:172: logger initialized
+127.0.0.1_29272 -> 21:17:21.622106 raft.go:623: Soy SEGUIDOR en el mandato 0
+127.0.0.1_29272 -> 21:17:21.622233 raft.go:834: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+127.0.0.1_29272 -> 21:17:21.623270 main.go:36: Replica escucha en: 2 de [127.0.0.1:29270 127.0.0.1:29271 127.0.0.1:29272]
+127.0.0.1_29272 -> 21:17:23.543514 raft.go:235: raft.go: obtenerEstado(): yo: 2 mandato: 0 mandatoActual: 0 esLider: false idLider: -1
+127.0.0.1_29272 -> 21:17:24.306853 raft.go:365: recibido PedirVoto de nodo 0 en el mandato 1
+127.0.0.1_29272 -> 21:17:24.306930 raft.go:366: nosotros tenemos mandato 0
+127.0.0.1_29272 -> 21:17:24.306960 raft.go:382: enviado el voto al candidato 0 porque tiene un mandato superior al nuestro
+127.0.0.1_29272 -> 21:17:24.309630 raft.go:452: AppendEntries1: recibido un latido
+127.0.0.1_29272 -> 21:17:24.309705 raft.go:478: AppendEntries2: recibido un latido en mandato 1 del lider 0
+127.0.0.1_29272 -> 21:17:25.311267 raft.go:452: AppendEntries1: recibido un latido
+127.0.0.1_29272 -> 21:17:25.311372 raft.go:478: AppendEntries2: recibido un latido en mandato 1 del lider 0
+127.0.0.1_29272 -> 21:17:25.554130 raft.go:235: raft.go: obtenerEstado(): yo: 2 mandato: 1 mandatoActual: 1 esLider: false idLider: 0
+127.0.0.1_29272 -> 21:17:26.320773 raft.go:491: AppendEntries1: recibida la ENTRADA: índice: 0 mandato: 1 operación: escribir clave: variable0 valor: 0
+127.0.0.1_29272 -> 21:17:26.320870 raft.go:522: AppendEntries2: tenemos mismo mandato
+127.0.0.1_29272 -> 21:17:26.320926 raft.go:532: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}}] indiceReg: 0
+127.0.0.1_29272 -> 21:17:27.314693 raft.go:491: AppendEntries1: recibida la ENTRADA: índice: 1 mandato: 1 operación: escribir clave: variable2 valor: 2
+127.0.0.1_29272 -> 21:17:27.314797 raft.go:522: AppendEntries2: tenemos mismo mandato
+127.0.0.1_29272 -> 21:17:27.314854 raft.go:541: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable2 2}}] indiceReg: 1
+127.0.0.1_29272 -> 21:17:28.315389 raft.go:491: AppendEntries1: recibida la ENTRADA: índice: 2 mandato: 1 operación: escribir clave: variable4 valor: 4
+127.0.0.1_29272 -> 21:17:28.315492 raft.go:522: AppendEntries2: tenemos mismo mandato
+127.0.0.1_29272 -> 21:17:28.315616 raft.go:541: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable2 2}} {2 1 {escribir variable4 4}}] indiceReg: 2
+127.0.0.1_29272 -> 21:17:29.314722 raft.go:491: AppendEntries1: recibida la ENTRADA: índice: 3 mandato: 1 operación: escribir clave: variable3 valor: 3
+127.0.0.1_29272 -> 21:17:29.314837 raft.go:522: AppendEntries2: tenemos mismo mandato
+127.0.0.1_29272 -> 21:17:29.314896 raft.go:541: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable2 2}} {2 1 {escribir variable4 4}} {3 1 {escribir variable3 3}}] indiceReg: 3
+127.0.0.1_29272 -> 21:17:30.316697 raft.go:491: AppendEntries1: recibida la ENTRADA: índice: 4 mandato: 1 operación: escribir clave: variable1 valor: 1
+127.0.0.1_29272 -> 21:17:30.316809 raft.go:522: AppendEntries2: tenemos mismo mandato
+127.0.0.1_29272 -> 21:17:30.316926 raft.go:541: AppendEntries3: operacion añadida al Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable2 2}} {2 1 {escribir variable4 4}} {3 1 {escribir variable3 3}} {4 1 {escribir variable1 1}}] indiceReg: 4
+127.0.0.1_29272 -> 21:17:31.317834 raft.go:452: AppendEntries1: recibido un latido
+127.0.0.1_29272 -> 21:17:31.317941 raft.go:478: AppendEntries2: recibido un latido en mandato 1 del lider 0
+127.0.0.1_29272 -> 21:17:32.318213 raft.go:452: AppendEntries1: recibido un latido
+127.0.0.1_29272 -> 21:17:32.318317 raft.go:478: AppendEntries2: recibido un latido en mandato 1 del lider 0
+127.0.0.1_29272 -> 21:17:33.318384 raft.go:452: AppendEntries1: recibido un latido
+127.0.0.1_29272 -> 21:17:33.318487 raft.go:478: AppendEntries2: recibido un latido en mandato 1 del lider 0
+127.0.0.1_29272 -> 21:17:33.566593 raft.go:297: HE CAIDO

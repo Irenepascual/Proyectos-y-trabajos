@@ -1,0 +1,86 @@
+192.168.3.10_29271 -> 18:17:06.094921 raft.go:172: logger initialized
+192.168.3.10_29271 -> 18:17:06.095274 raft.go:628: Soy SEGUIDOR en el mandato 0
+192.168.3.10_29271 -> 18:17:06.095484 main.go:36: Replica escucha en: 1 de [192.168.3.9:29270 192.168.3.10:29271 192.168.3.11:29272]
+192.168.3.10_29271 -> 18:17:06.095393 raft.go:839: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+192.168.3.10_29271 -> 18:17:10.027058 raft.go:235: raft.go: obtenerEstado(): yo: 1 mandato: 0 mandatoActual: 0 esLider: false idLider: -1
+192.168.3.10_29271 -> 18:17:11.503832 raft.go:637: soy seguidor y se me ha agotado el tiempo => candidato => eleccion
+192.168.3.10_29271 -> 18:17:11.503963 raft.go:647: Soy CANDIDATO en el mandato 0
+192.168.3.10_29271 -> 18:17:11.511420 raft.go:716: raft.go: yo 1 inicio una eleccion en el mandato 1
+192.168.3.10_29271 -> 18:17:11.515476 raft.go:594: raft.go: enviado PedirVoto correctamente al nodo 0
+192.168.3.10_29271 -> 18:17:11.515592 raft.go:597: raft.go: recibido de PedirVoto que SI nos han concedido el voto
+192.168.3.10_29271 -> 18:17:11.515626 raft.go:673: raft.go: tenemos 2 votos
+192.168.3.10_29271 -> 18:17:11.515663 raft.go:675: raft.go: tenemos mayoria de votos
+192.168.3.10_29271 -> 18:17:11.515683 raft.go:594: raft.go: enviado PedirVoto correctamente al nodo 2
+192.168.3.10_29271 -> 18:17:11.515721 raft.go:597: raft.go: recibido de PedirVoto que SI nos han concedido el voto
+192.168.3.10_29271 -> 18:17:11.515689 raft.go:694: Soy LIDER en el mandato 1
+192.168.3.10_29271 -> 18:17:11.515771 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:11.515895 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:11.518739 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:11.519052 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:12.043979 raft.go:235: raft.go: obtenerEstado(): yo: 1 mandato: 1 mandatoActual: 1 esLider: true idLider: 1
+192.168.3.10_29271 -> 18:17:12.050722 raft.go:327: Dentro de SometerOperacionRaft()
+192.168.3.10_29271 -> 18:17:12.050805 raft.go:279: mi Reg: [{0 1 {escribir variable0 0}}] indiceReg: 0
+192.168.3.10_29271 -> 18:17:12.051129 raft.go:327: Dentro de SometerOperacionRaft()
+192.168.3.10_29271 -> 18:17:12.051177 raft.go:279: mi Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}}] indiceReg: 1
+192.168.3.10_29271 -> 18:17:12.051306 raft.go:327: Dentro de SometerOperacionRaft()
+192.168.3.10_29271 -> 18:17:12.051334 raft.go:279: mi Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}} {2 1 {escribir variable2 2}}] indiceReg: 2
+192.168.3.10_29271 -> 18:17:12.052809 raft.go:327: Dentro de SometerOperacionRaft()
+192.168.3.10_29271 -> 18:17:12.052890 raft.go:279: mi Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}} {2 1 {escribir variable2 2}} {3 1 {escribir variable1 1}}] indiceReg: 3
+192.168.3.10_29271 -> 18:17:12.052809 raft.go:327: Dentro de SometerOperacionRaft()
+192.168.3.10_29271 -> 18:17:12.053011 raft.go:279: mi Reg: [{0 1 {escribir variable0 0}} {1 1 {escribir variable3 3}} {2 1 {escribir variable2 2}} {3 1 {escribir variable1 1}} {4 1 {escribir variable4 4}}] indiceReg: 4
+192.168.3.10_29271 -> 18:17:12.516533 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:12.516732 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {0 1 {escribir variable0 0}}
+192.168.3.10_29271 -> 18:17:12.516890 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {0 1 {escribir variable0 0}}
+192.168.3.10_29271 -> 18:17:12.520549 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {0 1 {escribir variable0 0}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:12.520742 raft.go:818: confirmaciones de compromiso: 2
+192.168.3.10_29271 -> 18:17:12.520795 raft.go:822: tenemos MAYORIA de COMPROMISO de la entrada 0
+192.168.3.10_29271 -> 18:17:12.520936 raft.go:839: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+192.168.3.10_29271 -> 18:17:12.521316 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {0 1 {escribir variable0 0}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:13.516976 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:13.517649 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {1 1 {escribir variable3 3}}
+192.168.3.10_29271 -> 18:17:13.517763 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {1 1 {escribir variable3 3}}
+192.168.3.10_29271 -> 18:17:13.521220 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {1 1 {escribir variable3 3}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:13.521342 raft.go:818: confirmaciones de compromiso: 2
+192.168.3.10_29271 -> 18:17:13.521395 raft.go:822: tenemos MAYORIA de COMPROMISO de la entrada 1
+192.168.3.10_29271 -> 18:17:13.521474 raft.go:839: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+192.168.3.10_29271 -> 18:17:13.521880 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {1 1 {escribir variable3 3}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:14.518590 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:14.518837 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {2 1 {escribir variable2 2}}
+192.168.3.10_29271 -> 18:17:14.518960 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {2 1 {escribir variable2 2}}
+192.168.3.10_29271 -> 18:17:14.522431 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {2 1 {escribir variable2 2}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:14.522555 raft.go:818: confirmaciones de compromiso: 2
+192.168.3.10_29271 -> 18:17:14.522606 raft.go:822: tenemos MAYORIA de COMPROMISO de la entrada 2
+192.168.3.10_29271 -> 18:17:14.522694 raft.go:839: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+192.168.3.10_29271 -> 18:17:14.522970 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {2 1 {escribir variable2 2}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:15.519614 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:15.519769 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {3 1 {escribir variable1 1}}
+192.168.3.10_29271 -> 18:17:15.519876 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {3 1 {escribir variable1 1}}
+192.168.3.10_29271 -> 18:17:15.523354 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {3 1 {escribir variable1 1}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:15.523473 raft.go:818: confirmaciones de compromiso: 2
+192.168.3.10_29271 -> 18:17:15.523525 raft.go:822: tenemos MAYORIA de COMPROMISO de la entrada 3
+192.168.3.10_29271 -> 18:17:15.523605 raft.go:839: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+192.168.3.10_29271 -> 18:17:15.523786 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {3 1 {escribir variable1 1}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:16.519865 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:16.520023 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {4 1 {escribir variable4 4}}
+192.168.3.10_29271 -> 18:17:16.520127 raft.go:758: ENVIARLATIDOS: vamos a enviar la ENTRADA: {4 1 {escribir variable4 4}}
+192.168.3.10_29271 -> 18:17:16.523848 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {4 1 {escribir variable4 4}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:16.523973 raft.go:818: confirmaciones de compromiso: 2
+192.168.3.10_29271 -> 18:17:16.524026 raft.go:822: tenemos MAYORIA de COMPROMISO de la entrada 4
+192.168.3.10_29271 -> 18:17:16.524105 raft.go:839: aplicarOpAlmacen: operacion aplicada a la maquina de estados
+192.168.3.10_29271 -> 18:17:16.524366 raft.go:810: RECIBIDA RESPUESTA A UNA ENTRADA: args.Entradas: {4 1 {escribir variable4 4}} results: &{1 true}
+192.168.3.10_29271 -> 18:17:17.520092 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:17.520719 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:17.520797 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:17.524007 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:17.524491 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:18.521254 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:18.521407 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:18.521498 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:18.524892 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:18.525008 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:19.522034 raft.go:706: soy lider y se ha agotado el tiempo de latido
+192.168.3.10_29271 -> 18:17:19.522621 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:19.522699 raft.go:769: ENVIARLATIDOS: vamos a enviar un latido
+192.168.3.10_29271 -> 18:17:19.526020 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:19.526575 raft.go:829: RECIBIDA RESPUESTA A UN LATIDO
+192.168.3.10_29271 -> 18:17:20.057893 raft.go:297: HE CAIDO
