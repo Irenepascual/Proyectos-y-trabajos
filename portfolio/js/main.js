@@ -74,7 +74,7 @@
 
   /* ---------------- Interactive skill chips ---------------- */
   const skillChips = document.querySelectorAll('.skill-chip');
-  const containers = document.querySelectorAll('.pcard, .project-row');
+  const containers = document.querySelectorAll('.pcard');
   let activeChip = null;
 
   function clearSkillFilter() {
@@ -93,7 +93,7 @@
       document.body.classList.add('skills-filtering');
       const key = chip.textContent.trim().toLowerCase();
       containers.forEach(el => {
-        const bits = el.querySelectorAll('.pcard__tags span, .project-row__stack');
+        const bits = el.querySelectorAll('.pcard__tags span');
         const text = Array.from(bits).map(b => b.textContent).join(' ').toLowerCase();
         el.classList.toggle('is-match', text.includes(key));
       });

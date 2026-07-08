@@ -77,7 +77,13 @@
     <section class="section section--first" id="sobre-mi">
       <div class="wrap">
         <p class="section__kicker">01 — Sobre mí</p>
-        <h2 class="headline">Diseño sistemas de datos e interfaces usables.<br>Convierto 50M de tripletas RDF en respuestas accesibles.</h2>
+        <h2 class="hero2__title">Diseño sistemas de datos e interfaces usables.</h2>
+        <p class="hero2__subtitle">Convierto 50 millones de tripletas RDF en respuestas accesibles.</p>
+        <p class="hero2__intro">
+          Graduada en Ingeniería Informática por la Universidad de Zaragoza, con debilidad por los
+          datos difíciles de domar. Casi todo lo que ves aquí lo he construido en equipo — se me
+          da tan bien programar como coordinar.
+        </p>
 
         <dl class="facts facts--row">
           <div><dt>Ubicación</dt><dd>Zaragoza, España</dd></div>
@@ -135,7 +141,7 @@
 
     <!-- ============ PROYECTOS ============ -->
     <section class="section" id="proyectos">
-      <div class="wrap">
+      <div class="wrap wrap--wide">
         <p class="section__kicker">02 — Proyectos</p>
         <h2 class="section__title">De más reciente a más antiguo</h2>
 
@@ -179,51 +185,34 @@
             <button type="button" class="pcard__btn" data-open="dlg-bookly">Ver detalles →</button>
           </article>
 
+          <!-- ===== FunnyBowling card ===== -->
+          <article class="pcard pcard--funnybowling" id="funnybowling">
+            <p class="pcard__eyebrow">2025–2026 · Comercio electrónico</p>
+            <h3 class="pcard__title">FunnyBowling</h3>
+            <p class="pcard__summary">Modelo de negocio SaaS para digitalizar boleras: reservas, wallet digital y analítica web.</p>
+            <p class="pcard__tags"><span>PHP</span><span>MySQL</span><span>GA4</span><span>Figma</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-funnybowling">Ver detalles →</button>
+          </article>
+
+          <!-- ===== Vuelos / minería de datos card ===== -->
+          <article class="pcard pcard--vuelos" id="vuelos">
+            <p class="pcard__eyebrow">2025–2026 · Minería de datos</p>
+            <h3 class="pcard__title">Vuelos comerciales en EE. UU.</h3>
+            <p class="pcard__summary">Data mart en estrella con ETL en KNIME y minería de datos sobre retrasos aéreos.</p>
+            <p class="pcard__tags"><span>Oracle</span><span>KNIME</span><span>R</span><span>Apriori</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-vuelos">Ver detalles →</button>
+          </article>
+
+          <!-- ===== Bases de datos relacionales card ===== -->
+          <article class="pcard pcard--db" id="db">
+            <p class="pcard__eyebrow">2024–2025 · Bases de datos</p>
+            <h3 class="pcard__title">Bases de datos relacionales</h3>
+            <p class="pcard__summary">Diseño de dos bases de datos (cine y liga deportiva) con triggers y consultas optimizadas.</p>
+            <p class="pcard__tags"><span>SQL</span><span>Triggers</span><span>Query tuning</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-db">Ver detalles →</button>
+          </article>
+
         </div>
-
-        <!-- ===== OTROS PROYECTOS ===== -->
-        <details class="other-projects">
-          <summary class="other-projects__label">Más proyectos <span class="chevron">→</span></summary>
-
-          <div class="project-list">
-            <article class="project-row">
-              <div class="project-row__head">
-                <h3>FunnyBowling — innovación digital para boleras</h3>
-                <p class="project-row__tag">Comercio electrónico · 2025–2026</p>
-              </div>
-              <p class="project-row__desc">
-                Modelo de negocio SaaS B2B2C para digitalizar boleras: reservas con cálculo
-                automático de ocupación, wallet digital de puntos arcade, y proyección financiera
-                a 3 años. Con Lucía Vázquez.
-              </p>
-              <p class="project-row__stack">PHP · HTML/CSS · MySQL · Google Analytics 4 · Figma</p>
-            </article>
-
-            <article class="project-row">
-              <div class="project-row__head">
-                <h3>Almacenes y minería de datos: vuelos comerciales en EE. UU.</h3>
-                <p class="project-row__tag">Datos · 2025–2026</p>
-              </div>
-              <p class="project-row__desc">
-                Data mart en estrella (Kimball) sobre retrasos de vuelos, ETL en KNIME, consultas
-                OLAP y minería de datos en R (K-Means, ANOVA, Apriori). Con Lucía Vázquez.
-              </p>
-              <p class="project-row__stack">Oracle · KNIME · SQL / OLAP · R · K-Means · Apriori</p>
-            </article>
-
-            <article class="project-row">
-              <div class="project-row__head">
-                <h3>Modelado de bases de datos relacionales</h3>
-                <p class="project-row__tag">Datos · 2024–2025</p>
-              </div>
-              <p class="project-row__desc">
-                Diseño de dos bases de datos relacionales (cine y liga deportiva) con triggers y
-                consultas optimizadas.
-              </p>
-              <p class="project-row__stack">SQL · Triggers · Query tuning</p>
-            </article>
-          </div>
-        </details>
       </div>
     </section>
 
@@ -537,6 +526,110 @@
       <span>Vue.js</span><span>React Native</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>Figma</span>
     </p>
     <p class="pmodal__credit">Mi rol: desarrollo de backend y pantallas de la versión web.</p>
+  </div>
+</dialog>
+
+<!-- ============ DIALOG: FunnyBowling ============ -->
+<dialog id="dlg-funnybowling" class="pmodal pmodal--funnybowling">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <p class="pmodal__eyebrow">2025–2026 · Comercio Electrónico · Proyecto en pareja</p>
+    <h3 class="pmodal__title">FunnyBowling — innovación digital para boleras</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>Colas físicas improductivas: el cliente no conoce el tiempo real de espera.</li>
+      <li>Tickets de papel para los puntos arcade: coste operativo y pérdidas frecuentes.</li>
+      <li>El canal digital de las boleras no se aprovecha como vía de monetización.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li>Reservas con cálculo automático de ocupación (20 min + 10 min/jugador) y liberación automática si no hay check-in en 10 min.</li>
+      <li>Wallet digital de puntos arcade: sin tickets, recarga y canje de premios online.</li>
+      <li>Modelo híbrido B2B2C con tres paneles: jugador, bolera (trabajador) y superadministrador.</li>
+      <li>Validado con mapas de empatía y benchmark frente a Ozone Bowling y Dave &amp; Buster's.</li>
+      <li>Analítica con Google Analytics 4 y estrategia SEO propia.</li>
+    </ul>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">19</span><span class="stat__label">locales proyectados año 3</span></div>
+      <div class="stat"><span class="stat__num">+91.700€</span><span class="stat__label">beneficio neto año 3</span></div>
+      <div class="stat"><span class="stat__num">B2B2C</span><span class="stat__label">modelo de negocio híbrido</span></div>
+    </div>
+
+    <p class="badges">
+      <span>PHP</span><span>HTML/CSS</span><span>MySQL</span><span>Google Analytics 4</span><span>Figma</span>
+    </p>
+    <p class="pmodal__credit">Con Lucía Vázquez · plataforma funcional desplegada en servidor.</p>
+  </div>
+</dialog>
+
+<!-- ============ DIALOG: Vuelos / minería de datos ============ -->
+<dialog id="dlg-vuelos" class="pmodal pmodal--vuelos">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <p class="pmodal__eyebrow">2025–2026 · Almacenes y Minería de Datos · Proyecto en pareja</p>
+    <h3 class="pmodal__title">Vuelos comerciales en EE. UU.</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>Detectar qué factores influyen más en los retrasos de vuelos comerciales en EE. UU.</li>
+      <li>Datos dispersos en varias fuentes (RITA, GeoNames) sin estructura analítica.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li>Data mart en estrella (Kimball): grano vuelo + fecha, con dimensiones de aeropuerto, aerolínea/operadora, avión y pasajeros.</li>
+      <li>ETL completo en KNIME sobre datos reales de marzo de 2025.</li>
+      <li>Consultas OLAP avanzadas (CUBE, ROLLUP, GROUPING SETS) e informes en Pentaho/Tableau.</li>
+      <li>Modelos de regresión y clasificación en R con selección de predictores por AIC.</li>
+      <li>Minería de datos: K-Means (severidad del retraso), ANOVA (franja horaria) y reglas de asociación Apriori.</li>
+    </ul>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">5</span><span class="stat__label">prácticas completas</span></div>
+      <div class="stat"><span class="stat__num">11.62×</span><span class="stat__label">lift de la regla más fuerte</span></div>
+      <div class="stat"><span class="stat__num">1</span><span class="stat__label">predictor más robusto: la operadora</span></div>
+    </div>
+
+    <p class="badges">
+      <span>Oracle</span><span>KNIME</span><span>SQL / OLAP</span><span>R</span><span>K-Means</span><span>Apriori</span><span>Pentaho</span>
+    </p>
+    <p class="pmodal__credit">Con Lucía Vázquez.</p>
+  </div>
+</dialog>
+
+<!-- ============ DIALOG: Bases de datos relacionales ============ -->
+<dialog id="dlg-db" class="pmodal pmodal--db">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <p class="pmodal__eyebrow">2024–2025 · Curso de Bases de Datos</p>
+    <h3 class="pmodal__title">Modelado de bases de datos relacionales</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>Modelar y optimizar el acceso a dos dominios muy distintos: un catálogo de cine y una liga deportiva.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li>Diseño de esquemas relacionales normalizados para ambos dominios.</li>
+      <li>Triggers para mantener la integridad y automatizar reglas de negocio.</li>
+      <li>Consultas optimizadas con benchmarking de rendimiento antes/después.</li>
+    </ul>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">2</span><span class="stat__label">bases de datos diseñadas</span></div>
+      <div class="stat"><span class="stat__num">3</span><span class="stat__label">triggers por dominio</span></div>
+    </div>
+
+    <p class="badges">
+      <span>SQL</span><span>Triggers</span><span>Query tuning</span><span>Benchmarking</span>
+    </p>
   </div>
 </dialog>
 
