@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irene Pascual Albericio — Ingeniería Informática</title>
+<meta name="description" content="Portfolio de Irene Pascual Albericio, estudiante de Ingeniería Informática en la Universidad de Zaragoza. Chatbot RAG multiagente sobre Aragón Open Data y otros proyectos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a1720'/%3E%3Ccircle cx='9' cy='10' r='2.4' fill='%23c9a24b'/%3E%3Ccircle cx='23' cy='9' r='2.4' fill='%239c6b74'/%3E%3Ccircle cx='16' cy='22' r='2.4' fill='%239c6b74'/%3E%3Cline x1='9' y1='10' x2='23' y2='9' stroke='%23f6f1ec' stroke-width='1'/%3E%3Cline x1='9' y1='10' x2='16' y2='22' stroke='%23f6f1ec' stroke-width='1'/%3E%3Cline x1='23' y1='9' x2='16' y2='22' stroke='%23f6f1ec' stroke-width='1'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand">IP<span class="nav__dot">.</span></a>
+  <nav class="nav__links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#tfg">TFG</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a href="assets/CV_Irene_Pascual.pdf" class="nav__cta" target="_blank" rel="noopener">Descargar CV</a>
+  <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <canvas id="graphCanvas" class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="wrap hero__wrap">
+      <div class="hero__text">
+        <p class="hero__eyebrow"><span class="status-dot"></span> Zaragoza · disponible para prácticas y primer empleo</p>
+        <h1 class="hero__title">Irene Pascual<br>Albericio</h1>
+        <p class="hero__role">
+          construyo <span class="hero__rotator" id="rotator">agentes de IA</span>
+        </p>
+        <p class="hero__lede">
+          Estudiante de 4º de Ingeniería Informática en la Universidad de Zaragoza, especialidad
+          Sistemas de la Información. Mi Trabajo de Fin de Grado convierte 50 millones de tripletas
+          RDF del Gobierno de Aragón en respuestas que cualquiera puede entender.
+        </p>
+        <div class="hero__actions">
+          <a href="#tfg" class="btn btn--primary">Ver el TFG</a>
+          <a href="#proyectos" class="btn btn--ghost">Otros proyectos</a>
+        </div>
+      </div>
+      <div class="terminal" id="heroTerminal">
+        <div class="terminal__bar"><span></span><span></span><span></span><p>zsh — irene@unizar</p></div>
+        <pre class="terminal__body" id="terminalBody"></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE MI ============ -->
+  <section class="section" id="sobre-mi">
+    <div class="wrap">
+      <p class="section__kicker">01 · Sobre mí</p>
+      <div class="about">
+        <div class="about__text reveal">
+          <p>
+            Soy estudiante de cuarto curso de Ingeniería Informática en la Universidad de Zaragoza,
+            especializándome en <strong>Sistemas de la Información</strong>. He superado todas las
+            asignaturas de los cursos anteriores y dediqué mi Trabajo de Fin de Grado a resolver un
+            problema muy concreto: los datos abiertos del Gobierno de Aragón son enormes y valiosos,
+            pero solo se pueden consultar sabiendo SPARQL.
+          </p>
+          <p>
+            Me muevo con la misma comodidad diseñando la base de datos y la arquitectura de un
+            backend que construyendo la interfaz que lo hace usable. Fuera del código, he sido
+            <strong>subdelegada de mi curso</strong> durante dos años, algo que me ha enseñado tanto
+            sobre comunicación y gestión de equipos como cualquier asignatura de la carrera.
+          </p>
+          <ul class="trait-list">
+            <li>Responsable</li>
+            <li>Trabajo en equipo</li>
+            <li>Proactiva</li>
+            <li>Pensamiento creativo</li>
+          </ul>
+        </div>
+        <aside class="about__facts reveal">
+          <dl>
+            <div><dt>Ubicación</dt><dd>Zaragoza, España</dd></div>
+            <div><dt>Formación</dt><dd>Grado en Ingeniería Informática · UZ (2022–actualidad)</dd></div>
+            <div><dt>Especialidad</dt><dd>Sistemas de la Información</dd></div>
+            <div><dt>Idiomas</dt><dd>Español (nativo) · Inglés B2 (Cambridge FCE) · Francés B1 (EOI)</dd></div>
+            <div><dt>Carnet</dt><dd>B</dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="skills reveal">
+        <div class="skills__group">
+          <h3>Lenguajes</h3>
+          <div class="pills"><span>Python</span><span>TypeScript</span><span>Java</span><span>SQL</span><span>C++</span></div>
+        </div>
+        <div class="skills__group">
+          <h3>Datos &amp; monitorización</h3>
+          <div class="pills"><span>Minería de datos</span><span>ETL / Data Warehousing</span><span>KNIME</span><span>Kibana</span><span>Prometheus</span><span>Qdrant</span></div>
+        </div>
+        <div class="skills__group">
+          <h3>Desarrollo web</h3>
+          <div class="pills"><span>Angular</span><span>React</span><span>Next.js</span><span>Node.js</span><span>HTML</span><span>CSS</span></div>
+        </div>
+        <div class="skills__group">
+          <h3>Herramientas</h3>
+          <div class="pills"><span>Git / GitHub</span><span>Figma</span><span>Langfuse</span><span>Docker</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TFG DESTACADO ============ -->
+  <section class="section section--dark" id="tfg">
+    <div class="wrap">
+      <p class="section__kicker section__kicker--light">02 · Trabajo Fin de Grado</p>
+      <h2 class="section__title section__title--light reveal">
+        Un chatbot que le quita el SPARQL de encima<br> a los datos abiertos de Aragón
+      </h2>
+      <p class="tfg__subtitle reveal">
+        Sistema multiagente con RAG para <strong>Aragón Open Data</strong>, desarrollado en
+        colaboración con <strong>Origen Digital S.L.</strong> y el Gobierno de Aragón.
+      </p>
+
+      <div class="tfg__narrative reveal">
+        <div class="tfg__col">
+          <h4>El problema</h4>
+          <p>
+            El portal opendata.aragon.es publica más de 50 millones de tripletas RDF sobre
+            sanidad, educación, transporte, ganadería y decenas de dominios más. Consultarlas
+            en condiciones exige conocer grafos RDF, ontologías y SPARQL — una barrera que deja
+            fuera a la mayoría de la gente a la que ese dato le interesa: un periodista, un
+            técnico municipal, un ciudadano cualquiera.
+          </p>
+        </div>
+        <div class="tfg__col">
+          <h4>La solución</h4>
+          <p>
+            En vez de procesar 50 millones de tripletas, el sistema aplica <strong>RAG</strong>
+            sobre los ~114 esquemas XML que describen cómo se cargan esos datos. Así el motor de
+            recuperación semántica trabaja sobre un centenar de documentos en lugar de un grafo
+            entero, y el coste de inferencia baja drásticamente sin perder precisión.
+          </p>
+        </div>
+      </div>
+
+      <!-- Diagrama de arquitectura -->
+      <div class="diagram reveal" role="img" aria-label="Arquitectura: el usuario pregunta al Supervisor, que delega en el agente KGQA (con acceso a Qdrant y al endpoint SPARQL de Aragón Open Data), y el agente Visualizador da forma a la respuesta final; Langfuse traza todo el proceso.">
+        <div class="diagram__row">
+          <div class="node node--user">Usuario</div>
+          <div class="arrow">→</div>
+          <div class="node node--accent">Supervisor<span>clasifica intención · memoria de sesión</span></div>
+          <div class="arrow">→</div>
+          <div class="node node--accent">Agente KGQA<span>patrón ReAct · genera &amp; valida SPARQL</span></div>
+          <div class="arrow">→</div>
+          <div class="node node--accent">Visualizador<span>texto · tabla · gráfico</span></div>
+          <div class="arrow">→</div>
+          <div class="node node--user">Usuario</div>
+        </div>
+        <div class="diagram__row diagram__row--support">
+          <div class="node node--support">Qdrant<span>114 esquemas isonómicos indexados</span></div>
+          <div class="node node--support">Endpoint SPARQL<span>Virtuoso · 50M+ tripletas</span></div>
+          <div class="node node--support">Módulo geográfico<span>topónimos aragoneses · polígonos WGS84</span></div>
+          <div class="node node--support">Langfuse<span>traza completa · EU AI Act, art. 50</span></div>
+        </div>
+      </div>
+
+      <!-- Simulación de traza -->
+      <div class="trace reveal">
+        <p class="trace__label">Simulación ilustrativa del razonamiento del agente</p>
+        <div class="terminal terminal--trace">
+          <div class="terminal__bar"><span></span><span></span><span></span><p>langfuse — traza de sesión</p></div>
+          <pre class="terminal__body" id="traceBody"></pre>
+        </div>
+      </div>
+
+      <!-- Métricas -->
+      <div class="stats reveal">
+        <div class="stat"><span class="stat__num">50M+</span><span class="stat__label">tripletas RDF reducidas a ~114 esquemas indexados</span></div>
+        <div class="stat"><span class="stat__num">3</span><span class="stat__label">agentes especializados: supervisor, KGQA y visualizador</span></div>
+        <div class="stat"><span class="stat__num">30</span><span class="stat__label">preguntas de evaluación en 4 dominios: sanidad, educación, transporte, ganadería</span></div>
+        <div class="stat"><span class="stat__num">~60s</span><span class="stat__label">latencia media estabilizada por consulta</span></div>
+      </div>
+
+      <div class="badges reveal">
+        <span>FastAPI</span><span>Python 3.12</span><span>Qdrant</span><span>Angular</span>
+        <span>DESY</span><span>Langfuse</span><span>RDF / SPARQL</span><span>ReAct</span>
+        <span>Shapely / Nominatim</span>
+      </div>
+
+      <p class="tfg__credit reveal">
+        Dirección: Fernando Solano Hermosilla (Origen Digital S.L.) · Ponencia académica:
+        Dr. Jorge Raúl Bernad Lusilla (Universidad de Zaragoza).
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ OTROS PROYECTOS ============ -->
+  <section class="section" id="proyectos">
+    <div class="wrap">
+      <p class="section__kicker">03 · Otros proyectos</p>
+      <h2 class="section__title reveal">Cosas que he construido a lo largo de la carrera</h2>
+
+      <div class="projects">
+
+        <article class="project reveal">
+          <p class="project__tag">Sistemas distribuidos</p>
+          <h3>Consenso Raft &amp; exclusión mutua</h3>
+          <p>
+            Implementación desde cero del algoritmo de consenso <strong>Raft</strong> (elección de
+            líder, replicación de log y tolerancia a fallos) y del algoritmo de exclusión mutua
+            distribuida de <strong>Ricart–Agrawala</strong>, con despliegue containerizado sobre Kubernetes.
+          </p>
+          <div class="pills pills--small"><span>Go</span><span>Raft</span><span>Kubernetes</span><span>Sockets/RPC</span></div>
+        </article>
+
+        <article class="project reveal">
+          <p class="project__tag">Desarrollo full-stack</p>
+          <h3>Plataforma social de recetas de postres</h3>
+          <p>
+            Aplicación web con dos roles de usuario, autenticación, y un flujo de moderación que
+            revisa recetas e ingredientes antes de publicarlos, además de un sistema de favoritos.
+          </p>
+          <div class="pills pills--small"><span>Next.js</span><span>Prisma</span><span>MongoDB</span><span>NextAuth</span><span>Tailwind</span></div>
+        </article>
+
+        <article class="project reveal">
+          <p class="project__tag">Inteligencia artificial</p>
+          <h3>Agentes de búsqueda para Pacman</h3>
+          <p>
+            Algoritmos de búsqueda adversaria —minimax, poda alfa-beta— y agentes probabilísticos
+            con inferencia bayesiana, sobre el framework de IA de Berkeley (CS188), junto con
+            notebooks de clasificación de imágenes.
+          </p>
+          <div class="pills pills--small"><span>Python</span><span>Minimax</span><span>Alpha-beta</span><span>Inferencia bayesiana</span></div>
+        </article>
+
+        <article class="project reveal">
+          <p class="project__tag">Datos</p>
+          <h3>Modelado de bases de datos relacionales</h3>
+          <p>
+            Diseño e implementación de dos bases de datos relacionales —un catálogo de cine y una
+            liga deportiva— con triggers, consultas optimizadas y benchmarking de rendimiento.
+          </p>
+          <div class="pills pills--small"><span>SQL</span><span>Triggers</span><span>Query tuning</span><span>Benchmarking</span></div>
+        </article>
+
+        <article class="project reveal">
+          <p class="project__tag">Ingeniería del software</p>
+          <h3>Diseño UML de app móvil de camping</h3>
+          <p>
+            Modelado completo de una aplicación de gestión de reservas para un camping: casos de
+            uso, diagramas de clases y de secuencia, documentado íntegramente en Visual Paradigm.
+          </p>
+          <div class="pills pills--small"><span>UML</span><span>Análisis de requisitos</span><span>Visual Paradigm</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCIA ============ -->
+  <section class="section" id="experiencia">
+    <div class="wrap">
+      <p class="section__kicker">04 · Experiencia &amp; formación</p>
+      <h2 class="section__title reveal">Trayectoria</h2>
+
+      <div class="timeline">
+        <div class="timeline__item reveal">
+          <div class="timeline__date">2025</div>
+          <div class="timeline__body">
+            <h3>Prácticas — Origen Digital S.L.</h3>
+            <ul>
+              <li>Chatbot inteligente para Aragón Open Data — mi Trabajo de Fin de Grado.</li>
+              <li>Desarrollo de DataMart &amp; BI: esquema en estrella, ciclo ETL completo con KNIME y optimización de consultas.</li>
+              <li>Diseño de aplicación de extremo a extremo: base de datos, APIs y UI.</li>
+              <li>Refactorización de la generación de tripletas RDF, frontend en Angular y automatización de métricas mediante servicios de escucha.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__date">2023–2025</div>
+          <div class="timeline__body">
+            <h3>Subdelegada de curso — Universidad de Zaragoza</h3>
+            <p>Liderazgo, gestión y comunicación entre profesorado y compañeros durante dos cursos.</p>
+          </div>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__date">2022 – actualidad</div>
+          <div class="timeline__body">
+            <h3>Grado en Ingeniería Informática — Universidad de Zaragoza</h3>
+            <p>Especialidad en Sistemas de la Información. Todas las asignaturas de cursos anteriores superadas.</p>
+          </div>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__date">2023</div>
+          <div class="timeline__body">
+            <h3>Curso en Ciberseguridad — Universidad de Zaragoza</h3>
+          </div>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__date">2016–2022</div>
+          <div class="timeline__body">
+            <h3>ESO y Bachillerato — Colegio Romareda Agustinos Recoletos</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="section section--dark" id="contacto">
+    <div class="wrap contact">
+      <p class="section__kicker section__kicker--light">05 · Contacto</p>
+      <h2 class="section__title section__title--light reveal">Hablemos</h2>
+      <p class="contact__lede reveal">
+        Estoy terminando el grado y buscando mi primera oportunidad como ingeniera de software o
+        de datos. Si algo de lo que has visto encaja con lo que estás construyendo, escríbeme.
+      </p>
+      <div class="contact__grid reveal">
+        <a class="contact__card" href="mailto:irenepascualzgz@gmail.com">
+          <span class="contact__label">Email</span>
+          <span class="contact__value">irenepascualzgz@gmail.com</span>
+        </a>
+        <a class="contact__card" href="tel:+34636835017">
+          <span class="contact__label">Teléfono</span>
+          <span class="contact__value">+34 636 83 50 17</span>
+        </a>
+        <a class="contact__card" href="https://linkedin.com/in/irenepascuaal" target="_blank" rel="noopener">
+          <span class="contact__label">LinkedIn</span>
+          <span class="contact__value">in/irenepascuaal</span>
+        </a>
+        <span class="contact__card contact__card--static">
+          <span class="contact__label">Ubicación</span>
+          <span class="contact__value">Zaragoza, España</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Diseñado y escrito por Irene Pascual Albericio · <span id="year"></span></p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
