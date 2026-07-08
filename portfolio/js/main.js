@@ -51,4 +51,47 @@
 
     sections.forEach(s => io.observe(s));
   }
+
+  /* ---------------- Nav focus/spotlight highlight ---------------- */
+  const navGlow = document.getElementById('navGlow');
+  if (navGlow && links) {
+    navAnchors.forEach(a => {
+      a.addEventListener('mouseenter', () => {
+        const linkBox = a.getBoundingClientRect();
+        const parentBox = links.getBoundingClientRect();
+        navGlow.style.left = (linkBox.left - parentBox.left - 8) + 'px';
+        navGlow.style.width = (linkBox.width + 16) + 'px';
+        navGlow.style.opacity = '1';
+      });
+    });
+    links.addEventListener('mouseleave', () => { navGlow.style.opacity = '0'; });
+  }
+
+  /* ---------------- Interactive skill chips ---------------- */
+  const skillChips = document.querySelectorAll('.skill-chip');
+  const containers = document.querySelectorAll('.feature, .project-row');
+  let activeChip = null;
+
+  function clearSkillFilter() {
+    document.body.classList.remove('skills-filtering');
+    containers.forEach(el => el.classList.remove('is-match'));
+    if (activeChip) activeChip.classList.remove('is-active');
+    activeChip = null;
+  }
+
+  skillChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (activeChip === chip) { clearSkillFilter(); return; }
+      if (activeChip) activeChip.classList.remove('is-active');
+      activeChip = chip;
+      chip.classList.add('is-active');
+      document.body.classList.add('skills-filtering');
+      const key = chip.textContent.trim().toLowerCase();
+      containers.forEach(el => {
+        const bits = el.querySelectorAll('.badges span, .project-row__stack');
+        const text = Array.from(bits).map(b => b.textContent).join(' ').toLowerCase();
+        el.classList.toggle('is-match', text.includes(key));
+      });
+    });
+  });
 })();

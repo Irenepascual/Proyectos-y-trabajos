@@ -6,6 +6,9 @@
 <title>Irene Pascual Albericio — Ingeniería Informática</title>
 <meta name="description" content="Portfolio de Irene Pascual Albericio, graduada en Ingeniería Informática por la Universidad de Zaragoza. Chatbot RAG multiagente sobre Aragón Open Data, prácticas en Origen Digital, Codilandia y Bookly.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111111'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%23ffffff' text-anchor='middle'%3EIP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,6 +16,7 @@
 <header class="nav" id="nav">
   <a href="#top" class="nav__brand">Irene Pascual</a>
   <nav class="nav__links" id="navLinks">
+    <span class="nav__glow" id="navGlow" aria-hidden="true"></span>
     <a href="#sobre-mi" data-nav="sobre-mi"><span>01</span>Sobre mí</a>
     <a href="#proyectos" data-nav="proyectos"><span>02</span>Proyectos</a>
     <a href="#experiencia" data-nav="experiencia"><span>03</span>Experiencia</a>
@@ -28,6 +32,30 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
+    <svg class="hero__graph" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <line x1="620" y1="60" x2="760" y2="120"/>
+        <line x1="760" y1="120" x2="740" y2="230"/>
+        <line x1="740" y1="230" x2="850" y2="260"/>
+        <line x1="740" y1="230" x2="640" y2="300"/>
+        <line x1="620" y1="60" x2="540" y2="150"/>
+        <line x1="540" y1="150" x2="640" y2="300"/>
+        <line x1="760" y1="120" x2="870" y2="70"/>
+        <line x1="540" y1="150" x2="470" y2="80"/>
+        <line x1="640" y1="300" x2="700" y2="390"/>
+      </g>
+      <g fill="currentColor">
+        <circle cx="620" cy="60" r="4"/>
+        <circle cx="760" cy="120" r="5"/>
+        <circle cx="740" cy="230" r="4"/>
+        <circle cx="850" cy="260" r="3.5"/>
+        <circle cx="640" cy="300" r="5"/>
+        <circle cx="540" cy="150" r="3.5"/>
+        <circle cx="870" cy="70" r="3"/>
+        <circle cx="470" cy="80" r="3"/>
+        <circle cx="700" cy="390" r="3.5"/>
+      </g>
+    </svg>
     <div class="wrap hero__wrap">
       <p class="hero__eyebrow">Zaragoza, España — graduada en Ingeniería Informática, disponible para incorporación inmediata</p>
       <h1 class="hero__title">Irene Pascual Albericio</h1>
@@ -81,14 +109,50 @@
         </dl>
       </div>
 
-      <table class="skills-table">
-        <tbody>
-          <tr><th>Lenguajes</th><td>Python, TypeScript, Java, SQL, C++</td></tr>
-          <tr><th>Datos &amp; monitorización</th><td>Minería de datos, ETL / Data Warehousing, KNIME, Kibana, Prometheus, Qdrant</td></tr>
-          <tr><th>Desarrollo web</th><td>Angular, React, Next.js, Node.js, HTML, CSS</td></tr>
-          <tr><th>Herramientas</th><td>Git / GitHub, Figma, Langfuse, Docker</td></tr>
-        </tbody>
-      </table>
+      <p class="skills__hint">Stack técnico — pulsa una tecnología para ver en qué proyectos la he usado</p>
+      <div class="skills">
+        <div class="skills__group">
+          <h3>Lenguajes</h3>
+          <div class="skills__pills">
+            <button type="button" class="skill-chip">Python</button>
+            <button type="button" class="skill-chip">TypeScript</button>
+            <button type="button" class="skill-chip">Java</button>
+            <button type="button" class="skill-chip">SQL</button>
+            <button type="button" class="skill-chip">C++</button>
+            <button type="button" class="skill-chip">R</button>
+          </div>
+        </div>
+        <div class="skills__group">
+          <h3>Datos &amp; monitorización</h3>
+          <div class="skills__pills">
+            <button type="button" class="skill-chip">Minería de datos</button>
+            <button type="button" class="skill-chip">ETL</button>
+            <button type="button" class="skill-chip">KNIME</button>
+            <button type="button" class="skill-chip">Kibana</button>
+            <button type="button" class="skill-chip">Prometheus</button>
+            <button type="button" class="skill-chip">Qdrant</button>
+            <button type="button" class="skill-chip">Oracle</button>
+          </div>
+        </div>
+        <div class="skills__group">
+          <h3>Desarrollo web</h3>
+          <div class="skills__pills">
+            <button type="button" class="skill-chip">Angular</button>
+            <button type="button" class="skill-chip">React</button>
+            <button type="button" class="skill-chip">Vue.js</button>
+            <button type="button" class="skill-chip">Node.js</button>
+          </div>
+        </div>
+        <div class="skills__group">
+          <h3>Herramientas</h3>
+          <div class="skills__pills">
+            <button type="button" class="skill-chip">Git</button>
+            <button type="button" class="skill-chip">Figma</button>
+            <button type="button" class="skill-chip">Langfuse</button>
+            <button type="button" class="skill-chip">Docker</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -111,7 +175,7 @@
 
         <div class="feature__narrative">
           <div class="feature__col">
-            <h4>El problema</h4>
+            <p class="feature__col-label">El problema</p>
             <p>
               El portal opendata.aragon.es publica más de 50 millones de tripletas RDF sobre
               sanidad, educación, transporte, ganadería y decenas de dominios más. Consultarlas
@@ -121,7 +185,7 @@
             </p>
           </div>
           <div class="feature__col">
-            <h4>La solución</h4>
+            <p class="feature__col-label">Mi solución</p>
             <p>
               En vez de procesar 50 millones de tripletas, el sistema aplica <strong>RAG</strong>
               sobre los ~114 esquemas XML que describen cómo se cargan esos datos. Así el motor de
@@ -132,38 +196,128 @@
         </div>
 
         <figure class="diagram">
-          <figcaption>Arquitectura del sistema</figcaption>
+          <figcaption>Arquitectura del sistema — pasa el ratón por cada bloque para ver su función</figcaption>
           <div class="diagram__row">
-            <div class="node">Usuario</div>
+            <div class="node" tabindex="0">
+              <span class="node__caption">Usuario</span>
+            </div>
             <div class="arrow">→</div>
-            <div class="node node--core">Supervisor<span>clasifica intención · memoria de sesión</span></div>
+            <div class="node node--core" tabindex="0">
+              <span class="node__caption">Supervisor</span>
+              <span class="node__meta">clasifica intención · memoria de sesión</span>
+              <span class="node__tip" data-tip="Clasifica la intención de cada turno, mantiene la memoria de la conversación (mínimo 5 intercambios) y decide si delega en KGQA o resuelve directamente."></span>
+            </div>
             <div class="arrow">→</div>
-            <div class="node node--core">Agente KGQA<span>patrón ReAct · genera y valida SPARQL</span></div>
+            <div class="node node--core" tabindex="0">
+              <span class="node__caption">Agente KGQA</span>
+              <span class="node__meta">patrón ReAct · genera y valida SPARQL</span>
+              <span class="node__tip" data-tip="Ejecuta un bucle ReAct: piensa, genera una consulta SPARQL, la valida sintácticamente con RDFLib y observa el resultado, repitiendo si la respuesta no es satisfactoria."></span>
+            </div>
             <div class="arrow">→</div>
-            <div class="node node--core">Visualizador<span>texto · tabla · gráfico</span></div>
+            <div class="node node--core" tabindex="0">
+              <span class="node__caption">Visualizador</span>
+              <span class="node__meta">texto · tabla · gráfico</span>
+              <span class="node__tip" data-tip="Adapta la respuesta final al formato más útil —texto, tabla o gráfico— según la forma de los resultados, y limpia filas duplicadas antes de mostrarlas."></span>
+            </div>
             <div class="arrow">→</div>
-            <div class="node">Usuario</div>
+            <div class="node" tabindex="0">
+              <span class="node__caption">Usuario</span>
+            </div>
           </div>
           <div class="diagram__row diagram__row--support">
-            <div class="node node--support">Qdrant<span>114 esquemas isonómicos indexados</span></div>
-            <div class="node node--support">Endpoint SPARQL<span>Virtuoso · 50M+ tripletas</span></div>
-            <div class="node node--support">Módulo geográfico<span>topónimos aragoneses · polígonos WGS84</span></div>
-            <div class="node node--support">Langfuse<span>traza completa · EU AI Act, art. 50</span></div>
+            <div class="node node--support" tabindex="0">
+              <span class="node__caption">Qdrant</span>
+              <span class="node__meta">114 esquemas isonómicos indexados</span>
+              <span class="node__tip" data-tip="Base vectorial con los ~114 esquemas isonómicos indexados mediante embeddings multilingües, para recuperar solo el esquema relevante en vez de recorrer todo el grafo."></span>
+            </div>
+            <div class="node node--support" tabindex="0">
+              <span class="node__caption">Endpoint SPARQL</span>
+              <span class="node__meta">Virtuoso · 50M+ tripletas</span>
+              <span class="node__tip" data-tip="Virtuoso: el motor que aloja el grafo de conocimiento de Aragón Open Data, con más de 50 millones de tripletas bajo la ontología EI2Av2."></span>
+            </div>
+            <div class="node node--support" tabindex="0">
+              <span class="node__caption">Módulo geográfico</span>
+              <span class="node__meta">topónimos aragoneses · polígonos WGS84</span>
+              <span class="node__tip" data-tip="Resuelve topónimos aragoneses ambiguos mediante polígonos WGS84 con Shapely, usando Nominatim / OpenStreetMap como respaldo."></span>
+            </div>
+            <div class="node node--support" tabindex="0">
+              <span class="node__caption">Langfuse</span>
+              <span class="node__meta">traza completa · EU AI Act, art. 50</span>
+              <span class="node__tip" data-tip="Registra cada paso del razonamiento del agente — el mismo detalle que se ve en la traza de abajo — cumpliendo el artículo 50 del EU AI Act sobre transparencia algorítmica."></span>
+            </div>
           </div>
         </figure>
 
-        <figure class="log-block">
-          <figcaption>Ejemplo de traza de razonamiento registrada en Langfuse</figcaption>
-          <pre>&gt; "¿Qué colegios públicos hay cerca de Teruel?"
-
-[Supervisor]     intencion: consulta_geografica          0.4s
-[KGQA / ReAct]   esquema isonomico relevante recuperado   1.1s
-[KGQA / ReAct]   consulta SPARQL generada y validada       3.8s
-[Geo]            "Teruel" resuelto a poligono WGS84        0.9s
-[Virtuoso]       ejecutada sobre 50M+ tripletas            12.6s
-[Visualizador]   formato de salida: tabla                  0.6s</pre>
+        <!-- Traza interactiva -->
+        <figure class="trace">
+          <figcaption>Traza de razonamiento registrada en Langfuse — despliega cada paso</figcaption>
+          <p class="trace__query">“¿Qué colegios públicos hay cerca de Teruel?”</p>
+          <div class="trace__list">
+            <details class="trace__step" open>
+              <summary>
+                <span class="trace__status"></span>
+                <span class="trace__agent">Supervisor</span>
+                <span class="trace__action">intención: consulta_geografica</span>
+                <span class="trace__bar"><span style="width:2%"></span></span>
+                <span class="trace__time">0.4s</span>
+              </summary>
+              <p>El supervisor mantiene el historial de la sesión y, al detectar una consulta geográfica, avisa al módulo de desambiguación de topónimos antes de delegar en KGQA.</p>
+            </details>
+            <details class="trace__step">
+              <summary>
+                <span class="trace__status"></span>
+                <span class="trace__agent">KGQA / ReAct</span>
+                <span class="trace__action">esquema isonómico recuperado</span>
+                <span class="trace__bar"><span style="width:6%"></span></span>
+                <span class="trace__time">1.1s</span>
+              </summary>
+              <p>Recupera por similitud semántica el esquema más relevante entre los ~114 indexados en Qdrant, en vez de recorrer el grafo completo de 50 millones de tripletas.</p>
+            </details>
+            <details class="trace__step">
+              <summary>
+                <span class="trace__status"></span>
+                <span class="trace__agent">KGQA / ReAct</span>
+                <span class="trace__action">consulta SPARQL generada y validada</span>
+                <span class="trace__bar"><span style="width:20%"></span></span>
+                <span class="trace__time">3.8s</span>
+              </summary>
+              <p>Genera la consulta y la valida sintácticamente con RDFLib antes de enviarla, para no agotar el timeout del endpoint con consultas mal formadas.</p>
+            </details>
+            <details class="trace__step">
+              <summary>
+                <span class="trace__status"></span>
+                <span class="trace__agent">Geo</span>
+                <span class="trace__action">"Teruel" resuelto a polígono WGS84</span>
+                <span class="trace__bar"><span style="width:5%"></span></span>
+                <span class="trace__time">0.9s</span>
+              </summary>
+              <p>Filtra los resultados por proximidad espacial real, no solo por coincidencia de texto en el nombre del municipio.</p>
+            </details>
+            <details class="trace__step">
+              <summary>
+                <span class="trace__status"></span>
+                <span class="trace__agent">Virtuoso</span>
+                <span class="trace__action">ejecutada sobre 50M+ tripletas</span>
+                <span class="trace__bar"><span style="width:65%"></span></span>
+                <span class="trace__time">12.6s</span>
+              </summary>
+              <p>El paso más lento de la traza: es el propio endpoint SPARQL público resolviendo la consulta contra el grafo completo de Aragón Open Data.</p>
+            </details>
+            <details class="trace__step">
+              <summary>
+                <span class="trace__status"></span>
+                <span class="trace__agent">Visualizador</span>
+                <span class="trace__action">formato de salida: tabla</span>
+                <span class="trace__bar"><span style="width:3%"></span></span>
+                <span class="trace__time">0.6s</span>
+              </summary>
+              <p>Elige tabla porque la respuesta son varios centros agrupables, y aplica una limpieza final de filas duplicadas antes de mostrarla.</p>
+            </details>
+          </div>
+          <p class="trace__footer">Traza completa auditable de principio a fin — art. 50, EU AI Act.</p>
         </figure>
 
+        <p class="feature__impact-label">El impacto</p>
         <div class="stats">
           <div class="stat"><span class="stat__num">50M+</span><span class="stat__label">tripletas RDF reducidas a ~114 esquemas indexados</span></div>
           <div class="stat"><span class="stat__num">3</span><span class="stat__label">agentes especializados: supervisor, KGQA y visualizador</span></div>
@@ -278,6 +432,11 @@
             <li>Dos modos de uso: individual autogestionado y aula virtual supervisada por un profesor.</li>
             <li>Autenticación con JWT y progreso persistente por alumno.</li>
           </ul>
+          <p class="feature__note">
+            Antes de programar nada, validamos el planteamiento con una encuesta a padres y
+            profesores de primaria sobre cómo debía enseñarse programación a esa edad — sus
+            respuestas guiaron buena parte del diseño de niveles y de la interfaz.
+          </p>
           <p class="badges">
             <span>Angular</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>JWT</span><span>Figma</span>
           </p>
@@ -316,26 +475,41 @@
         </div>
       </article>
 
-      <!-- ===== OTROS PROYECTOS ===== -->
-      <div class="other-projects">
-        <p class="other-projects__label">Curso 2024–2025 — rama de datos</p>
+      <!-- ===== OTROS PROYECTOS (rama de datos) ===== -->
+      <details class="other-projects">
+        <summary class="other-projects__label">Más proyectos de la rama de datos <span class="chevron">→</span></summary>
 
         <div class="project-list">
 
           <article class="project-row">
             <div class="project-row__head">
-              <h3>Modelado de bases de datos relacionales</h3>
-              <p class="project-row__tag">Datos</p>
+              <h3>Almacenes y minería de datos: vuelos comerciales en EE. UU.</h3>
+              <p class="project-row__tag">Datos · 2025–2026</p>
             </div>
             <p class="project-row__desc">
-              Diseño e implementación de dos bases de datos relacionales —un catálogo de cine y una
-              liga deportiva— con triggers, consultas optimizadas y benchmarking de rendimiento.
+              Data mart con esquema en estrella (metodología Kimball) sobre retrasos de vuelos
+              comerciales, con ETL en KNIME a partir de datos reales de RITA y GeoNames. Sobre esos
+              datos apliqué consultas OLAP, modelos de regresión y clasificación en R, y minería de
+              datos con K-Means, ANOVA y reglas de asociación (Apriori) para identificar qué factores
+              influyen más en los retrasos. Trabajo en pareja con Lucía Vázquez.
             </p>
-            <p class="project-row__stack">SQL · Triggers · Query tuning · Benchmarking</p>
+            <p class="project-row__stack">Oracle · KNIME · SQL / OLAP · R · K-Means · Apriori · Pentaho</p>
+          </article>
+
+          <article class="project-row">
+            <div class="project-row__head">
+              <h3>Modelado de bases de datos relacionales</h3>
+              <p class="project-row__tag">Datos · 2024–2025</p>
+            </div>
+            <p class="project-row__desc">
+              Diseño de dos bases de datos relacionales (cine y liga deportiva) con triggers y
+              consultas optimizadas.
+            </p>
+            <p class="project-row__stack">SQL · Triggers · Query tuning</p>
           </article>
 
         </div>
-      </div>
+      </details>
     </div>
   </section>
 
