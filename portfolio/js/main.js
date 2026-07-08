@@ -3,27 +3,16 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ---------------- Mobile nav ---------------- */
+  /* ---------------- Mobile sidebar toggle ---------------- */
   const burger = document.getElementById('navBurger');
-  const links = document.getElementById('navLinks');
-  if (burger && links) {
+  const sidebarBody = document.getElementById('sidebarBody');
+  if (burger && sidebarBody) {
     burger.addEventListener('click', () => {
-      const open = links.classList.toggle('nav__links--open');
+      const open = sidebarBody.classList.toggle('is-open');
       burger.setAttribute('aria-expanded', String(open));
-      links.style.display = open ? 'flex' : '';
-      if (open) {
-        links.style.position = 'fixed';
-        links.style.top = '57px';
-        links.style.left = '0';
-        links.style.right = '0';
-        links.style.flexDirection = 'column';
-        links.style.background = '#fff';
-        links.style.padding = '1rem 1.25rem';
-        links.style.borderBottom = '1px solid var(--line)';
-      }
     });
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      links.style.display = '';
+    sidebarBody.querySelectorAll('.nav__links a').forEach(a => a.addEventListener('click', () => {
+      sidebarBody.classList.remove('is-open');
       burger.setAttribute('aria-expanded', 'false');
     }));
   }
@@ -52,19 +41,20 @@
     sections.forEach(s => io.observe(s));
   }
 
-  /* ---------------- Nav focus/spotlight highlight ---------------- */
+  /* ---------------- Nav focus/spotlight highlight (vertical) ---------------- */
   const navGlow = document.getElementById('navGlow');
-  if (navGlow && links) {
+  const navLinks = document.getElementById('navLinks');
+  if (navGlow && navLinks) {
     navAnchors.forEach(a => {
       a.addEventListener('mouseenter', () => {
         const linkBox = a.getBoundingClientRect();
-        const parentBox = links.getBoundingClientRect();
-        navGlow.style.left = (linkBox.left - parentBox.left - 8) + 'px';
-        navGlow.style.width = (linkBox.width + 16) + 'px';
+        const parentBox = navLinks.getBoundingClientRect();
+        navGlow.style.top = (linkBox.top - parentBox.top) + 'px';
+        navGlow.style.height = linkBox.height + 'px';
         navGlow.style.opacity = '1';
       });
     });
-    links.addEventListener('mouseleave', () => { navGlow.style.opacity = '0'; });
+    navLinks.addEventListener('mouseleave', () => { navGlow.style.opacity = '0'; });
   }
 
   /* ---------------- Interactive skill chips ---------------- */
