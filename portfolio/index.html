@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<div class="topbar" aria-hidden="true"></div>
+
 <div class="page">
 
   <!-- ============ SIDEBAR ============ -->
@@ -59,6 +61,7 @@
       </div>
 
       <div class="glance">
+        <a href="#hackathon" class="glance__item glance__item--hackathon"><span class="glance__dot"></span>🏆 Hackathon IA</a>
         <a href="#tfg" class="glance__item glance__item--tfg"><span class="glance__dot"></span>TFG · Chatbot IA</a>
         <a href="#practicas" class="glance__item glance__item--practicas"><span class="glance__dot"></span>Prácticas · Origen Digital</a>
         <a href="#codilandia" class="glance__item glance__item--codilandia"><span class="glance__dot"></span>Codilandia</a>
@@ -152,6 +155,15 @@
         </p>
 
         <div class="project-grid">
+
+          <!-- ===== Hackathon card ===== -->
+          <article class="pcard pcard--hackathon" id="hackathon">
+            <p class="pcard__eyebrow">2025–2026 · Hackathon · 1er puesto 🏆</p>
+            <h3 class="pcard__title">Hackathon de IA — PartyRock</h3>
+            <p class="pcard__summary">Ganamos con un asistente de IA generativa para gestionar gastos de viaje de empresa.</p>
+            <p class="pcard__tags"><span>PartyRock</span><span>AWS</span><span>IA generativa</span><span>Prototipado</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-hackathon">Ver detalles →</button>
+          </article>
 
           <!-- ===== TFG card ===== -->
           <article class="pcard pcard--tfg" id="tfg">
@@ -284,6 +296,38 @@
   </footer>
   </div>
 </div>
+
+<!-- ============ DIALOG: Hackathon ============ -->
+<dialog id="dlg-hackathon" class="pmodal pmodal--hackathon">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <p class="pmodal__eyebrow">Hackathon de IA · Universidad de Zaragoza · 1er puesto 🏆</p>
+    <h3 class="pmodal__title">Asistente inteligente para gastos de viaje</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>Automatizar y simplificar la gestión de gastos de viaje de empresa, un proceso administrativo lento y manual.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li>Prototipo funcional construido con PartyRock (Amazon Bedrock) en una sola jornada.</li>
+      <li>De la idea al prototipo funcionando en tiempo récord, usando IA generativa sin escribir infraestructura desde cero.</li>
+      <li>Equipo con Ariana Porroche, Iván Vayad y Lucía Vázquez.</li>
+    </ul>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">1º</span><span class="stat__label">puesto en la hackathon</span></div>
+      <div class="stat"><span class="stat__num">4</span><span class="stat__label">personas en el equipo</span></div>
+      <div class="stat"><span class="stat__num">1</span><span class="stat__label">jornada, idea a prototipo</span></div>
+    </div>
+
+    <p class="badges">
+      <span>PartyRock</span><span>AWS</span><span>IA generativa</span>
+    </p>
+  </div>
+</dialog>
 
 <!-- ============ DIALOG: TFG ============ -->
 <dialog id="dlg-tfg" class="pmodal pmodal--tfg">

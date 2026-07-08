@@ -11,6 +11,7 @@
   --accent-funnybowling: #b8721f;
   --accent-vuelos: #2f6f5e;
   --accent-db: #4a5568;
+  --accent-hackathon: #c9962b;
   --mono-bg: #f4f2ef;
 
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -32,6 +33,19 @@ body{
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+.topbar{
+  position: fixed; top:0; left:0; right:0; height:3px; z-index:300; pointer-events:none;
+  background: linear-gradient(90deg,
+    var(--accent-tfg), var(--accent-hackathon), var(--accent-funnybowling),
+    var(--accent-codilandia), var(--accent), var(--accent-tfg));
+  background-size: 300% 100%;
+  animation: topbarShift 14s linear infinite;
+}
+@keyframes topbarShift{
+  0%{ background-position: 0% 50%; }
+  100%{ background-position: 300% 50%; }
+}
+
 a{ color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
 a:hover{ border-bottom-color: currentColor; }
 code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .35em; font-size: .92em; }
@@ -53,6 +67,7 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
 .sidebar__graph{
   position:absolute; bottom:0; left:0; width:100%; height:45%; color: var(--accent-tfg);
   opacity:.08; pointer-events:none; z-index:0;
+  animation: graphDrift 20s ease-in-out infinite;
 }
 .sidebar__top{ position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
 .sidebar__brand{ font-family: var(--font-display); font-weight:600; font-size:1.05rem; color: var(--ink); border:none; }
@@ -90,6 +105,8 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
 }
 .glance__item:hover{ border-bottom: 1px solid; }
 .glance__dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.glance__item--hackathon .glance__dot{ background: var(--accent-hackathon); }
+.glance__item--hackathon:hover{ border-color: var(--accent-hackathon); color: var(--accent-hackathon); }
 .glance__item--tfg .glance__dot{ background: var(--accent-tfg); }
 .glance__item--tfg:hover{ border-color: var(--accent-tfg); color: var(--accent-tfg); }
 .glance__item--practicas .glance__dot{ background: var(--accent); }
@@ -146,7 +163,10 @@ body.skills-filtering .pcard.is-match{
   padding: 1.5rem; display:flex; flex-direction:column; gap:.6rem;
   transition: box-shadow .15s ease, transform .15s ease;
 }
-.pcard:hover{ box-shadow: 0 10px 24px -14px rgba(0,0,0,.25); transform: translateY(-2px); }
+.pcard:hover{
+  box-shadow: 0 16px 32px -16px var(--card-accent), 0 4px 10px -6px rgba(0,0,0,.15);
+  transform: translateY(-3px);
+}
 .pcard--tfg{ --card-accent: var(--accent-tfg); }
 .pcard--practicas{ --card-accent: var(--accent); }
 .pcard--codilandia{ --card-accent: var(--accent-codilandia); }
@@ -154,6 +174,7 @@ body.skills-filtering .pcard.is-match{
 .pcard--funnybowling{ --card-accent: var(--accent-funnybowling); }
 .pcard--vuelos{ --card-accent: var(--accent-vuelos); }
 .pcard--db{ --card-accent: var(--accent-db); }
+.pcard--hackathon{ --card-accent: var(--accent-hackathon); }
 .pcard{ border-left-color: var(--card-accent); }
 .pcard__logo{ position:absolute; top:1.25rem; right:1.25rem; width:40px; height:auto; border-radius:4px; }
 .pcard__eyebrow{ font-family: var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color: var(--card-accent); margin:0; }
@@ -184,6 +205,7 @@ dialog.pmodal::backdrop{ background: rgba(20,18,16,.55); }
 .pmodal--funnybowling{ --card-accent: var(--accent-funnybowling); }
 .pmodal--vuelos{ --card-accent: var(--accent-vuelos); }
 .pmodal--db{ --card-accent: var(--accent-db); }
+.pmodal--hackathon{ --card-accent: var(--accent-hackathon); }
 .pmodal__close{
   position:absolute; top:.75rem; right:.75rem; z-index:5; width:32px; height:32px; border-radius:50%;
   background:#fff; border:1px solid var(--line); font-size:1.1rem; line-height:1; cursor:pointer; color: var(--ink);
@@ -314,7 +336,21 @@ figcaption{
   .pmodal__body{ max-height:94vh; }
 }
 
+@keyframes graphDrift{
+  0%, 100%{ transform: translate(0,0) scale(1); }
+  50%{ transform: translate(-8px, 6px) scale(1.02); }
+}
+@keyframes dotPulse{
+  0%, 100%{ opacity:.55; }
+  50%{ opacity:1; }
+}
+.sidebar__graph circle{ animation: dotPulse 5s ease-in-out infinite; }
+.sidebar__graph circle:nth-child(2){ animation-delay: .6s; }
+.sidebar__graph circle:nth-child(3){ animation-delay: 1.2s; }
+.sidebar__graph circle:nth-child(4){ animation-delay: 1.8s; }
+
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   .node__tip, .nav__glow{ transition:none; }
+  .topbar, .sidebar__graph, .sidebar__graph circle{ animation:none; }
 }
