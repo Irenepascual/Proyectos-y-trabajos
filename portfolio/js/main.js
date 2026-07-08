@@ -72,6 +72,28 @@
     });
   });
 
+  /* ---------------- Scroll-reveal ---------------- */
+  const revealTargets = document.querySelectorAll(
+    '.section__kicker, .section__title, .section__lede, .pcard, .timeline__item, .stat'
+  );
+  if ('IntersectionObserver' in window && revealTargets.length) {
+    revealTargets.forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i % 3) * 70 + 'ms';
+    });
+    const revealIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach(el => revealIO.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add('is-visible'));
+  }
+
   /* ---------------- Interactive skill chips ---------------- */
   const skillChips = document.querySelectorAll('.skill-chip');
   const containers = document.querySelectorAll('.pcard');
