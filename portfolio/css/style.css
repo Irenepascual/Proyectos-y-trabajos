@@ -138,8 +138,8 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
 
 .feature__lead{ color: var(--ink-dim); font-size:1rem; max-width: 70ch; margin: 0 0 1.5rem; }
 .feature__note{
-  border-left: 2px solid var(--line); padding-left: 1rem; font-size:.92rem;
-  color: var(--ink-dim); font-style: italic; margin: 0 0 1.5rem; max-width: 68ch;
+  border-left: 2px solid var(--feature-accent); padding-left: 1rem; font-size:.92rem;
+  color: var(--ink-dim); margin: 0 0 1.5rem; max-width: 68ch;
 }
 .feature__credit{ font-size:.85rem; color: var(--ink-dim); margin: 0; }
 
