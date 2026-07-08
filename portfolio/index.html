@@ -44,10 +44,6 @@
       <h1 class="sidebar__name">Irene Pascual Albericio</h1>
       <p class="sidebar__role">Ingeniería Informática · Sistemas de la Información</p>
       <p class="sidebar__status">Zaragoza, España — graduada, disponible para incorporación inmediata</p>
-      <p class="sidebar__bio">
-        Diseño sistemas de datos y las interfaces que los hacen usables. Mi TFG convierte 50
-        millones de tripletas RDF del Gobierno de Aragón en respuestas que cualquiera entiende.
-      </p>
 
       <nav class="nav__links" id="navLinks">
         <span class="nav__glow" id="navGlow" aria-hidden="true"></span>
@@ -81,32 +77,16 @@
     <section class="section section--first" id="sobre-mi">
       <div class="wrap">
         <p class="section__kicker">01 — Sobre mí</p>
-        <div class="about">
-          <div class="about__text">
-            <p>
-              Soy graduada en Ingeniería Informática por la Universidad de Zaragoza, especialidad
-              <strong>Sistemas de la Información</strong>. Dediqué mi Trabajo de Fin de Grado a
-              resolver un problema muy concreto: los datos abiertos del Gobierno de Aragón son
-              enormes y valiosos, pero solo se pueden consultar sabiendo SPARQL.
-            </p>
-            <p>
-              Me muevo con la misma comodidad diseñando la base de datos y la arquitectura de un
-              backend que construyendo la interfaz que lo hace usable. Además del TFG, he
-              participado en proyectos de gestión de datos aplicados a educación y lectura digital,
-              detallados más abajo. Fuera del código, he sido <strong>subdelegada de mi curso</strong>
-              durante dos años, algo que me ha enseñado tanto sobre comunicación y gestión de
-              equipos como cualquier asignatura de la carrera.
-            </p>
-          </div>
-          <dl class="facts">
-            <div><dt>Ubicación</dt><dd>Zaragoza, España</dd></div>
-            <div><dt>Formación</dt><dd>Grado en Ingeniería Informática · UZ, 2022–2026</dd></div>
-            <div><dt>Idiomas</dt><dd>Español (nativo) · Inglés B2 (Cambridge FCE) · Francés B1 (EOI)</dd></div>
-            <div><dt>Perfil</dt><dd>Responsable · trabajo en equipo · proactiva</dd></div>
-          </dl>
-        </div>
+        <h2 class="headline">Diseño sistemas de datos e interfaces usables.<br>Convierto 50M de tripletas RDF en respuestas accesibles.</h2>
 
-        <p class="skills__hint">Stack técnico — pulsa una tecnología para ver en qué proyectos la he usado</p>
+        <dl class="facts facts--row">
+          <div><dt>Ubicación</dt><dd>Zaragoza, España</dd></div>
+          <div><dt>Formación</dt><dd>Ing. Informática · UZ, 2022–2026</dd></div>
+          <div><dt>Idiomas</dt><dd>ES · EN (B2) · FR (B1)</dd></div>
+          <div><dt>Perfil</dt><dd>Responsable · en equipo · proactiva</dd></div>
+        </dl>
+
+        <p class="skills__hint">Stack técnico — pulsa una tecnología</p>
         <div class="skills">
           <div class="skills__group">
             <h3>Lenguajes</h3>
@@ -159,337 +139,62 @@
         <p class="section__kicker">02 — Proyectos</p>
         <h2 class="section__title">De más reciente a más antiguo</h2>
 
-        <!-- ===== TFG ===== -->
-        <article class="feature feature--tfg" id="tfg">
-          <div class="feature__head">
-            <p class="feature__eyebrow">2025–2026 · Trabajo Fin de Grado</p>
-            <h3 class="feature__title">Un chatbot que le quita el SPARQL de encima a los datos abiertos de Aragón</h3>
-            <p class="feature__subtitle">
-              Sistema multiagente con RAG para <strong>Aragón Open Data</strong>, desarrollado en
-              colaboración con <strong>Origen Digital S.L.</strong> y el Gobierno de Aragón.
-            </p>
-          </div>
+        <div class="project-grid">
 
-          <div class="feature__narrative">
-            <div class="feature__col">
-              <p class="feature__col-label">El problema</p>
-              <p>
-                El portal opendata.aragon.es publica más de 50 millones de tripletas RDF sobre
-                sanidad, educación, transporte, ganadería y decenas de dominios más. Consultarlas
-                en condiciones exige conocer grafos RDF, ontologías y SPARQL — una barrera que deja
-                fuera a la mayoría de la gente a la que ese dato le interesa: un periodista, un
-                técnico municipal, un ciudadano cualquiera.
-              </p>
-            </div>
-            <div class="feature__col">
-              <p class="feature__col-label">Mi solución</p>
-              <p>
-                En vez de procesar 50 millones de tripletas, el sistema aplica <strong>RAG</strong>
-                sobre los ~114 esquemas XML que describen cómo se cargan esos datos. Así el motor
-                de recuperación semántica trabaja sobre un centenar de documentos en lugar de un
-                grafo entero, y el coste de inferencia baja drásticamente sin perder precisión.
-              </p>
-            </div>
-          </div>
+          <!-- ===== TFG card ===== -->
+          <article class="pcard pcard--tfg" id="tfg">
+            <p class="pcard__eyebrow">2025–2026 · TFG</p>
+            <h3 class="pcard__title">Chatbot IA para Aragón Open Data</h3>
+            <p class="pcard__summary">Sistema multiagente que convierte 50M de tripletas RDF en respuestas sin SPARQL.</p>
+            <p class="pcard__tags"><span>RAG</span><span>Multiagente</span><span>SPARQL</span><span>FastAPI</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-tfg">Ver detalles →</button>
+          </article>
 
-          <figure class="diagram">
-            <figcaption>Arquitectura del sistema — pasa el ratón por cada bloque para ver su función</figcaption>
-            <div class="diagram__row">
-              <div class="node" tabindex="0">
-                <span class="node__caption">Usuario</span>
-              </div>
-              <div class="arrow">→</div>
-              <div class="node node--core" tabindex="0">
-                <span class="node__caption">Supervisor</span>
-                <span class="node__meta">clasifica intención · memoria de sesión</span>
-                <span class="node__tip" data-tip="Clasifica la intención de cada turno, mantiene la memoria de la conversación (mínimo 5 intercambios) y decide si delega en KGQA o resuelve directamente."></span>
-              </div>
-              <div class="arrow">→</div>
-              <div class="node node--core" tabindex="0">
-                <span class="node__caption">Agente KGQA</span>
-                <span class="node__meta">patrón ReAct · genera y valida SPARQL</span>
-                <span class="node__tip" data-tip="Ejecuta un bucle ReAct: piensa, genera una consulta SPARQL, la valida sintácticamente con RDFLib y observa el resultado, repitiendo si la respuesta no es satisfactoria."></span>
-              </div>
-              <div class="arrow">→</div>
-              <div class="node node--core" tabindex="0">
-                <span class="node__caption">Visualizador</span>
-                <span class="node__meta">texto · tabla · gráfico</span>
-                <span class="node__tip" data-tip="Adapta la respuesta final al formato más útil —texto, tabla o gráfico— según la forma de los resultados, y limpia filas duplicadas antes de mostrarlas."></span>
-              </div>
-              <div class="arrow">→</div>
-              <div class="node" tabindex="0">
-                <span class="node__caption">Usuario</span>
-              </div>
-            </div>
-            <div class="diagram__row diagram__row--support">
-              <div class="node node--support" tabindex="0">
-                <span class="node__caption">Qdrant</span>
-                <span class="node__meta">114 esquemas isonómicos indexados</span>
-                <span class="node__tip" data-tip="Base vectorial con los ~114 esquemas isonómicos indexados mediante embeddings multilingües, para recuperar solo el esquema relevante en vez de recorrer todo el grafo."></span>
-              </div>
-              <div class="node node--support" tabindex="0">
-                <span class="node__caption">Endpoint SPARQL</span>
-                <span class="node__meta">Virtuoso · 50M+ tripletas</span>
-                <span class="node__tip" data-tip="Virtuoso: el motor que aloja el grafo de conocimiento de Aragón Open Data, con más de 50 millones de tripletas bajo la ontología EI2Av2."></span>
-              </div>
-              <div class="node node--support" tabindex="0">
-                <span class="node__caption">Módulo geográfico</span>
-                <span class="node__meta">topónimos aragoneses · polígonos WGS84</span>
-                <span class="node__tip" data-tip="Resuelve topónimos aragoneses ambiguos mediante polígonos WGS84 con Shapely, usando Nominatim / OpenStreetMap como respaldo."></span>
-              </div>
-              <div class="node node--support" tabindex="0">
-                <span class="node__caption">Langfuse</span>
-                <span class="node__meta">traza completa · EU AI Act, art. 50</span>
-                <span class="node__tip" data-tip="Registra cada paso del razonamiento del agente — el mismo detalle que se ve en la traza de abajo — cumpliendo el artículo 50 del EU AI Act sobre transparencia algorítmica."></span>
-              </div>
-            </div>
-          </figure>
+          <!-- ===== Prácticas card ===== -->
+          <article class="pcard pcard--practicas" id="practicas">
+            <p class="pcard__eyebrow">Jun–jul 2025 · Prácticas</p>
+            <h3 class="pcard__title">Origen Digital S.L.</h3>
+            <p class="pcard__summary">Migré un sistema de métricas y de generación de RDF de PHP a TypeScript.</p>
+            <p class="pcard__tags"><span>Python</span><span>TypeScript</span><span>Angular</span><span>Prometheus</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-practicas">Ver detalles →</button>
+          </article>
 
-          <!-- Traza interactiva -->
-          <figure class="trace">
-            <figcaption>Traza de razonamiento registrada en Langfuse — despliega cada paso</figcaption>
-            <p class="trace__query">“¿Qué colegios públicos hay cerca de Teruel?”</p>
-            <div class="trace__list">
-              <details class="trace__step" open>
-                <summary>
-                  <span class="trace__status"></span>
-                  <span class="trace__agent">Supervisor</span>
-                  <span class="trace__action">intención: consulta_geografica</span>
-                  <span class="trace__bar"><span style="width:2%"></span></span>
-                  <span class="trace__time">0.4s</span>
-                </summary>
-                <p>El supervisor mantiene el historial de la sesión y, al detectar una consulta geográfica, avisa al módulo de desambiguación de topónimos antes de delegar en KGQA.</p>
-              </details>
-              <details class="trace__step">
-                <summary>
-                  <span class="trace__status"></span>
-                  <span class="trace__agent">KGQA / ReAct</span>
-                  <span class="trace__action">esquema isonómico recuperado</span>
-                  <span class="trace__bar"><span style="width:6%"></span></span>
-                  <span class="trace__time">1.1s</span>
-                </summary>
-                <p>Recupera por similitud semántica el esquema más relevante entre los ~114 indexados en Qdrant, en vez de recorrer el grafo completo de 50 millones de tripletas.</p>
-              </details>
-              <details class="trace__step">
-                <summary>
-                  <span class="trace__status"></span>
-                  <span class="trace__agent">KGQA / ReAct</span>
-                  <span class="trace__action">consulta SPARQL generada y validada</span>
-                  <span class="trace__bar"><span style="width:20%"></span></span>
-                  <span class="trace__time">3.8s</span>
-                </summary>
-                <p>Genera la consulta y la valida sintácticamente con RDFLib antes de enviarla, para no agotar el timeout del endpoint con consultas mal formadas.</p>
-              </details>
-              <details class="trace__step">
-                <summary>
-                  <span class="trace__status"></span>
-                  <span class="trace__agent">Geo</span>
-                  <span class="trace__action">"Teruel" resuelto a polígono WGS84</span>
-                  <span class="trace__bar"><span style="width:5%"></span></span>
-                  <span class="trace__time">0.9s</span>
-                </summary>
-                <p>Filtra los resultados por proximidad espacial real, no solo por coincidencia de texto en el nombre del municipio.</p>
-              </details>
-              <details class="trace__step">
-                <summary>
-                  <span class="trace__status"></span>
-                  <span class="trace__agent">Virtuoso</span>
-                  <span class="trace__action">ejecutada sobre 50M+ tripletas</span>
-                  <span class="trace__bar"><span style="width:65%"></span></span>
-                  <span class="trace__time">12.6s</span>
-                </summary>
-                <p>El paso más lento de la traza: es el propio endpoint SPARQL público resolviendo la consulta contra el grafo completo de Aragón Open Data.</p>
-              </details>
-              <details class="trace__step">
-                <summary>
-                  <span class="trace__status"></span>
-                  <span class="trace__agent">Visualizador</span>
-                  <span class="trace__action">formato de salida: tabla</span>
-                  <span class="trace__bar"><span style="width:3%"></span></span>
-                  <span class="trace__time">0.6s</span>
-                </summary>
-                <p>Elige tabla porque la respuesta son varios centros agrupables, y aplica una limpieza final de filas duplicadas antes de mostrarla.</p>
-              </details>
-            </div>
-            <p class="trace__footer">Traza completa auditable de principio a fin — art. 50, EU AI Act.</p>
-          </figure>
+          <!-- ===== Codilandia card ===== -->
+          <article class="pcard pcard--codilandia" id="codilandia">
+            <img class="pcard__logo" src="assets/codilandia-logo.png" alt="" width="48" height="48" loading="lazy">
+            <p class="pcard__eyebrow">Feb–may 2025 · Pareja</p>
+            <h3 class="pcard__title">Codilandia</h3>
+            <p class="pcard__summary">App con 11 niveles para enseñar programación en C++ a niños de primaria.</p>
+            <p class="pcard__tags"><span>Angular</span><span>Node.js</span><span>PostgreSQL</span><span>JWT</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-codilandia">Ver detalles →</button>
+          </article>
 
-          <p class="feature__impact-label">El impacto</p>
-          <div class="stats">
-            <div class="stat"><span class="stat__num">50M+</span><span class="stat__label">tripletas RDF reducidas a ~114 esquemas indexados</span></div>
-            <div class="stat"><span class="stat__num">3</span><span class="stat__label">agentes especializados: supervisor, KGQA y visualizador</span></div>
-            <div class="stat"><span class="stat__num">30</span><span class="stat__label">preguntas de evaluación en 4 dominios</span></div>
-            <div class="stat"><span class="stat__num">~60s</span><span class="stat__label">latencia media estabilizada por consulta</span></div>
-          </div>
+          <!-- ===== Bookly card ===== -->
+          <article class="pcard pcard--bookly" id="bookly">
+            <img class="pcard__logo" src="assets/bookly-logo.png" alt="" width="48" height="43" loading="lazy">
+            <p class="pcard__eyebrow">Feb–mar 2025 · Equipo de 8</p>
+            <h3 class="pcard__title">Bookly</h3>
+            <p class="pcard__summary">Plataforma de lectura de eBooks con sincronización web/móvil y comunidad de lectores.</p>
+            <p class="pcard__tags"><span>Vue.js</span><span>React Native</span><span>Node.js</span><span>PostgreSQL</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-bookly">Ver detalles →</button>
+          </article>
 
-          <p class="badges">
-            <span>FastAPI</span><span>Python 3.12</span><span>Qdrant</span><span>Angular</span>
-            <span>DESY</span><span>Langfuse</span><span>RDF / SPARQL</span><span>ReAct</span>
-            <span>Shapely / Nominatim</span>
-          </p>
-
-          <p class="feature__credit">
-            Dirección: Fernando Solano Hermosilla (Origen Digital S.L.) · Ponencia académica:
-            Dr. Jorge Raúl Bernad Lusilla (Universidad de Zaragoza).
-          </p>
-        </article>
-
-        <!-- ===== PRÁCTICAS ===== -->
-        <article class="feature feature--practicas" id="practicas">
-          <div class="feature__head">
-            <p class="feature__eyebrow">Junio–julio 2025 · 308 horas · Prácticas académicas externas</p>
-            <h3 class="feature__title">Prácticas en Origen Digital S.L.</h3>
-            <p class="feature__subtitle">
-              Departamento de datos, en proyectos para el Gobierno de Aragón — el mismo equipo y
-              contexto en el que después nació mi TFG.
-            </p>
-          </div>
-
-          <p class="feature__lead">
-            El encargo inicial era simple sobre el papel: instrumentar con métricas un proceso
-            automatizado que procesa a diario datos del empleo público de Aragón, para poder
-            detectar cuellos de botella. Se convirtió en cuatro fases bastante distintas entre sí:
-          </p>
-
-          <ol class="phase-list">
-            <li class="phase">
-              <div class="phase__head"><span class="phase__num">Fase 1</span><h4>Sistema de métricas</h4><span class="phase__weeks">semanas 1–3</span></div>
-              <p>
-                Primera versión con hilos en Python y paneles en Kibana. Los hilos resultaron
-                ineficientes para monitorización continua, así que migré el sistema a
-                <strong>Prometheus</strong> — y, para que no se quedara consumiendo recursos todo
-                el rato, escribí un servicio de escucha ligero que solo lo levanta cuando hace
-                falta y lo apaga al terminar.
-              </p>
-            </li>
-            <li class="phase">
-              <div class="phase__head"><span class="phase__num">Fase 2</span><h4>Migración PHP → TypeScript</h4><span class="phase__weeks">semanas 4–5</span></div>
-              <p>
-                Entendí el pool de procesos existente (en PHP) y lo migré por completo a
-                TypeScript sin perder funcionalidad, corrigiendo por el camino fallos heredados en
-                la conversión a CSV. Ambas versiones quedaron probadas y validadas en paralelo.
-              </p>
-            </li>
-            <li class="phase">
-              <div class="phase__head"><span class="phase__num">Fase 3</span><h4>Frontend en Angular</h4><span class="phase__weeks">semana 6</span></div>
-              <p>
-                Prototipo en Figma y frontend en Angular para visualizar el pool de procesos,
-                siguiendo obligatoriamente el estilo <strong>DESY</strong> del Gobierno de Aragón —
-                con la ayuda del equipo de frontend para resolver los detalles más finos de esa
-                librería de estilos.
-              </p>
-            </li>
-            <li class="phase">
-              <div class="phase__head"><span class="phase__num">Fase 4</span><h4>Generación de tripletas RDF</h4><span class="phase__weeks">semanas 7–8</span></div>
-              <p>
-                Migración de los módulos PHP que generaban las tripletas RDF a TypeScript,
-                validando que los datos semánticos resultantes fueran correctos — la puerta de
-                entrada a todo lo que luego exploraría a fondo en el TFG.
-              </p>
-            </li>
-          </ol>
-
-          <p class="feature__note">
-            Cumplí el 100% de los objetivos iniciales planteados para las prácticas, y terminé
-            asumiendo tareas adicionales fuera del plan original conforme completaba las
-            asignadas.
-          </p>
-
-          <p class="badges">
-            <span>Python</span><span>TypeScript</span><span>PHP</span><span>Angular</span>
-            <span>Kibana</span><span>Prometheus</span><span>Figma</span><span>Node.js</span>
-          </p>
-        </article>
-
-        <!-- ===== CODILANDIA ===== -->
-        <article class="feature feature--codilandia" id="codilandia">
-          <div class="feature__media">
-            <img src="assets/codilandia-logo.png" alt="Logo de Codilandia" width="140" height="140" loading="lazy">
-          </div>
-          <div class="feature__body">
-            <div class="feature__head">
-              <p class="feature__eyebrow">Febrero–mayo 2025 · Proyecto en pareja</p>
-              <h3 class="feature__title">Codilandia — aprende a programar jugando</h3>
-              <p class="feature__subtitle">
-                Aplicación web educativa que enseña conceptos de programación en C++ a niños de
-                primaria (6–12 años) a través de 11 niveles jugables. Diseñada y desarrollada con
-                Jorge Martínez a lo largo de un cuatrimestre, desde el Game Design Document hasta
-                el despliegue.
-              </p>
-            </div>
-            <p>
-              El alumno es un "explorador de código" que avanza por un mapa de niveles —variables,
-              <code>cout</code>, operadores, condicionales, bucles <code>while</code> y
-              <code>for</code>, funciones— resolviendo minijuegos de arrastrar bloques, rellenar
-              huecos y simuladores de terminal, con feedback inmediato tras cada intento. Los
-              profesores tienen su propio modo: crean aulas virtuales con código de invitación y
-              consultan estadísticas agregadas e individuales de cada alumno.
-            </p>
-            <ul class="feature__points">
-              <li>11 niveles temáticos, del "qué es programar" a funciones con retorno y parámetros.</li>
-              <li>Dos modos de uso: individual autogestionado y aula virtual supervisada por un profesor.</li>
-              <li>Autenticación con JWT y progreso persistente por alumno.</li>
-            </ul>
-            <p class="feature__note">
-              Antes de programar nada, validamos el planteamiento con una encuesta a padres y
-              profesores de primaria sobre cómo debía enseñarse programación a esa edad — sus
-              respuestas guiaron buena parte del diseño de niveles y de la interfaz.
-            </p>
-            <p class="badges">
-              <span>Angular</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>JWT</span><span>Figma</span>
-            </p>
-          </div>
-        </article>
-
-        <!-- ===== BOOKLY ===== -->
-        <article class="feature feature--bookly" id="bookly">
-          <div class="feature__media">
-            <img src="assets/bookly-logo.png" alt="Logo de Bookly" width="140" height="126" loading="lazy">
-          </div>
-          <div class="feature__body">
-            <div class="feature__head">
-              <p class="feature__eyebrow">Febrero–marzo 2025 · Equipo de 8 personas</p>
-              <h3 class="feature__title">Bookly — plataforma de lectura de libros electrónicos</h3>
-              <p class="feature__subtitle">
-                Plataforma de lectura y gestión de libros electrónicos en PDF, con sincronización
-                entre web y móvil. Trabajo en equipo de gestión de proyectos: yo desarrollé
-                backend y pantallas de la versión web.
-              </p>
-            </div>
-            <p>
-              Cada usuario organiza su biblioteca en listas personalizadas y predefinidas, retoma
-              la lectura exactamente donde la dejó en cualquier dispositivo, y puede opinar sobre
-              lo que lee mediante valoraciones y un foro de preguntas y respuestas. Por detrás hay
-              estadísticas de lectura por usuario y por libro, mes a mes.
-            </p>
-            <ul class="feature__points">
-              <li>Lector de PDF integrado con zoom, marcadores y navegación.</li>
-              <li>Sincronización de progreso de lectura entre web (Vue.js) y móvil (React Native).</li>
-              <li>Foro de discusión, valoraciones y estadísticas de hábitos de lectura.</li>
-            </ul>
-            <p class="badges">
-              <span>Vue.js</span><span>React Native</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>Figma</span>
-            </p>
-          </div>
-        </article>
+        </div>
 
         <!-- ===== OTROS PROYECTOS ===== -->
         <details class="other-projects">
           <summary class="other-projects__label">Más proyectos <span class="chevron">→</span></summary>
 
           <div class="project-list">
-
             <article class="project-row">
               <div class="project-row__head">
                 <h3>FunnyBowling — innovación digital para boleras</h3>
                 <p class="project-row__tag">Comercio electrónico · 2025–2026</p>
               </div>
               <p class="project-row__desc">
-                Modelo de negocio SaaS B2B2C para digitalizar boleras y centros arcade: reservas
-                online con cálculo automático de ocupación, wallet digital de puntos arcade sin
-                tickets de papel, y proyección financiera a 3 años. Incluye diseño centrado en el
-                usuario, arquitectura de la información y analítica web con GA4, sobre una
-                plataforma funcional desplegada en servidor. Trabajo en pareja con Lucía Vázquez.
+                Modelo de negocio SaaS B2B2C para digitalizar boleras: reservas con cálculo
+                automático de ocupación, wallet digital de puntos arcade, y proyección financiera
+                a 3 años. Con Lucía Vázquez.
               </p>
               <p class="project-row__stack">PHP · HTML/CSS · MySQL · Google Analytics 4 · Figma</p>
             </article>
@@ -500,14 +205,10 @@
                 <p class="project-row__tag">Datos · 2025–2026</p>
               </div>
               <p class="project-row__desc">
-                Data mart con esquema en estrella (metodología Kimball) sobre retrasos de vuelos
-                comerciales, con ETL en KNIME a partir de datos reales de RITA y GeoNames. Sobre
-                esos datos apliqué consultas OLAP, modelos de regresión y clasificación en R, y
-                minería de datos con K-Means, ANOVA y reglas de asociación (Apriori) para
-                identificar qué factores influyen más en los retrasos. Trabajo en pareja con Lucía
-                Vázquez.
+                Data mart en estrella (Kimball) sobre retrasos de vuelos, ETL en KNIME, consultas
+                OLAP y minería de datos en R (K-Means, ANOVA, Apriori). Con Lucía Vázquez.
               </p>
-              <p class="project-row__stack">Oracle · KNIME · SQL / OLAP · R · K-Means · Apriori · Pentaho</p>
+              <p class="project-row__stack">Oracle · KNIME · SQL / OLAP · R · K-Means · Apriori</p>
             </article>
 
             <article class="project-row">
@@ -521,7 +222,6 @@
               </p>
               <p class="project-row__stack">SQL · Triggers · Query tuning</p>
             </article>
-
           </div>
         </details>
       </div>
@@ -570,9 +270,8 @@
         <p class="section__kicker">04 — Contacto</p>
         <h2 class="section__title">Hablemos</h2>
         <p class="contact__lede">
-          Soy graduada en Ingeniería Informática y busco mi primera oportunidad como ingeniera de
-          software o de datos. Si algo de lo que has visto encaja con lo que estás construyendo,
-          escríbeme.
+          Graduada en Ingeniería Informática, buscando mi primera oportunidad como ingeniera de
+          software o de datos.
         </p>
         <dl class="contact-list">
           <div><dt>Email</dt><dd><a href="mailto:irenepascualzgz@gmail.com">irenepascualzgz@gmail.com</a></dd></div>
@@ -590,6 +289,256 @@
   </footer>
   </div>
 </div>
+
+<!-- ============ DIALOG: TFG ============ -->
+<dialog id="dlg-tfg" class="pmodal pmodal--tfg">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <p class="pmodal__eyebrow">2025–2026 · Trabajo Fin de Grado</p>
+    <h3 class="pmodal__title">Un chatbot que le quita el SPARQL de encima a los datos abiertos de Aragón</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>50M+ tripletas RDF, solo consultables sabiendo SPARQL y grafos.</li>
+      <li>Deja fuera a quien más lo necesita: periodistas, técnicos, ciudadanos.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li>RAG sobre ~114 esquemas XML en vez de todo el grafo.</li>
+      <li>3 agentes: Supervisor → KGQA (ReAct) → Visualizador.</li>
+      <li>Traza completa auditable en Langfuse (EU AI Act, art. 50).</li>
+    </ul>
+
+    <figure class="diagram">
+      <figcaption>Arquitectura — pasa el ratón por cada bloque</figcaption>
+      <div class="diagram__row">
+        <div class="node" tabindex="0"><span class="node__caption">Usuario</span></div>
+        <div class="arrow">→</div>
+        <div class="node node--core" tabindex="0">
+          <span class="node__caption">Supervisor</span>
+          <span class="node__tip" data-tip="Clasifica la intención de cada turno y mantiene la memoria de la conversación."></span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="node node--core" tabindex="0">
+          <span class="node__caption">Agente KGQA</span>
+          <span class="node__tip" data-tip="Bucle ReAct: genera una consulta SPARQL, la valida con RDFLib y la reintenta si falla."></span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="node node--core" tabindex="0">
+          <span class="node__caption">Visualizador</span>
+          <span class="node__tip" data-tip="Adapta la respuesta a texto, tabla o gráfico y limpia duplicados."></span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="node" tabindex="0"><span class="node__caption">Usuario</span></div>
+      </div>
+      <div class="diagram__row diagram__row--support">
+        <div class="node node--support" tabindex="0">
+          <span class="node__caption">Qdrant</span>
+          <span class="node__tip" data-tip="114 esquemas isonómicos indexados con embeddings multilingües."></span>
+        </div>
+        <div class="node node--support" tabindex="0">
+          <span class="node__caption">Virtuoso</span>
+          <span class="node__tip" data-tip="Endpoint SPARQL con 50M+ tripletas bajo la ontología EI2Av2."></span>
+        </div>
+        <div class="node node--support" tabindex="0">
+          <span class="node__caption">Módulo geo</span>
+          <span class="node__tip" data-tip="Resuelve topónimos aragoneses con polígonos WGS84 (Shapely / Nominatim)."></span>
+        </div>
+        <div class="node node--support" tabindex="0">
+          <span class="node__caption">Langfuse</span>
+          <span class="node__tip" data-tip="Traza cada paso del razonamiento — cumple el art. 50 del EU AI Act."></span>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="term">
+      <div class="term__bar">
+        <span class="term__dot term__dot--r"></span><span class="term__dot term__dot--y"></span><span class="term__dot term__dot--g"></span>
+        <span class="term__title">langfuse — traza de sesión</span>
+      </div>
+      <p class="term__query">"¿Qué colegios públicos hay cerca de Teruel?"</p>
+      <div class="term__list">
+        <details class="term__step" open>
+          <summary>
+            <span class="term__ok">OK</span>
+            <span class="term__agent">Supervisor</span>
+            <span class="term__action">intención: consulta_geografica</span>
+            <span class="term__bar"><span style="width:2%"></span></span>
+            <span class="term__time">0.4s</span>
+          </summary>
+          <p>Detecta consulta geográfica y avisa al módulo de topónimos antes de delegar en KGQA.</p>
+        </details>
+        <details class="term__step">
+          <summary>
+            <span class="term__ok">OK</span>
+            <span class="term__agent">KGQA</span>
+            <span class="term__action">esquema recuperado</span>
+            <span class="term__bar"><span style="width:6%"></span></span>
+            <span class="term__time">1.1s</span>
+          </summary>
+          <p>Recupera por similitud semántica el esquema relevante entre los ~114 indexados en Qdrant.</p>
+        </details>
+        <details class="term__step">
+          <summary>
+            <span class="term__ok">OK</span>
+            <span class="term__agent">KGQA</span>
+            <span class="term__action">SPARQL generado y validado</span>
+            <span class="term__bar"><span style="width:20%"></span></span>
+            <span class="term__time">3.8s</span>
+          </summary>
+          <p>Valida sintaxis con RDFLib antes de enviar, para no agotar el timeout del endpoint.</p>
+        </details>
+        <details class="term__step">
+          <summary>
+            <span class="term__ok">OK</span>
+            <span class="term__agent">Geo</span>
+            <span class="term__action">"Teruel" → polígono WGS84</span>
+            <span class="term__bar"><span style="width:5%"></span></span>
+            <span class="term__time">0.9s</span>
+          </summary>
+          <p>Filtra por proximidad espacial real, no solo por coincidencia de texto.</p>
+        </details>
+        <details class="term__step">
+          <summary>
+            <span class="term__ok">OK</span>
+            <span class="term__agent">Virtuoso</span>
+            <span class="term__action">ejecutada sobre 50M+ tripletas</span>
+            <span class="term__bar"><span style="width:65%"></span></span>
+            <span class="term__time">12.6s</span>
+          </summary>
+          <p>El paso más lento: el propio endpoint público resolviendo contra el grafo completo.</p>
+        </details>
+        <details class="term__step">
+          <summary>
+            <span class="term__ok">OK</span>
+            <span class="term__agent">Visualizador</span>
+            <span class="term__action">formato: tabla</span>
+            <span class="term__bar"><span style="width:3%"></span></span>
+            <span class="term__time">0.6s</span>
+          </summary>
+          <p>Elige tabla por ser resultados agrupables, y limpia filas duplicadas.</p>
+        </details>
+      </div>
+      <p class="term__footer">art. 50, EU AI Act — traza auditable de principio a fin</p>
+    </figure>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">50M+</span><span class="stat__label">tripletas → 114 esquemas</span></div>
+      <div class="stat"><span class="stat__num">3</span><span class="stat__label">agentes especializados</span></div>
+      <div class="stat"><span class="stat__num">30</span><span class="stat__label">preguntas evaluadas</span></div>
+      <div class="stat"><span class="stat__num">~60s</span><span class="stat__label">latencia media</span></div>
+    </div>
+
+    <p class="badges">
+      <span>FastAPI</span><span>Python 3.12</span><span>Qdrant</span><span>Angular</span>
+      <span>DESY</span><span>Langfuse</span><span>RDF / SPARQL</span><span>ReAct</span>
+    </p>
+    <p class="pmodal__credit">Dirección: Fernando Solano Hermosilla (Origen Digital S.L.) · Ponencia: Dr. Jorge Raúl Bernad Lusilla (UZ).</p>
+  </div>
+</dialog>
+
+<!-- ============ DIALOG: Prácticas ============ -->
+<dialog id="dlg-practicas" class="pmodal pmodal--practicas">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <p class="pmodal__eyebrow">Junio–julio 2025 · 308 horas · Prácticas externas</p>
+    <h3 class="pmodal__title">Prácticas en Origen Digital S.L.</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>Un proceso diario de datos del empleo público de Aragón, sin visibilidad de rendimiento ni cuellos de botella.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li><strong>Fase 1</strong> — Métricas con Prometheus + servicio de escucha ligero (semanas 1–3).</li>
+      <li><strong>Fase 2</strong> — Migración completa del pool de procesos de PHP a TypeScript (semanas 4–5).</li>
+      <li><strong>Fase 3</strong> — Frontend en Angular con el estándar DESY del Gobierno de Aragón (semana 6).</li>
+      <li><strong>Fase 4</strong> — Generación de tripletas RDF migrada y validada (semanas 7–8).</li>
+    </ul>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">100%</span><span class="stat__label">objetivos cumplidos</span></div>
+      <div class="stat"><span class="stat__num">308h</span><span class="stat__label">en 8 semanas</span></div>
+      <div class="stat"><span class="stat__num">4</span><span class="stat__label">fases distintas</span></div>
+    </div>
+
+    <p class="badges">
+      <span>Python</span><span>TypeScript</span><span>PHP</span><span>Angular</span>
+      <span>Kibana</span><span>Prometheus</span><span>Figma</span><span>Node.js</span>
+    </p>
+  </div>
+</dialog>
+
+<!-- ============ DIALOG: Codilandia ============ -->
+<dialog id="dlg-codilandia" class="pmodal pmodal--codilandia">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <img class="pmodal__logo" src="assets/codilandia-logo.png" alt="Logo de Codilandia" width="72" height="72">
+    <p class="pmodal__eyebrow">Febrero–mayo 2025 · Proyecto en pareja</p>
+    <h3 class="pmodal__title">Codilandia — aprende a programar jugando</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>Enseñar programación en C++ a niños de primaria (6–12 años) de forma amena y validada.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li>11 niveles: variables, <code>cout</code>, condicionales, bucles y funciones.</li>
+      <li>Minijuegos de arrastrar bloques, rellenar huecos y terminal simulada.</li>
+      <li>Modo individual y aula virtual con estadísticas para el profesor.</li>
+      <li>Diseño validado con encuesta previa a padres y profesores.</li>
+    </ul>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">11</span><span class="stat__label">niveles jugables</span></div>
+      <div class="stat"><span class="stat__num">2</span><span class="stat__label">desarrolladores/as</span></div>
+      <div class="stat"><span class="stat__num">1</span><span class="stat__label">cuatrimestre: GDD a despliegue</span></div>
+    </div>
+
+    <p class="badges">
+      <span>Angular</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>JWT</span><span>Figma</span>
+    </p>
+  </div>
+</dialog>
+
+<!-- ============ DIALOG: Bookly ============ -->
+<dialog id="dlg-bookly" class="pmodal pmodal--bookly">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <img class="pmodal__logo" src="assets/bookly-logo.png" alt="Logo de Bookly" width="72" height="65">
+    <p class="pmodal__eyebrow">Febrero–marzo 2025 · Equipo de 8 personas</p>
+    <h3 class="pmodal__title">Bookly — plataforma de lectura de libros electrónicos</h3>
+
+    <p class="mheading">🎯 El problema</p>
+    <ul class="mlist">
+      <li>Leer PDFs sin continuidad entre dispositivos ni forma de compartir opiniones.</li>
+    </ul>
+
+    <p class="mheading">💡 La solución</p>
+    <ul class="mlist">
+      <li>Lector de PDF con zoom, marcadores y progreso sincronizado (web ↔ móvil).</li>
+      <li>Listas personalizadas y predefinidas por usuario.</li>
+      <li>Foro de preguntas, valoraciones y estadísticas de lectura.</li>
+    </ul>
+
+    <p class="mheading">🚀 El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">8</span><span class="stat__label">personas en el equipo</span></div>
+      <div class="stat"><span class="stat__num">2</span><span class="stat__label">plataformas sincronizadas</span></div>
+    </div>
+
+    <p class="badges">
+      <span>Vue.js</span><span>React Native</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>Figma</span>
+    </p>
+    <p class="pmodal__credit">Mi rol: desarrollo de backend y pantallas de la versión web.</p>
+  </div>
+</dialog>
 
 <script src="js/main.js"></script>
 </body>

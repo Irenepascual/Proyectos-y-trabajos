@@ -57,9 +57,24 @@
     navLinks.addEventListener('mouseleave', () => { navGlow.style.opacity = '0'; });
   }
 
+  /* ---------------- Project detail dialogs ---------------- */
+  document.querySelectorAll('[data-open]').forEach(btn => {
+    const dialog = document.getElementById(btn.dataset.open);
+    if (!dialog) return;
+    btn.addEventListener('click', () => dialog.showModal());
+  });
+  document.querySelectorAll('dialog.pmodal').forEach(dialog => {
+    dialog.querySelectorAll('[data-close]').forEach(btn => {
+      btn.addEventListener('click', () => dialog.close());
+    });
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  });
+
   /* ---------------- Interactive skill chips ---------------- */
   const skillChips = document.querySelectorAll('.skill-chip');
-  const containers = document.querySelectorAll('.feature, .project-row');
+  const containers = document.querySelectorAll('.pcard, .project-row');
   let activeChip = null;
 
   function clearSkillFilter() {
@@ -78,7 +93,7 @@
       document.body.classList.add('skills-filtering');
       const key = chip.textContent.trim().toLowerCase();
       containers.forEach(el => {
-        const bits = el.querySelectorAll('.badges span, .project-row__stack');
+        const bits = el.querySelectorAll('.pcard__tags span, .project-row__stack');
         const text = Array.from(bits).map(b => b.textContent).join(' ').toLowerCase();
         el.classList.toggle('is-match', text.includes(key));
       });
