@@ -1,6 +1,6 @@
-/* Fondo aurora formal: manchas de azul profundo y gris pizarra
-   derivando muy lentamente detrás del contenido, con un único
-   destello cálido apenas perceptible (canvas 2D, sin dependencias). */
+/* Fondo "flujo de datos": columnas de glifos y términos de datos en gris
+   oscuro derivando muy lentamente hacia arriba, sobre un lavado pizarra
+   apenas perceptible (canvas 2D, sin dependencias). */
 (() => {
   'use strict';
 
@@ -9,26 +9,57 @@
   const ctx = canvas.getContext('2d');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // r/x/y en fracciones del viewport; dx/dy amplitud de deriva; sp velocidad
-  const BLOBS = [
-    { c: '36,72,107',   a: .11, r: .60, x: .12, y: .12, dx: .06, dy: .05, sp: .000060, ph: 0.0 },
-    { c: '74,85,104',   a: .10, r: .55, x: .85, y: .30, dx: .05, dy: .06, sp: .000050, ph: 2.1 },
-    { c: '90,110,140',  a: .08, r: .58, x: .68, y: .85, dx: .06, dy: .05, sp: .000068, ph: 4.2 },
-    { c: '52,74,96',    a: .08, r: .50, x: .25, y: .74, dx: .05, dy: .06, sp: .000044, ph: 1.3 },
-    { c: '201,150,43',  a: .05, r: .38, x: .55, y: .45, dx: .05, dy: .05, sp: .000055, ph: 3.4 },
+  const GLYPHS = '01{}[]<>/=+*#$%&;:~^'.split('');
+  const WORDS = ['SQL', 'RAG', 'ETL', 'RDF', 'API', 'JSON', 'SPARQL', '0x3F', '1010', 'NULL', 'SELECT', 'JOIN'];
+  const INK = '58,63,70'; // gris oscuro
+
+  // lavado de profundidad, casi imperceptible
+  const WASH = [
+    { c: '36,72,107', a: .07, r: .60, x: .15, y: .15, dx: .05, dy: .04, sp: .00005, ph: 0.0 },
+    { c: '74,85,104', a: .06, r: .55, x: .82, y: .75, dx: .04, dy: .05, sp: .00004, ph: 2.5 },
   ];
 
-  let w, h;
+  let w, h, dpr, cols = [];
+
+  function rand(min, max) { return min + Math.random() * (max - min); }
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function buildColumns() {
+    cols = [];
+    const spacing = 110 * dpr;
+    const n = Math.ceil(w / spacing) + 1;
+    for (let i = 0; i < n; i++) {
+      const cells = [];
+      const step = rand(30, 42) * dpr;
+      const count = Math.ceil(h / step) + 2;
+      for (let j = 0; j < count; j++) {
+        cells.push({
+          text: Math.random() < .12 ? pick(WORDS) : pick(GLYPHS),
+          a: rand(.03, .085),
+          size: rand(10, 13),
+        });
+      }
+      cols.push({
+        x: i * spacing + rand(-18, 18) * dpr,
+        offset: rand(0, h),
+        speed: rand(5, 11) * dpr, // px por segundo, hacia arriba
+        step, cells,
+      });
+    }
+  }
+
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     w = canvas.width = Math.round(window.innerWidth * dpr);
     h = canvas.height = Math.round(window.innerHeight * dpr);
+    buildColumns();
   }
 
   function draw(t) {
     ctx.clearRect(0, 0, w, h);
+
     const m = Math.max(w, h);
-    for (const b of BLOBS) {
+    for (const b of WASH) {
       const x = (b.x + Math.cos(t * b.sp + b.ph) * b.dx) * w;
       const y = (b.y + Math.sin(t * b.sp * 1.3 + b.ph) * b.dy) * h;
       const g = ctx.createRadialGradient(x, y, 0, x, y, b.r * m);
@@ -37,6 +68,21 @@
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, w, h);
     }
+
+    ctx.textBaseline = 'top';
+    for (const col of cols) {
+      const total = col.cells.length * col.step;
+      const shift = (col.offset + t / 1000 * col.speed) % total;
+      for (let j = 0; j < col.cells.length; j++) {
+        const cell = col.cells[j];
+        let y = j * col.step - shift;
+        if (y < -col.step) y += total;
+        if (y > h) continue;
+        ctx.font = `${Math.round(cell.size * dpr)}px ui-monospace, Menlo, Consolas, monospace`;
+        ctx.fillStyle = `rgba(${INK},${cell.a})`;
+        ctx.fillText(cell.text, col.x, y);
+      }
+    }
   }
 
   resize();
@@ -44,8 +90,12 @@
 
   if (reduced) { draw(0); return; }
 
-  let raf;
-  const loop = (t) => { draw(t); raf = requestAnimationFrame(loop); };
+  let raf, last = 0;
+  const loop = (t) => {
+    // limitar a ~30 fps: suficiente para una deriva lenta
+    if (t - last >= 33) { draw(t); last = t; }
+    raf = requestAnimationFrame(loop);
+  };
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(raf);
     else raf = requestAnimationFrame(loop);
