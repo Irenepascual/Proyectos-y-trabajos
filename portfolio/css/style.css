@@ -157,22 +157,6 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
   font-size:1rem; color: var(--ink-dim); margin: 0 0 2rem;
   text-align: justify; hyphens: auto;
 }
-.bignums{
-  display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1.5rem;
-  margin: 0 0 2.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem;
-}
-.bignum{ display:flex; flex-direction:column; gap:.35rem; }
-.bignum__num{
-  font-family: var(--font-display); font-weight:700; letter-spacing:-0.02em;
-  font-size: clamp(2rem, 3.6vw, 2.9rem); line-height:1; color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-.bignum--tfg .bignum__num{ color: var(--accent-tfg); }
-.bignum--hackathon .bignum__num{ color: var(--accent-hackathon); }
-.bignum--practicas .bignum__num{ color: var(--accent); }
-.bignum--projects .bignum__num{ color: var(--accent-vuelos); }
-.bignum__label{ font-size:.82rem; color: var(--ink-dim); line-height:1.45; }
-
 .facts--row{ display:grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin: 0 0 2.5rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
 .facts--row > div{ display:flex; flex-direction:column; gap:.3rem; }
 .facts dt{ font-family: var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color: var(--ink-dim); margin:0; }
@@ -365,7 +349,6 @@ figcaption{
   .sidebar__body.is-open{ display:flex; }
   .nav__burger{ display:flex; }
   .facts--row{ grid-template-columns: repeat(2,1fr); }
-  .bignums{ grid-template-columns: repeat(2, minmax(0,1fr)); }
   .diagram__row{ min-width: 520px; }
 }
 @media (max-width: 560px){

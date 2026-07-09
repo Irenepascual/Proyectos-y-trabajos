@@ -94,34 +94,6 @@
     revealTargets.forEach(el => el.classList.add('is-visible'));
   }
 
-  /* ---------------- Count-up numbers ---------------- */
-  const counters = document.querySelectorAll('.bignum__num[data-count]');
-  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (counters.length && 'IntersectionObserver' in window && !noMotion) {
-    const runCount = (el) => {
-      const target = parseInt(el.dataset.count, 10);
-      const suffix = el.dataset.suffix || '';
-      const dur = 1300;
-      const t0 = performance.now();
-      const tick = (now) => {
-        const p = Math.min((now - t0) / dur, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * eased) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    };
-    const countIO = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          runCount(entry.target);
-          countIO.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(el => countIO.observe(el));
-  }
-
   /* ---------------- 3D tilt on project cards ---------------- */
   const canTilt = window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches;
   if (canTilt) {
