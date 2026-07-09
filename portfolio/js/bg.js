@@ -21,6 +21,14 @@
 
   let w, h, dpr, cols = [];
 
+  // el cursor ilumina los glifos cercanos
+  let mx = -1e9, my = -1e9;
+  const HALO = 170;
+  if (window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => { mx = -1e9; my = -1e9; });
+  }
+
   function rand(min, max) { return min + Math.random() * (max - min); }
   function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
@@ -70,6 +78,7 @@
     }
 
     ctx.textBaseline = 'top';
+    const haloR = HALO * dpr, cmx = mx * dpr, cmy = my * dpr;
     for (const col of cols) {
       const total = col.cells.length * col.step;
       const shift = (col.offset + t / 1000 * col.speed) % total;
@@ -78,8 +87,12 @@
         let y = j * col.step - shift;
         if (y < -col.step) y += total;
         if (y > h) continue;
+        let a = cell.a;
+        const dx = col.x - cmx, dy = y - cmy;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < haloR) a += (1 - d / haloR) * 0.3;
         ctx.font = `${Math.round(cell.size * dpr)}px ui-monospace, Menlo, Consolas, monospace`;
-        ctx.fillStyle = `rgba(${INK},${cell.a})`;
+        ctx.fillStyle = `rgba(${INK},${a})`;
         ctx.fillText(cell.text, col.x, y);
       }
     }
