@@ -13,6 +13,7 @@
 </head>
 <body>
 
+<canvas id="bgfx" class="bgfx" aria-hidden="true"></canvas>
 <div class="topbar" aria-hidden="true"></div>
 
 <div class="page">
@@ -144,6 +145,26 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ MARQUEE: stack en movimiento ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span>Python</span><i>✦</i><span>TypeScript</span><i>✦</i><span>SQL</span><i>✦</i>
+          <span>Angular</span><i>✦</i><span>React</span><i>✦</i><span>Node.js</span><i>✦</i>
+          <span>RAG</span><i>✦</i><span>IA generativa</span><i>✦</i><span>Minería de datos</span><i>✦</i>
+          <span>ETL</span><i>✦</i><span>Docker</span><i>✦</i><span>Git</span><i>✦</i>
+          <span>Langfuse</span><i>✦</i><span>Figma</span><i>✦</i><span>AWS</span><i>✦</i>
+        </div>
+        <div class="marquee__group">
+          <span>Python</span><i>✦</i><span>TypeScript</span><i>✦</i><span>SQL</span><i>✦</i>
+          <span>Angular</span><i>✦</i><span>React</span><i>✦</i><span>Node.js</span><i>✦</i>
+          <span>RAG</span><i>✦</i><span>IA generativa</span><i>✦</i><span>Minería de datos</span><i>✦</i>
+          <span>ETL</span><i>✦</i><span>Docker</span><i>✦</i><span>Git</span><i>✦</i>
+          <span>Langfuse</span><i>✦</i><span>Figma</span><i>✦</i><span>AWS</span><i>✦</i>
+        </div>
+      </div>
+    </div>
 
     <!-- ============ PROYECTOS ============ -->
     <section class="section" id="proyectos">
@@ -686,6 +707,7 @@
   </div>
 </dialog>
 
+<script src="js/bg.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

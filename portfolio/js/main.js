@@ -94,6 +94,25 @@
     revealTargets.forEach(el => el.classList.add('is-visible'));
   }
 
+  /* ---------------- 3D tilt on project cards ---------------- */
+  const canTilt = window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches;
+  if (canTilt) {
+    document.querySelectorAll('.pcard').forEach(card => {
+      card.addEventListener('mouseenter', () => card.classList.add('is-tilting'));
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform =
+          `perspective(700px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 7).toFixed(2)}deg) translateY(-3px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('is-tilting');
+        card.style.transform = '';
+      });
+    });
+  }
+
   /* ---------------- Interactive skill chips ---------------- */
   const skillChips = document.querySelectorAll('.skill-chip');
   const containers = document.querySelectorAll('.pcard');
