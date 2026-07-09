@@ -158,22 +158,18 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
 .facts dt{ font-family: var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color: var(--ink-dim); margin:0; }
 .facts dd{ margin:0; font-size:.88rem; }
 
-.skills__hint{ font-family: var(--font-mono); font-size:.76rem; color: var(--ink-dim); margin: 0 0 1.25rem; }
-.skills{ display:grid; grid-template-columns: repeat(2,1fr); gap:1.75rem; }
-.skills__group h3{ font-size:.85rem; text-transform:uppercase; letter-spacing:.05em; color: var(--ink-dim); margin: 0 0 .9rem; font-weight:600; }
-.skills__pills{ display:flex; flex-wrap:wrap; gap:.5rem; }
-.skill-chip{
-  font-family: var(--font-mono); font-size:.78rem; background: var(--mono-bg); color: var(--ink);
-  border: 1px solid var(--line); padding: .4rem .75rem; border-radius: 6px; cursor:pointer;
-  transition: background .15s ease, border-color .15s ease, color .15s ease, transform .1s ease;
+.stack__title{ font-family: var(--font-display); font-size:1.1rem; font-weight:600; margin: 0 0 1rem; letter-spacing:-0.01em; }
+.stack{ margin:0; }
+.stack__row{
+  display:grid; grid-template-columns: 210px minmax(0,1fr); gap: 1.5rem;
+  padding: .85rem 0; border-top: 1px solid var(--line); align-items:baseline;
 }
-.skill-chip:hover{ border-color: var(--accent); color: var(--accent); }
-.skill-chip.is-active{ background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-1px); }
-
-body.skills-filtering .pcard{ opacity:.3; filter: grayscale(.5); transition: opacity .25s ease, filter .25s ease; }
-body.skills-filtering .pcard.is-match{
-  opacity:1; filter:none; outline: 2px solid var(--card-accent, var(--accent)); outline-offset: 3px;
+.stack__row:last-child{ border-bottom: 1px solid var(--line); }
+.stack dt{
+  font-family: var(--font-mono); font-size:.72rem; text-transform:uppercase;
+  letter-spacing:.05em; color: var(--ink-dim);
 }
+.stack dd{ margin:0; font-size:.95rem; color: var(--ink); line-height:1.7; }
 
 /* ---------- Project cards ---------- */
 .project-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:1.25rem; margin-bottom: 1.5rem; }
@@ -349,11 +345,11 @@ figcaption{
   .nav__burger{ display:flex; }
   .facts--row{ grid-template-columns: repeat(2,1fr); }
   .diagram__row{ min-width: 520px; }
-  .skills{ grid-template-columns: 1fr; }
 }
 @media (max-width: 560px){
   .contact-list > div{ grid-template-columns: 100px minmax(0,1fr); }
   .facts--row{ grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; }
+  .stack__row{ grid-template-columns: 1fr; gap: .3rem; }
   .term__agent{ width: 66px; font-size:.6rem; }
   .term__action{ font-size:.72rem; }
   dialog.pmodal{ width: 96vw; max-height:94vh; }

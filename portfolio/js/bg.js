@@ -1,5 +1,6 @@
-/* Fondo aurora: manchas de color de la paleta derivando lentamente
-   detrás de todo el contenido (canvas 2D, sin dependencias). */
+/* Fondo aurora formal: manchas de azul profundo y gris pizarra
+   derivando muy lentamente detrás del contenido, con un único
+   destello cálido apenas perceptible (canvas 2D, sin dependencias). */
 (() => {
   'use strict';
 
@@ -10,11 +11,11 @@
 
   // r/x/y en fracciones del viewport; dx/dy amplitud de deriva; sp velocidad
   const BLOBS = [
-    { c: '36,72,107',  a: .13, r: .55, x: .10, y: .15, dx: .09, dy: .07, sp: .00011, ph: 0.0 },
-    { c: '201,150,43', a: .12, r: .48, x: .88, y: .25, dx: .08, dy: .09, sp: .00009, ph: 2.1 },
-    { c: '31,127,176', a: .10, r: .52, x: .72, y: .88, dx: .07, dy: .08, sp: .00013, ph: 4.2 },
-    { c: '122,59,59',  a: .09, r: .44, x: .22, y: .78, dx: .08, dy: .07, sp: .00008, ph: 1.3 },
-    { c: '47,111,94',  a: .08, r: .40, x: .50, y: .48, dx: .09, dy: .08, sp: .00010, ph: 3.4 },
+    { c: '36,72,107',   a: .11, r: .60, x: .12, y: .12, dx: .06, dy: .05, sp: .000060, ph: 0.0 },
+    { c: '74,85,104',   a: .10, r: .55, x: .85, y: .30, dx: .05, dy: .06, sp: .000050, ph: 2.1 },
+    { c: '90,110,140',  a: .08, r: .58, x: .68, y: .85, dx: .06, dy: .05, sp: .000068, ph: 4.2 },
+    { c: '52,74,96',    a: .08, r: .50, x: .25, y: .74, dx: .05, dy: .06, sp: .000044, ph: 1.3 },
+    { c: '201,150,43',  a: .05, r: .38, x: .55, y: .45, dx: .05, dy: .05, sp: .000055, ph: 3.4 },
   ];
 
   let w, h;
