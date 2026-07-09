@@ -11,12 +11,12 @@
 
   const GLYPHS = '01{}[]<>/=+*#$%&;:~^'.split('');
   const WORDS = ['SQL', 'RAG', 'ETL', 'RDF', 'API', 'JSON', 'SPARQL', '0x3F', '1010', 'NULL', 'SELECT', 'JOIN'];
-  const INK = '58,63,70'; // gris oscuro
+  const INK = '44,49,56'; // gris oscuro
 
-  // lavado de profundidad, casi imperceptible
+  // lavado de profundidad
   const WASH = [
-    { c: '36,72,107', a: .07, r: .60, x: .15, y: .15, dx: .05, dy: .04, sp: .00005, ph: 0.0 },
-    { c: '74,85,104', a: .06, r: .55, x: .82, y: .75, dx: .04, dy: .05, sp: .00004, ph: 2.5 },
+    { c: '36,72,107', a: .09, r: .60, x: .15, y: .15, dx: .05, dy: .04, sp: .00005, ph: 0.0 },
+    { c: '74,85,104', a: .08, r: .55, x: .82, y: .75, dx: .04, dy: .05, sp: .00004, ph: 2.5 },
   ];
 
   let w, h, dpr, cols = [];
@@ -26,7 +26,7 @@
 
   function buildColumns() {
     cols = [];
-    const spacing = 110 * dpr;
+    const spacing = 96 * dpr;
     const n = Math.ceil(w / spacing) + 1;
     for (let i = 0; i < n; i++) {
       const cells = [];
@@ -34,15 +34,15 @@
       const count = Math.ceil(h / step) + 2;
       for (let j = 0; j < count; j++) {
         cells.push({
-          text: Math.random() < .12 ? pick(WORDS) : pick(GLYPHS),
-          a: rand(.03, .085),
-          size: rand(10, 13),
+          text: Math.random() < .15 ? pick(WORDS) : pick(GLYPHS),
+          a: rand(.06, .15),
+          size: rand(11, 15),
         });
       }
       cols.push({
         x: i * spacing + rand(-18, 18) * dpr,
         offset: rand(0, h),
-        speed: rand(5, 11) * dpr, // px por segundo, hacia arriba
+        speed: rand(14, 28) * dpr, // px por segundo, hacia arriba
         step, cells,
       });
     }
