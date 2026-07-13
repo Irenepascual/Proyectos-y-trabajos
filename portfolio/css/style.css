@@ -315,6 +315,8 @@ figcaption{
 .shot a:hover{ border-color: var(--card-accent); }
 .shot a:hover::after{ opacity:1; }
 .shot img{ display:block; width:100%; height:auto; }
+.shot--tall a{ text-align:center; }
+.shot--tall img{ width:auto; max-width:100%; max-height:520px; margin:0 auto; }
 .shot figcaption{ font-size:.78rem; color:var(--ink-dim); margin-top:.5rem; line-height:1.5; }
 
 /* ---------- Timeline ---------- */
