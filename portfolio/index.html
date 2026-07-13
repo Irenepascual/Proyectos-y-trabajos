@@ -16,74 +16,38 @@
 <canvas id="bgfx" class="bgfx" aria-hidden="true"></canvas>
 <div class="topbar" aria-hidden="true"></div>
 
-<div class="page">
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+    <a class="masthead__brand" href="#/sobre-mi" data-route="sobre-mi">
+      Irene Pascual<span class="masthead__brand-sub">Análisis de datos</span>
+    </a>
+    <button class="masthead__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="masthead__nav" id="siteNav">
+      <a href="#/sobre-mi" data-route="sobre-mi">Sobre mí</a>
+      <a href="#/proyectos" data-route="proyectos">Proyectos</a>
+      <a href="#/experiencia" data-route="experiencia">Experiencia</a>
+      <a href="#/contacto" data-route="contacto">Contacto</a>
+      <a class="masthead__cta" href="assets/CV_Irene_Pascual.pdf" target="_blank" rel="noopener">Descargar CV ↓</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- ============ SIDEBAR ============ -->
-  <aside class="sidebar" id="sidebar">
-    <svg class="sidebar__graph" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g fill="none" stroke="currentColor" stroke-width="1">
-        <line x1="40" y1="420" x2="140" y2="460"/>
-        <line x1="140" y1="460" x2="90" y2="360"/>
-        <line x1="90" y1="360" x2="40" y2="420"/>
-        <line x1="140" y1="460" x2="220" y2="490"/>
-      </g>
-      <g fill="currentColor">
-        <circle cx="40" cy="420" r="3.5"/>
-        <circle cx="140" cy="460" r="4.5"/>
-        <circle cx="90" cy="360" r="3"/>
-        <circle cx="220" cy="490" r="3"/>
-      </g>
-    </svg>
-    <div class="sidebar__top">
-      <a href="#top" class="sidebar__brand">Irene Pascual</a>
-      <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="sidebar__body" id="sidebarBody">
-      <div class="sidebar__photo-wrap">
-        <img class="sidebar__photo" src="assets/irene-photo.jpg" alt="Irene Pascual Albericio" width="568" height="855">
-      </div>
-
-      <h1 class="sidebar__name">Irene Pascual Albericio</h1>
-      <p class="sidebar__role">Ingeniería Informática — Sistemas de la Información</p>
-      <p class="sidebar__status">Análisis de datos — Zaragoza, España</p>
-
-      <nav class="nav__links" id="navLinks">
-        <span class="nav__glow" id="navGlow" aria-hidden="true"></span>
-        <a href="#sobre-mi" data-nav="sobre-mi"><span>01</span>Sobre mí</a>
-        <a href="#proyectos" data-nav="proyectos"><span>02</span>Proyectos</a>
-        <a href="#experiencia" data-nav="experiencia"><span>03</span>Experiencia</a>
-        <a href="#contacto" data-nav="contacto"><span>04</span>Contacto</a>
-      </nav>
-
-      <div class="sidebar__contact">
-        <a href="mailto:irenepascualzgz@gmail.com">irenepascualzgz@gmail.com</a>
-        <a href="https://linkedin.com/in/irenepascuaal" target="_blank" rel="noopener">linkedin.com/in/irenepascuaal</a>
-      </div>
-
-      <div class="glance">
-        <a href="#hackathon" class="glance__item glance__item--hackathon"><span class="glance__dot"></span>Hackathon IA</a>
-        <a href="#tfg" class="glance__item glance__item--tfg"><span class="glance__dot"></span>TFG — Chatbot IA</a>
-        <a href="#practicas" class="glance__item glance__item--practicas"><span class="glance__dot"></span>Prácticas — Origen Digital</a>
-        <a href="#codilandia" class="glance__item glance__item--codilandia"><span class="glance__dot"></span>Codilandia</a>
-        <a href="#bookly" class="glance__item glance__item--bookly"><span class="glance__dot"></span>Bookly</a>
-      </div>
-
-      <a href="assets/CV_Irene_Pascual.pdf" class="nav__cta" target="_blank" rel="noopener">Descargar CV ↓</a>
-    </div>
-  </aside>
-
-  <!-- ============ CONTENT ============ -->
-  <div class="content">
-  <main id="top">
+<main class="site" id="top">
 
     <!-- ============ SOBRE MI ============ -->
-    <section class="section section--first" id="sobre-mi">
-      <div class="wrap">
-        <p class="section__kicker">01 — Sobre mí</p>
-        <h2 class="section__title">Sobre mí</h2>
+    <section class="route route--home is-active" id="route-sobre-mi">
+      <div class="wrap wrap--wide">
+        <div class="hero reveal">
+          <div class="hero__photo">
+            <span class="hero__frame" aria-hidden="true"></span>
+            <img class="hero__img" src="assets/irene-photo.jpg" alt="Irene Pascual Albericio" width="568" height="855">
+          </div>
+          <div class="hero__intro">
+            <p class="section__kicker">Sobre mí</p>
+            <h1 class="hero__name">Irene Pascual Albericio</h1>
+            <p class="hero__role">Ingeniería Informática — Sistemas de la Información</p>
         <p class="section__lede">
           Soy Irene Pascual, graduada en Ingeniería Informática por la Universidad de Zaragoza, donde
           cursé la especialidad de Sistemas de la Información. Lo que de verdad me apasiona son los
@@ -92,9 +56,11 @@
           y esa inquietud terminó de tomar forma en mi Trabajo de Fin de Grado. Con el tiempo me he
           dado cuenta de que un dato solo vale cuando alguien lo entiende, así que me interesa tanto
           el análisis en sí como saber contarlo con claridad a quien tiene que decidir con él.
-        </p>
+            </p>
+          </div>
+        </div>
 
-        <dl class="facts facts--row">
+        <dl class="facts facts--row reveal">
           <div><dt>Ubicación</dt><dd>Zaragoza, España</dd></div>
           <div><dt>Formación</dt><dd>Ing. Informática, UZ (2022–2026)</dd></div>
           <div><dt>Idiomas</dt><dd>ES, EN (B2), FR (B1)</dd></div>
@@ -121,10 +87,9 @@
           </div>
         </dl>
       </div>
-    </section>
 
-    <!-- ============ MARQUEE: stack en movimiento ============ -->
-    <div class="marquee" aria-hidden="true">
+      <!-- ============ MARQUEE: stack en movimiento ============ -->
+      <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
         <div class="marquee__group">
           <span>Python</span><i>/</i><span>TypeScript</span><i>/</i><span>SQL</span><i>/</i>
@@ -142,29 +107,21 @@
         </div>
       </div>
     </div>
+    </section>
 
     <!-- ============ PROYECTOS ============ -->
-    <section class="section" id="proyectos">
+    <section class="route" id="route-proyectos">
       <div class="wrap wrap--wide">
-        <p class="section__kicker">02 — Proyectos</p>
-        <h2 class="section__title">Proyectos que he hecho por el camino</h2>
-        <p class="section__lede">
-          A lo largo de estos años, además del día a día de la carrera, he tenido la oportunidad
-          de trabajar en mi Trabajo de Fin de Grado, unas prácticas en empresa, y varios proyectos
-          universitarios de los que me siento especialmente orgullosa. Van de más reciente a más
-          antiguo.
+        <p class="section__kicker reveal">Proyectos</p>
+        <h2 class="section__title reveal">Proyectos que he hecho por el camino</h2>
+        <p class="section__lede reveal">
+          Estos son los proyectos con los que más he aprendido. Los he separado en dos bloques:
+          primero los que giran en torno a los datos y su análisis —mi terreno— y después los de
+          desarrollo y producto. Pulsa en cualquiera para ver el detalle.
         </p>
 
+        <h3 class="group__title reveal"><span class="group__dot" style="background:var(--accent-tfg)"></span>Datos y análisis</h3>
         <div class="project-grid">
-
-          <!-- ===== Hackathon card ===== -->
-          <article class="pcard pcard--hackathon" id="hackathon">
-            <p class="pcard__eyebrow">2025–2026 — Hackathon — 1er puesto</p>
-            <h3 class="pcard__title">Hackathon de IA — PartyRock</h3>
-            <p class="pcard__summary">Ganamos con un asistente de IA generativa para gestionar gastos de viaje de empresa.</p>
-            <p class="pcard__tags"><span>PartyRock</span><span>AWS</span><span>IA generativa</span><span>Prototipado</span></p>
-            <button type="button" class="pcard__btn" data-open="dlg-hackathon">Ver detalles →</button>
-          </article>
 
           <!-- ===== TFG card ===== -->
           <article class="pcard pcard--tfg" id="tfg">
@@ -174,6 +131,38 @@
             <p class="pcard__summary">Sistema multiagente que convierte 50M de tripletas RDF en respuestas sin SPARQL.</p>
             <p class="pcard__tags"><span>RAG</span><span>Multiagente</span><span>SPARQL</span><span>FastAPI</span></p>
             <button type="button" class="pcard__btn" data-open="dlg-tfg">Ver detalles →</button>
+          </article>
+
+          <!-- ===== Vuelos / minería de datos card ===== -->
+          <article class="pcard pcard--vuelos" id="vuelos">
+            <p class="pcard__eyebrow">2025–2026 — Minería de datos</p>
+            <h3 class="pcard__title">Vuelos comerciales en EE. UU.</h3>
+            <p class="pcard__summary">Data mart en estrella con ETL en KNIME y minería de datos sobre retrasos aéreos.</p>
+            <p class="pcard__tags"><span>Oracle</span><span>KNIME</span><span>R</span><span>Apriori</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-vuelos">Ver detalles →</button>
+          </article>
+
+          <!-- ===== Bases de datos relacionales card ===== -->
+          <article class="pcard pcard--db" id="db">
+            <p class="pcard__eyebrow">2024–2025 — Bases de datos</p>
+            <h3 class="pcard__title">Bases de datos relacionales</h3>
+            <p class="pcard__summary">Diseño de dos bases de datos (cine y liga deportiva) con triggers y consultas optimizadas.</p>
+            <p class="pcard__tags"><span>SQL</span><span>Triggers</span><span>Query tuning</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-db">Ver detalles →</button>
+          </article>
+
+        </div>
+
+        <h3 class="group__title reveal"><span class="group__dot" style="background:var(--accent-hackathon)"></span>Desarrollo, producto e IA</h3>
+        <div class="project-grid">
+
+          <!-- ===== Hackathon card ===== -->
+          <article class="pcard pcard--hackathon" id="hackathon">
+            <p class="pcard__eyebrow">2025–2026 — Hackathon — 1er puesto</p>
+            <h3 class="pcard__title">Hackathon de IA — PartyRock</h3>
+            <p class="pcard__summary">Ganamos con un asistente de IA generativa para gestionar gastos de viaje de empresa.</p>
+            <p class="pcard__tags"><span>PartyRock</span><span>AWS</span><span>IA generativa</span><span>Prototipado</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-hackathon">Ver detalles →</button>
           </article>
 
           <!-- ===== Prácticas card ===== -->
@@ -215,33 +204,19 @@
             <button type="button" class="pcard__btn" data-open="dlg-funnybowling">Ver detalles →</button>
           </article>
 
-          <!-- ===== Vuelos / minería de datos card ===== -->
-          <article class="pcard pcard--vuelos" id="vuelos">
-            <p class="pcard__eyebrow">2025–2026 — Minería de datos</p>
-            <h3 class="pcard__title">Vuelos comerciales en EE. UU.</h3>
-            <p class="pcard__summary">Data mart en estrella con ETL en KNIME y minería de datos sobre retrasos aéreos.</p>
-            <p class="pcard__tags"><span>Oracle</span><span>KNIME</span><span>R</span><span>Apriori</span></p>
-            <button type="button" class="pcard__btn" data-open="dlg-vuelos">Ver detalles →</button>
-          </article>
-
-          <!-- ===== Bases de datos relacionales card ===== -->
-          <article class="pcard pcard--db" id="db">
-            <p class="pcard__eyebrow">2024–2025 — Bases de datos</p>
-            <h3 class="pcard__title">Bases de datos relacionales</h3>
-            <p class="pcard__summary">Diseño de dos bases de datos (cine y liga deportiva) con triggers y consultas optimizadas.</p>
-            <p class="pcard__tags"><span>SQL</span><span>Triggers</span><span>Query tuning</span></p>
-            <button type="button" class="pcard__btn" data-open="dlg-db">Ver detalles →</button>
-          </article>
-
         </div>
       </div>
     </section>
 
     <!-- ============ EXPERIENCIA ============ -->
-    <section class="section" id="experiencia">
-      <div class="wrap">
-        <p class="section__kicker">03 — Experiencia &amp; formación</p>
-        <h2 class="section__title">Trayectoria</h2>
+    <section class="route" id="route-experiencia">
+      <div class="wrap wrap--wide">
+        <p class="section__kicker reveal">Experiencia &amp; formación</p>
+        <h2 class="section__title reveal">Trayectoria</h2>
+        <p class="section__lede reveal">
+          Mi recorrido académico y las experiencias que han ido dando forma a mi perfil, de lo más
+          reciente a lo más antiguo.
+        </p>
 
         <div class="timeline">
           <div class="timeline__item">
@@ -275,15 +250,15 @@
     </section>
 
     <!-- ============ CONTACTO ============ -->
-    <section class="section" id="contacto">
-      <div class="wrap">
-        <p class="section__kicker">04 — Contacto</p>
-        <h2 class="section__title">Hablemos</h2>
-        <p class="contact__lede">
+    <section class="route" id="route-contacto">
+      <div class="wrap wrap--wide">
+        <p class="section__kicker reveal">Contacto</p>
+        <h2 class="section__title reveal">Hablemos</h2>
+        <p class="contact__lede reveal">
           Me dedico al análisis de datos y me interesa cualquier proyecto en el que los datos sean
           el centro. Si quieres comentarme algo, aquí me tienes.
         </p>
-        <dl class="contact-list">
+        <dl class="contact-list reveal">
           <div><dt>Email</dt><dd><a href="mailto:irenepascualzgz@gmail.com">irenepascualzgz@gmail.com</a></dd></div>
           <div><dt>Teléfono</dt><dd><a href="tel:+34636835017">+34 636 83 50 17</a></dd></div>
           <div><dt>LinkedIn</dt><dd><a href="https://linkedin.com/in/irenepascuaal" target="_blank" rel="noopener">in/irenepascuaal</a></dd></div>
@@ -297,8 +272,6 @@
   <footer class="footer">
     <p>Irene Pascual Albericio — <span id="year"></span></p>
   </footer>
-  </div>
-</div>
 
 <!-- ============ DIALOG: Hackathon ============ -->
 <dialog id="dlg-hackathon" class="pmodal pmodal--hackathon">
