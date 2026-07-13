@@ -122,14 +122,6 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
 .hero__role{ font-size: 1rem; color: var(--accent); font-weight: 600; margin: 0 0 1.4rem; }
 .hero .section__lede{ margin-bottom: 0; }
 
-/* ---------- Encabezados de grupo de proyectos ---------- */
-.group__title{
-  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; letter-spacing:-0.01em;
-  margin: 2.75rem 0 1.25rem; display: flex; align-items: center; gap: .6rem;
-}
-.group__title:first-of-type{ margin-top: 1.5rem; }
-.group__dot{ width: 11px; height: 11px; border-radius: 3px; display:inline-block; flex-shrink:0; }
-
 /* ---------- Sections ---------- */
 .section{ padding: clamp(2.5rem,6vw,4rem) 0; border-bottom: 1px solid var(--line); }
 .section--first{ padding-top: clamp(2rem,5vw,3rem); }
@@ -229,10 +221,9 @@ dialog.pmodal::backdrop{ background: rgba(20,18,16,.55); }
 .pmodal__title{ font-family: var(--font-display); font-size: clamp(1.2rem,2.6vw,1.5rem); font-weight:600; margin: 0 0 1.25rem; letter-spacing:-0.01em; }
 .pmodal__credit{ font-size:.8rem; color: var(--ink-dim); margin: 1rem 0 0; }
 
-.mheading{ font-size:.95rem; font-weight:700; margin: 1.5rem 0 .6rem; display:flex; align-items:center; gap:.55rem; }
-.mheading::before{ content:''; width:9px; height:9px; background: var(--card-accent); flex-shrink:0; }
-.mlist{ margin:0 0 .5rem; padding-left:1.2rem; display:flex; flex-direction:column; gap:.4rem; font-size:.9rem; color: var(--ink-dim); }
-.mlist li::marker{ color: var(--card-accent); }
+.mtext{ font-size:.96rem; line-height:1.7; color: var(--ink); margin: 0 0 1.05rem; text-align: justify; hyphens: auto; }
+.mtext:first-of-type{ margin-top: 1.35rem; }
+.mtext strong{ font-weight:600; }
 
 figure{ margin: 1.25rem 0; }
 figcaption{
@@ -294,10 +285,6 @@ figcaption{
 .term__step p{ margin:0; padding: 0 .9rem .7rem 2.35rem; color:#a8a49d; font-size:.72rem; line-height:1.5; }
 .term__footer{ padding: .5rem .9rem .8rem; font-size:.68rem; color:#6a6660; font-family: var(--font-mono); margin:0; }
 
-.stats{ display:grid; grid-template-columns: repeat(auto-fit, minmax(100px,1fr)); gap:1.25rem; margin: 0 0 1.25rem; }
-.stat{ display:flex; flex-direction:column; gap:.3rem; }
-.stat__num{ font-family: var(--font-display); font-size: clamp(1.4rem,3vw,1.8rem); font-weight:600; color: var(--card-accent); }
-.stat__label{ font-size:.76rem; color: var(--ink-dim); }
 
 .badges{ display:flex; flex-wrap:wrap; gap: .5rem .9rem; margin: 1.25rem 0 0; font-family: var(--font-mono); font-size:.76rem; color: var(--ink-dim); }
 .badges span{ background: var(--mono-bg); border:1px solid var(--line); padding:.25rem .6rem; border-radius:4px; }

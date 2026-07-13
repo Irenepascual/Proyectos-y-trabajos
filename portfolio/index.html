@@ -115,12 +115,11 @@
         <p class="section__kicker reveal">Proyectos</p>
         <h2 class="section__title reveal">Proyectos que he hecho por el camino</h2>
         <p class="section__lede reveal">
-          Estos son los proyectos con los que más he aprendido. Los he separado en dos bloques:
-          primero los que giran en torno a los datos y su análisis, que es mi terreno, y después los de
-          desarrollo y producto. Pulsa en cualquiera para ver el detalle.
+          Aquí están los proyectos con los que más he aprendido. La mayoría giran en torno a los datos,
+          ya sea analizándolos o construyendo cosas a partir de ellos, que es lo que de verdad me
+          interesa. Puedes abrir cualquiera para ver en qué consistió y cómo lo saqué adelante.
         </p>
 
-        <h3 class="group__title reveal"><span class="group__dot" style="background:var(--accent-tfg)"></span>Datos y análisis</h3>
         <div class="project-grid">
 
           <!-- ===== TFG card ===== -->
@@ -160,10 +159,6 @@
             <button type="button" class="pcard__btn" data-open="dlg-db">Ver detalles →</button>
           </article>
 
-        </div>
-
-        <h3 class="group__title reveal"><span class="group__dot" style="background:var(--accent-hackathon)"></span>Desarrollo, producto e IA</h3>
-        <div class="project-grid">
 
           <!-- ===== Hackathon card ===== -->
           <article class="pcard pcard--hackathon" id="hackathon">
@@ -290,17 +285,19 @@
     <p class="pmodal__eyebrow">Hackathon de IA en la Universidad de Zaragoza, 1er puesto</p>
     <h3 class="pmodal__title">Asistente inteligente para gastos de viaje</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>La gestión de gastos de viaje de empresa es un proceso administrativo lento y manual.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>Prototipo funcional construido con PartyRock (Amazon Bedrock) en una sola jornada.</li>
-      <li>Apoyarnos en IA generativa nos dejó centrarnos en el flujo de usuario en lugar de en la infraestructura.</li>
-      <li>Equipo con Ariana Porroche, Iván Vayad y Lucía Vázquez.</li>
-    </ul>
+    <p class="mtext">
+      Ganamos el primer premio de la hackathon de inteligencia artificial de la Universidad de
+      Zaragoza, celebrada dentro del II Congreso Nacional de Educación STEAM junto a AWS. La prueba
+      consistía en llevar una idea desde cero hasta un prototipo que funcionara, y todo en una sola
+      jornada.
+    </p>
+    <p class="mtext">
+      Junto a Ariana Porroche, Iván Vayad y Lucía Vázquez desarrollamos un asistente para gestionar
+      los gastos de viaje de empresa, un trámite que normalmente es lento y muy manual. Lo
+      construimos con PartyRock, la herramienta de IA generativa de Amazon Bedrock, que nos dejó
+      concentrarnos en cómo debía sentirse la persona que lo usa en lugar de en montar toda la
+      infraestructura por debajo.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -317,13 +314,6 @@
       </figure>
     </div>
 
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">1º</span><span class="stat__label">puesto en la hackathon</span></div>
-      <div class="stat"><span class="stat__num">4</span><span class="stat__label">personas en el equipo</span></div>
-      <div class="stat"><span class="stat__num">1</span><span class="stat__label">jornada, idea a prototipo</span></div>
-    </div>
-
     <p class="badges">
       <span>PartyRock</span><span>AWS</span><span>IA generativa</span>
     </p>
@@ -338,18 +328,23 @@
     <p class="pmodal__eyebrow">Trabajo de Fin de Grado (2025–2026)</p>
     <h3 class="pmodal__title">Un chatbot que le quita el SPARQL de encima a los datos abiertos de Aragón</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>50M+ tripletas RDF, solo consultables sabiendo SPARQL y grafos.</li>
-      <li>Deja fuera a quien más lo necesita: periodistas, técnicos, ciudadanos.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>RAG sobre ~114 esquemas XML en vez de todo el grafo.</li>
-      <li>3 agentes: Supervisor → KGQA (ReAct) → Visualizador.</li>
-      <li>Traza completa auditable en Langfuse (EU AI Act, art. 50).</li>
-    </ul>
+    <p class="mtext">
+      El portal de datos abiertos de Aragón guarda más de 50 millones de tripletas RDF, pero para
+      consultarlas hay que saber SPARQL y entender cómo funciona un grafo de conocimiento. Eso deja
+      fuera justo a quien más partido les sacaría: periodistas, técnicos de la administración o
+      cualquier persona con una pregunta concreta.
+    </p>
+    <p class="mtext">
+      Mi Trabajo de Fin de Grado fue un chatbot que responde a esas preguntas en lenguaje natural,
+      sin que el usuario escriba una sola consulta. En lugar de razonar sobre el grafo entero,
+      recupera por similitud el esquema adecuado entre unos ciento catorce y trabaja solo sobre él,
+      una estrategia de RAG que lo hace mucho más rápido y fiable. Por dentro se coordinan tres
+      agentes: un supervisor que interpreta la intención de cada pregunta, un agente que genera y
+      valida la consulta SPARQL en un bucle de tipo ReAct, y un visualizador que decide si la
+      respuesta se muestra como texto, tabla o mapa. Cada paso queda registrado en Langfuse, de modo
+      que todo el razonamiento es auditable, tal y como exige el artículo 50 del Reglamento Europeo
+      de Inteligencia Artificial.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -485,13 +480,12 @@
       <p class="term__footer">art. 50 del EU AI Act, traza auditable de principio a fin</p>
     </figure>
 
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">50M+</span><span class="stat__label">tripletas → 114 esquemas</span></div>
-      <div class="stat"><span class="stat__num">3</span><span class="stat__label">agentes especializados</span></div>
-      <div class="stat"><span class="stat__num">30</span><span class="stat__label">preguntas evaluadas</span></div>
-      <div class="stat"><span class="stat__num">~60s</span><span class="stat__label">latencia media</span></div>
-    </div>
+    <p class="mtext">
+      Para comprobar que funcionaba de verdad, no me quedé en que "pareciera" que respondía bien:
+      evalué el sistema con treinta preguntas reales y medí su acierto una a una. La mayoría se
+      resuelven por completo, con una latencia media de alrededor de un minuto que depende sobre todo
+      del propio endpoint público de datos abiertos, no del chatbot.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -521,25 +515,20 @@
       <img src="assets/origen-logo-dark.png" alt="Logo de Origen Corp" loading="lazy" width="1089" height="259">
     </figure>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>Un proceso diario de datos del empleo público de Aragón, sin visibilidad de rendimiento ni cuellos de botella.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li><strong>Fase 1.</strong> Métricas con Prometheus y un servicio de escucha ligero (semanas 1 a 3).</li>
-      <li><strong>Fase 2.</strong> Migración completa del pool de procesos de PHP a TypeScript (semanas 4 y 5).</li>
-      <li><strong>Fase 3.</strong> Frontend en Angular con el estándar DESY del Gobierno de Aragón (semana 6).</li>
-      <li><strong>Fase 4.</strong> Generación de tripletas RDF migrada y validada (semanas 7 y 8).</li>
-    </ul>
-
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">308h</span><span class="stat__label">en 8 semanas</span></div>
-      <div class="stat"><span class="stat__num">4/4</span><span class="stat__label">fases entregadas en plazo</span></div>
-      <div class="stat"><span class="stat__num">PHP→TS</span><span class="stat__label">migración del pool de procesos</span></div>
-    </div>
+    <p class="mtext">
+      Hice mis prácticas en Origen Digital, una empresa zaragozana que trabaja con datos del
+      Gobierno de Aragón. Fueron 308 horas a lo largo de ocho semanas, sobre un proceso que cada día
+      trata los datos del empleo público de la comunidad y que hasta entonces funcionaba un poco a
+      ciegas: no había forma de saber si iba rápido o dónde se atascaba.
+    </p>
+    <p class="mtext">
+      El trabajo lo organicé en cuatro fases. Empecé instrumentando el proceso con Prometheus y un
+      pequeño servicio de escucha para poder medir su rendimiento; después migré por completo el pool
+      de procesos de PHP a TypeScript; monté el frontend en Angular siguiendo DESY, el estándar de
+      diseño del Gobierno de Aragón; y, por último, migré y validé la generación de las tripletas RDF.
+      Entregué las cuatro en plazo, y me sirvió para ver de cerca cómo se cuida un proceso de datos
+      real en producción.
+    </p>
 
     <p class="badges">
       <span>Python</span><span>TypeScript</span><span>PHP</span><span>Angular</span>
@@ -556,18 +545,19 @@
     <p class="pmodal__eyebrow">Proyecto en pareja (febrero–mayo 2025)</p>
     <h3 class="pmodal__title">Codilandia, una app para aprender a programar jugando</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>Enseñar programación en C++ a niños de primaria (6–12 años) de forma amena y validada.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>11 niveles: variables, <code>cout</code>, condicionales, bucles y funciones.</li>
-      <li>Minijuegos de arrastrar bloques, rellenar huecos y terminal simulada.</li>
-      <li>Modo individual y aula virtual con estadísticas para el profesor.</li>
-      <li>Diseño validado con encuesta previa a padres y profesores.</li>
-    </ul>
+    <p class="mtext">
+      Codilandia nació de una pregunta sencilla: ¿cómo enseñas a programar en C++ a niños de entre
+      seis y doce años sin que se aburran? La hicimos entre dos personas, y antes de escribir una
+      línea de código pasamos una encuesta a padres y profesores para diseñar algo que de verdad les
+      encajara.
+    </p>
+    <p class="mtext">
+      El resultado es una app con once niveles que van de las variables y el <code>cout</code> a los
+      condicionales, los bucles y las funciones. Cada concepto se practica con un minijuego, como
+      arrastrar bloques, rellenar huecos o una terminal simulada, y hay dos modos: uno individual y
+      un aula virtual con estadísticas para que el profesor siga el progreso de la clase. Lo llevamos
+      de la idea al despliegue en un cuatrimestre, partiendo de su documento de diseño.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -590,13 +580,6 @@
       </figure>
     </div>
 
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">11</span><span class="stat__label">niveles jugables</span></div>
-      <div class="stat"><span class="stat__num">2</span><span class="stat__label">personas en el equipo</span></div>
-      <div class="stat"><span class="stat__num">1</span><span class="stat__label">cuatrimestre: GDD a despliegue</span></div>
-    </div>
-
     <p class="badges">
       <span>Angular</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>JWT</span><span>Figma</span>
     </p>
@@ -611,17 +594,17 @@
     <p class="pmodal__eyebrow">Proyecto en equipo de 8 personas (febrero–marzo 2025)</p>
     <h3 class="pmodal__title">Bookly, una plataforma de lectura de libros electrónicos</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>Leer PDFs sin continuidad entre dispositivos ni forma de compartir opiniones.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>Lector de PDF con zoom, marcadores y progreso sincronizado (web ↔ móvil).</li>
-      <li>Listas personalizadas y predefinidas por usuario.</li>
-      <li>Foro de preguntas, valoraciones y estadísticas de lectura.</li>
-    </ul>
+    <p class="mtext">
+      Bookly es una plataforma para leer libros electrónicos que hicimos en un equipo de ocho
+      personas. Partíamos de una molestia bastante común: leer PDFs sueltos, sin que el progreso te
+      siga de un dispositivo a otro y sin ningún sitio donde comentar lo que lees.
+    </p>
+    <p class="mtext">
+      La plataforma tiene un lector con zoom y marcadores cuyo progreso se sincroniza entre la web y
+      la app móvil, listas de lectura tanto propias como predefinidas, y una parte de comunidad con
+      foro de preguntas, valoraciones y estadísticas. Yo me encargué del backend y de las pantallas
+      de la versión web, y también del modelo de datos que hay debajo, que puedes ver más abajo.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -652,20 +635,13 @@
         <a href="assets/bookly-modelo-er.png" target="_blank" rel="noopener">
           <img src="assets/bookly-modelo-er.png" alt="Modelo entidad-relación de Bookly" loading="lazy" width="895" height="755">
         </a>
-        <figcaption>Y por debajo, el modelo entidad-relación: libros, usuarios, listas de lectura, opiniones y el foro de preguntas y respuestas.</figcaption>
+        <figcaption>El modelo entidad-relación que sostiene todo: libros, usuarios, listas de lectura, opiniones y el foro de preguntas y respuestas.</figcaption>
       </figure>
-    </div>
-
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">8</span><span class="stat__label">personas en el equipo</span></div>
-      <div class="stat"><span class="stat__num">2</span><span class="stat__label">plataformas sincronizadas</span></div>
     </div>
 
     <p class="badges">
       <span>Vue.js</span><span>React Native</span><span>Node.js / Express</span><span>PostgreSQL (Neon)</span><span>Figma</span>
     </p>
-    <p class="pmodal__credit">Mi rol: desarrollo de backend y pantallas de la versión web.</p>
   </div>
 </dialog>
 
@@ -677,42 +653,36 @@
     <p class="pmodal__eyebrow">Comercio electrónico, proyecto en pareja (2025–2026)</p>
     <h3 class="pmodal__title">FunnyBowling, reservas y puntos de arcade sin tickets</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>Colas físicas improductivas: el cliente no conoce el tiempo real de espera.</li>
-      <li>Tickets de papel para los puntos arcade: coste operativo y pérdidas frecuentes.</li>
-      <li>El canal digital de las boleras no se aprovecha como vía de monetización.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>Reservas con cálculo automático de ocupación (20 min + 10 min/jugador) y liberación automática si no hay check-in en 10 min.</li>
-      <li>Wallet digital de puntos arcade: sin tickets, recarga y canje de premios online.</li>
-      <li>Modelo híbrido B2B2C con tres paneles: jugador, bolera (trabajador) y superadministrador.</li>
-      <li>Validado con mapas de empatía y benchmark frente a Ozone Bowling y Dave &amp; Buster's.</li>
-      <li>Analítica con Google Analytics 4 y estrategia SEO propia.</li>
-    </ul>
+    <p class="mtext">
+      FunnyBowling fue un proyecto de comercio electrónico en el que, con Lucía Vázquez, imaginamos
+      cómo digitalizar una bolera. Partíamos de tres problemas reales del sector: las colas en las que
+      el cliente no sabe cuánto va a esperar, los tickets de papel de las máquinas de arcade (que
+      cuestan dinero y se pierden) y un canal digital totalmente desaprovechado.
+    </p>
+    <p class="mtext">
+      Nuestra propuesta fue una plataforma con reservas que calculan solas la ocupación de cada pista
+      y se liberan si el cliente no llega, un monedero digital para los puntos de arcade que sustituye
+      a los tickets, y tres paneles distintos según quién entre: el jugador, la bolera y el
+      administrador. Antes de construirla la validamos con mapas de empatía y comparándonos con
+      referentes como Ozone Bowling o Dave &amp; Buster's, y montamos la analítica con Google Analytics
+      y una estrategia de posicionamiento propia. Con las cuentas hechas, el modelo de negocio (de
+      tipo B2B2C) proyectaba llegar a diecinueve locales y un beneficio neto cercano a los 91.700 €
+      en su tercer año.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
         <a href="assets/funnybowling-canvas.png" target="_blank" rel="noopener">
           <img src="assets/funnybowling-canvas.png" alt="Business Model Canvas de FunnyBowling" loading="lazy" width="880" height="637">
         </a>
-        <figcaption>Business Model Canvas del proyecto: socios, actividades, propuestas de valor B2B y B2C, segmentos de cliente y flujos de ingreso.</figcaption>
+        <figcaption>El modelo de negocio en un lienzo: socios, actividades, propuestas de valor B2B y B2C, segmentos de cliente y las vías de ingreso.</figcaption>
       </figure>
-    </div>
-
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">19</span><span class="stat__label">locales proyectados año 3</span></div>
-      <div class="stat"><span class="stat__num">+91.700€</span><span class="stat__label">beneficio neto año 3</span></div>
-      <div class="stat"><span class="stat__num">B2B2C</span><span class="stat__label">modelo de negocio híbrido</span></div>
     </div>
 
     <p class="badges">
       <span>PHP</span><span>HTML/CSS</span><span>MySQL</span><span>Google Analytics 4</span><span>Figma</span>
     </p>
-    <p class="pmodal__credit">Realizado con Lucía Vázquez. La plataforma quedó desplegada y funcional en un servidor.</p>
+    <p class="pmodal__credit">La plataforma quedó desplegada y funcionando en un servidor.</p>
   </div>
 </dialog>
 
@@ -723,20 +693,26 @@
     <p class="pmodal__eyebrow">Almacenes y minería de datos, proyecto en pareja (2025–2026)</p>
     <h3 class="pmodal__title">Vuelos comerciales en EE. UU.</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>Detectar qué factores influyen más en los retrasos de vuelos comerciales en EE. UU.</li>
-      <li>Datos dispersos en varias fuentes (RITA, GeoNames) sin estructura analítica.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>Data mart en estrella (Kimball): grano vuelo + fecha, con dimensiones de aeropuerto, aerolínea/operadora, avión y pasajeros.</li>
-      <li>ETL completo en KNIME sobre datos reales de marzo de 2025.</li>
-      <li>Consultas OLAP avanzadas (CUBE, ROLLUP, GROUPING SETS) e informes en Pentaho/Tableau.</li>
-      <li>Modelos de regresión y clasificación en R con selección de predictores por AIC.</li>
-      <li>Minería de datos: K-Means (severidad del retraso), ANOVA (franja horaria) y reglas de asociación Apriori.</li>
-    </ul>
+    <p class="mtext">
+      Este fue mi proyecto más completo de minería de datos, hecho en pareja. La pregunta de partida
+      era averiguar qué influye de verdad en que un vuelo comercial en Estados Unidos salga con
+      retraso. La dificultad estaba en que los datos venían dispersos en varias fuentes (RITA,
+      GeoNames) y sin ninguna estructura pensada para analizarlos.
+    </p>
+    <p class="mtext">
+      Lo primero fue montar un almacén de datos con un modelo en estrella siguiendo la metodología de
+      Kimball, con el vuelo como hecho central y dimensiones para el aeropuerto, la aerolínea, el
+      avión y los pasajeros. Todo el proceso de limpieza y carga lo construí en KNIME sobre datos
+      reales, y sobre ese almacén lancé consultas OLAP para explorar los datos desde distintos
+      ángulos.
+    </p>
+    <p class="mtext">
+      La parte que más me gustó fue la analítica. Ajusté modelos de regresión y clasificación en R,
+      eligiendo los predictores con criterios estadísticos, y apliqué técnicas de minería de datos:
+      un agrupamiento con K-Means para ordenar los retrasos por gravedad, un ANOVA para ver el peso de
+      la franja horaria y reglas de asociación con Apriori. La conclusión más clara fue que la
+      aerolínea que opera el vuelo es, con diferencia, el factor que mejor predice el retraso.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -749,16 +725,14 @@
         <a href="assets/vuelos-knime.png" target="_blank" rel="noopener">
           <img src="assets/vuelos-knime.png" alt="Workflow de ETL en KNIME" loading="lazy" width="760" height="377">
         </a>
-        <figcaption>El flujo de ETL completo en KNIME: limpieza, transformación y carga de los datos reales hacia el data mart.</figcaption>
+        <figcaption>El flujo de ETL completo en KNIME: limpieza, transformación y carga de los datos reales hacia el almacén.</figcaption>
       </figure>
     </div>
 
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">5</span><span class="stat__label">prácticas de la asignatura</span></div>
-      <div class="stat"><span class="stat__num">11.62×</span><span class="stat__label">lift de la regla más fuerte</span></div>
-      <div class="stat"><span class="stat__num">#1</span><span class="stat__label">predictor: aerolínea operadora</span></div>
-    </div>
+    <p class="mtext">
+      Para que todo ese análisis se pudiera leer de un vistazo, resumí los resultados en un par de
+      cuadros de mando.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -789,19 +763,24 @@
     <p class="pmodal__eyebrow">Análisis de datos con Power BI (2024–2025)</p>
     <h3 class="pmodal__title">Análisis de los Juegos Olímpicos en Power BI</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>El encargo era elegir un país y demostrar, solo con datos, en qué destacaba de verdad en los Juegos Olímpicos. Elegí Japón.</li>
-      <li>El punto de partida era un conjunto de datos muy amplio, con atletas, países, deportes, ediciones y medallas, que por sí solo no contaba ninguna historia.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>Construí el modelo de datos en Power BI y creé en DAX las medidas para analizar las medallas por atleta, país, deporte, edición y género.</li>
-      <li>Organicé el resultado en un informe interactivo de siete páginas: una visión por país, el ranking de deportes y medallas, los atletas más destacados, los mejores deportes y países, los territorios y el reparto por género.</li>
-      <li>La página dedicada a Japón resume sus deportes más laureados, como gimnasia, natación, voleibol, judo o béisbol, y deja consultar el detalle de cada atleta medallista.</li>
-      <li>Para responder dónde debería invertir, usé una curva de Pareto que ordena las disciplinas por número de medallas y muestra en cuáles conviene concentrar los recursos.</li>
-    </ul>
+    <p class="mtext">
+      El encargo era elegir un país y demostrar, solo con datos, en qué destacaba de verdad en los
+      Juegos Olímpicos. Elegí Japón. Lo complicado no era falta de información, sino todo lo
+      contrario: partía de un conjunto de datos enorme, con atletas, países, deportes, ediciones y
+      medallas, que por sí solo no contaba ninguna historia.
+    </p>
+    <p class="mtext">
+      Construí el modelo de datos en Power BI y escribí en DAX las medidas para analizar las medallas
+      desde cualquier ángulo: por atleta, país, deporte, edición o género. Con eso monté un informe
+      interactivo de siete páginas que van de lo general a lo concreto, con una página dedicada a
+      Japón que resume sus deportes más laureados, como la gimnasia, la natación, el voleibol, el judo
+      o el béisbol, y que deja consultar el detalle de cada uno de sus 704 medallistas y 492 atletas.
+    </p>
+    <p class="mtext">
+      Para la última pregunta, la de dónde debería invertir Japón para seguir liderando, usé una curva
+      de Pareto que ordena las disciplinas por número de medallas y deja ver enseguida en cuáles
+      conviene concentrar los recursos.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -814,15 +793,8 @@
         <a href="assets/japon-dashboard-inversion.png" target="_blank" rel="noopener">
           <img src="assets/japon-dashboard-inversion.png" alt="Panel de Power BI sobre en qué deportes invertir" loading="lazy" width="1495" height="737">
         </a>
-        <figcaption>¿En qué deportes invertir para liderar?: curva de Pareto de medallas por disciplina y reparto de medallas por género.</figcaption>
+        <figcaption>La curva de Pareto de medallas por disciplina y el reparto por género responden a la pregunta de en qué deportes invertir.</figcaption>
       </figure>
-    </div>
-
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">704</span><span class="stat__label">medallas de Japón analizadas</span></div>
-      <div class="stat"><span class="stat__num">492</span><span class="stat__label">atletas en el estudio</span></div>
-      <div class="stat"><span class="stat__num">7</span><span class="stat__label">páginas de informe interactivo</span></div>
     </div>
 
     <p class="badges">
@@ -838,17 +810,19 @@
     <p class="pmodal__eyebrow">Diseño de bases de datos (2024–2025)</p>
     <h3 class="pmodal__title">Modelado de bases de datos relacionales</h3>
 
-    <p class="mheading">El problema</p>
-    <ul class="mlist">
-      <li>Modelar y optimizar el acceso a dos dominios muy distintos: un catálogo de cine y una liga deportiva.</li>
-    </ul>
-
-    <p class="mheading">La solución</p>
-    <ul class="mlist">
-      <li>Diseño de esquemas relacionales normalizados para ambos dominios.</li>
-      <li>Triggers para mantener la integridad y automatizar reglas de negocio.</li>
-      <li>Consultas optimizadas con benchmarking de rendimiento antes/después.</li>
-    </ul>
+    <p class="mtext">
+      En la asignatura de bases de datos me tocó modelar y optimizar el acceso a dos dominios muy
+      distintos entre sí: un catálogo de cine, con series, películas, capítulos y el personal que las
+      hace, y una liga deportiva. La gracia estaba en partir de la realidad de cada uno y traducirla a
+      un diseño que fuera correcto y, además, eficiente.
+    </p>
+    <p class="mtext">
+      Para cada dominio diseñé primero el modelo conceptual y luego su esquema relacional normalizado,
+      con sus claves y relaciones bien definidas. Añadí disparadores para mantener la integridad y
+      automatizar algunas reglas de negocio, y afiné las consultas comparando el rendimiento antes y
+      después de optimizarlas, para no quedarme en que "funcionaban" sino en que iban rápido. Abajo se
+      ve el ejemplo del dominio de cine, del diagrama entidad-relación al modelo ya en tablas.
+    </p>
 
     <div class="gallery">
       <figure class="shot">
@@ -861,14 +835,8 @@
         <a href="assets/db-cine-relacional.png" target="_blank" rel="noopener">
           <img src="assets/db-cine-relacional.png" alt="Esquema relacional de la base de datos de cine" loading="lazy" width="1200" height="492">
         </a>
-        <figcaption>El paso a modelo relacional normalizado: tablas, claves primarias y foráneas derivadas del diagrama E-R anterior.</figcaption>
+        <figcaption>El paso al modelo relacional normalizado: las tablas con sus claves primarias y foráneas derivadas del diagrama anterior.</figcaption>
       </figure>
-    </div>
-
-    <p class="mheading">El impacto</p>
-    <div class="stats">
-      <div class="stat"><span class="stat__num">2</span><span class="stat__label">bases de datos diseñadas</span></div>
-      <div class="stat"><span class="stat__num">3</span><span class="stat__label">triggers por dominio</span></div>
     </div>
 
     <p class="badges">
