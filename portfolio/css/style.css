@@ -12,6 +12,7 @@
   --accent-vuelos: #2f6f5e;
   --accent-db: #4a5568;
   --accent-hackathon: #c9962b;
+  --accent-japon: #b5322e;
   --mono-bg: #f4f2ef;
 
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -180,6 +181,7 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
 .pcard--funnybowling{ --card-accent: var(--accent-funnybowling); }
 .pcard--vuelos{ --card-accent: var(--accent-vuelos); }
 .pcard--db{ --card-accent: var(--accent-db); }
+.pcard--japon{ --card-accent: var(--accent-japon); }
 .pcard--hackathon{ --card-accent: var(--accent-hackathon); }
 .pcard{ border-left-color: var(--card-accent); }
 .pcard__logo{ position:absolute; top:1.25rem; right:1.25rem; width:40px; height:auto; border-radius:4px; }
@@ -214,6 +216,7 @@ dialog.pmodal::backdrop{ background: rgba(20,18,16,.55); }
 .pmodal--funnybowling{ --card-accent: var(--accent-funnybowling); }
 .pmodal--vuelos{ --card-accent: var(--accent-vuelos); }
 .pmodal--db{ --card-accent: var(--accent-db); }
+.pmodal--japon{ --card-accent: var(--accent-japon); }
 .pmodal--hackathon{ --card-accent: var(--accent-hackathon); }
 .pmodal__close{
   position:absolute; top:.75rem; right:.75rem; z-index:5; width:32px; height:32px; border-radius:50%;

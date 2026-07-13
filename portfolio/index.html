@@ -142,6 +142,15 @@
             <button type="button" class="pcard__btn" data-open="dlg-vuelos">Ver detalles →</button>
           </article>
 
+          <!-- ===== Japón / Power BI card ===== -->
+          <article class="pcard pcard--japon" id="japon">
+            <p class="pcard__eyebrow">2024–2025 — Power BI</p>
+            <h3 class="pcard__title">Japón en los Juegos Olímpicos</h3>
+            <p class="pcard__summary">Informe en Power BI sobre el rendimiento olímpico de Japón y en qué deportes debería invertir para liderar.</p>
+            <p class="pcard__tags"><span>Power BI</span><span>DAX</span><span>Modelado</span><span>Data storytelling</span></p>
+            <button type="button" class="pcard__btn" data-open="dlg-japon">Ver detalles →</button>
+          </article>
+
           <!-- ===== Bases de datos relacionales card ===== -->
           <article class="pcard pcard--db" id="db">
             <p class="pcard__eyebrow">2024–2025 — Bases de datos</p>
@@ -770,6 +779,56 @@
       <span>Oracle</span><span>KNIME</span><span>SQL / OLAP</span><span>R</span><span>K-Means</span><span>Apriori</span><span>Pentaho</span>
     </p>
     <p class="pmodal__credit">Con Lucía Vázquez.</p>
+  </div>
+</dialog>
+
+<!-- ============ DIALOG: Japón / Power BI ============ -->
+<dialog id="dlg-japon" class="pmodal pmodal--japon">
+  <button type="button" class="pmodal__close" data-close aria-label="Cerrar">×</button>
+  <div class="pmodal__body">
+    <p class="pmodal__eyebrow">2024–2025 — Power BI — Análisis y visualización de datos</p>
+    <h3 class="pmodal__title">Japón en los Juegos Olímpicos: ¿dónde es fuerte y dónde invertir?</h3>
+
+    <p class="mheading">El problema</p>
+    <ul class="mlist">
+      <li>Analizar el histórico olímpico y demostrar, con datos, en qué destaca Japón frente al resto de países participantes.</li>
+      <li>Un conjunto de datos amplio (atletas, países, deportes, ediciones y medallas) sin una lectura clara para tomar decisiones.</li>
+    </ul>
+
+    <p class="mheading">La solución</p>
+    <ul class="mlist">
+      <li>Modelo de datos y medidas en DAX sobre el histórico de medallas por atleta, país, deporte, edición y género.</li>
+      <li>Informe interactivo de 7 páginas: visión por país, ranking de deportes y medallas, atletas destacados, top de disciplinas y de países, territorios y desglose por género.</li>
+      <li>Página específica de Japón: sus deportes más laureados (gimnasia, natación, voleibol, judo, béisbol…) y el detalle de cada atleta medallista.</li>
+      <li>Enfoque de inversión: curva de Pareto de medallas por disciplina para identificar dónde concentrar recursos, con el reparto por género.</li>
+    </ul>
+
+    <div class="gallery">
+      <figure class="shot">
+        <a href="assets/japon-dashboard-pais.png" target="_blank" rel="noopener">
+          <img src="assets/japon-dashboard-pais.png" alt="Panel de Power BI con la visión general de Japón" loading="lazy" width="1521" height="838">
+        </a>
+        <figcaption>Visión general de Japón: 492 atletas, 704 medallas, sus deportes más laureados por tipo de medalla y la tabla de cada atleta medallista.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="assets/japon-dashboard-inversion.png" target="_blank" rel="noopener">
+          <img src="assets/japon-dashboard-inversion.png" alt="Panel de Power BI sobre en qué deportes invertir" loading="lazy" width="1495" height="737">
+        </a>
+        <figcaption>¿En qué deportes invertir para liderar?: curva de Pareto de medallas por disciplina y reparto de medallas por género.</figcaption>
+      </figure>
+    </div>
+
+    <p class="mheading">El impacto</p>
+    <div class="stats">
+      <div class="stat"><span class="stat__num">704</span><span class="stat__label">medallas de Japón analizadas</span></div>
+      <div class="stat"><span class="stat__num">492</span><span class="stat__label">atletas en el estudio</span></div>
+      <div class="stat"><span class="stat__num">7</span><span class="stat__label">páginas de informe interactivo</span></div>
+    </div>
+
+    <p class="badges">
+      <span>Power BI</span><span>DAX</span><span>Modelado de datos</span><span>Pareto</span><span>Data storytelling</span>
+    </p>
+    <p class="pmodal__credit">Descargar el informe original: <a href="assets/informe-japon-olimpiadas.pbix" download>trabajo_TIE.pbix ↓</a> (2,2 MB, requiere Power BI Desktop).</p>
   </div>
 </dialog>
 
