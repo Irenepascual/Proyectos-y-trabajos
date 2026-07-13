@@ -300,6 +300,23 @@ figcaption{
 .badges span::after{ content: '/'; margin-left: 1rem; color: var(--line); }
 .badges span:last-child::after{ content:none; }
 
+/* ---------- Galería de capturas (dentro de los modales) ---------- */
+.gallery{ display:flex; flex-direction:column; gap:1.25rem; margin: .75rem 0 0; }
+.shot{ margin:0; }
+.shot a{
+  display:block; position:relative; border:1px solid var(--line); border-radius:6px;
+  overflow:hidden; background: var(--mono-bg); border-bottom:1px solid var(--line);
+}
+.shot a::after{
+  content:'Ampliar ↗'; position:absolute; top:.5rem; right:.5rem;
+  font-family: var(--font-mono); font-size:.66rem; color:#fff; background: rgba(20,18,16,.72);
+  padding:.25rem .5rem; border-radius:4px; opacity:0; transition: opacity .15s ease; pointer-events:none;
+}
+.shot a:hover{ border-color: var(--card-accent); }
+.shot a:hover::after{ opacity:1; }
+.shot img{ display:block; width:100%; height:auto; }
+.shot figcaption{ font-size:.78rem; color:var(--ink-dim); margin-top:.5rem; line-height:1.5; }
+
 /* ---------- Timeline ---------- */
 .timeline{ display:flex; flex-direction:column; }
 .timeline__item{ display:grid; grid-template-columns: 130px minmax(0,1fr); gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--line); }
