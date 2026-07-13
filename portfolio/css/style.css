@@ -185,7 +185,7 @@ code{ font-family: var(--font-mono); background: var(--mono-bg); padding: .1em .
 .pcard--hackathon{ --card-accent: var(--accent-hackathon); }
 .pcard{ border-left-color: var(--card-accent); }
 .pcard__logo{ position:absolute; top:1.25rem; right:1.25rem; width:40px; height:auto; border-radius:4px; }
-.pcard__eyebrow{ font-family: var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color: var(--card-accent); margin:0; }
+.pcard__eyebrow{ font-family: var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color: var(--card-accent); margin:0; padding-right: 3rem; }
 .pcard__title{ font-family: var(--font-display); font-size:1.2rem; font-weight:600; margin:0; padding-right: 2.5rem; }
 .pcard__summary{ color: var(--ink-dim); font-size:.92rem; margin:0; flex:1; }
 .pcard__tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin:0; }
@@ -299,9 +299,8 @@ figcaption{
 .stat__num{ font-family: var(--font-display); font-size: clamp(1.4rem,3vw,1.8rem); font-weight:600; color: var(--card-accent); }
 .stat__label{ font-size:.76rem; color: var(--ink-dim); }
 
-.badges{ display:flex; flex-wrap:wrap; gap: .5rem 1rem; margin: 1rem 0 0; font-family: var(--font-mono); font-size:.78rem; color: var(--ink-dim); }
-.badges span::after{ content: '/'; margin-left: 1rem; color: var(--line); }
-.badges span:last-child::after{ content:none; }
+.badges{ display:flex; flex-wrap:wrap; gap: .5rem .9rem; margin: 1.25rem 0 0; font-family: var(--font-mono); font-size:.76rem; color: var(--ink-dim); }
+.badges span{ background: var(--mono-bg); border:1px solid var(--line); padding:.25rem .6rem; border-radius:4px; }
 
 /* ---------- Galería de capturas (dentro de los modales) ---------- */
 .gallery{ display:flex; flex-direction:column; gap:1.25rem; margin: .75rem 0 0; }
@@ -320,7 +319,7 @@ figcaption{
 .shot img{ display:block; width:100%; height:auto; }
 .shot--tall a{ text-align:center; }
 .shot--tall img{ width:auto; max-width:100%; max-height:520px; margin:0 auto; }
-.shot figcaption{ font-size:.78rem; color:var(--ink-dim); margin-top:.5rem; line-height:1.5; }
+.shot figcaption{ font-size:.78rem; color:var(--ink-dim); margin-top:.6rem; line-height:1.5; text-align:center; }
 
 .brandbar{ margin: 0 0 1.5rem; }
 .brandbar img{ display:block; height:52px; width:auto; max-width:100%; border-radius:6px; }

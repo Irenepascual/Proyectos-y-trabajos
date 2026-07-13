@@ -39,7 +39,7 @@
     if (!routes.includes(name)) name = 'sobre-mi';
     routes.forEach(r => pageEls[r].classList.toggle('is-active', r === name));
     navItems.forEach(a => a.classList.toggle('is-active', a.dataset.route === name));
-    document.title = 'Irene Pascual — ' + titles[name];
+    document.title = 'Irene Pascual Albericio (' + titles[name] + ')';
     window.scrollTo(0, 0);
     revealIn(pageEls[name]);
     if (siteNav) siteNav.classList.remove('is-open');
@@ -61,12 +61,26 @@
   }
 
   /* ---------------- Detalles de proyecto (diálogos) ---------------- */
+  // Guardamos la posición de la página al abrir para restaurarla al cerrar,
+  // de modo que no se salte arriba del todo.
+  let scrollBeforeModal = 0;
   document.querySelectorAll('[data-open]').forEach(btn => {
     const dialog = document.getElementById(btn.dataset.open);
     if (!dialog) return;
-    btn.addEventListener('click', () => dialog.showModal());
+    btn.addEventListener('click', () => {
+      scrollBeforeModal = window.scrollY;
+      dialog.showModal();
+      const body = dialog.querySelector('.pmodal__body');
+      if (body) body.scrollTop = 0;
+    });
   });
   document.querySelectorAll('dialog.pmodal').forEach(dialog => {
+    dialog.addEventListener('close', () => {
+      // Restauramos ahora y en el siguiente frame, por si el navegador
+      // reenfoca el botón y desplaza la página al cerrar.
+      window.scrollTo(0, scrollBeforeModal);
+      requestAnimationFrame(() => window.scrollTo(0, scrollBeforeModal));
+    });
     dialog.querySelectorAll('[data-close]').forEach(btn => {
       btn.addEventListener('click', () => dialog.close());
     });
