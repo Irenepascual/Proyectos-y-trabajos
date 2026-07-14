@@ -1,0 +1,52 @@
+{
+  "Metadata": {
+    "title": "Belle Epoque Zaragoza — Le Petit Palace",
+    "description": "Peluquería y centro de estética de alta gama en Zaragoza. Servicios de peluquería, maquillaje profesional, depilación láser y tratamientos faciales."
+  },
+  "Navigation": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "gallery": "Galería",
+    "booking": "Reservar cita",
+    "contact": "Contacto"
+  },
+  "Home": {
+    "heroTitle": "Belle Epoque Zaragoza",
+    "heroSubtitle": "Le Petit Palace",
+    "heroDescription": "Tu salón de belleza de alta gama en el corazón de Zaragoza. Donde la elegancia y el cuidado personal se encuentran.",
+    "ctaBooking": "Reservar cita",
+    "ctaServices": "Ver servicios",
+    "featuredTitle": "Nuestros servicios estrella",
+    "featuredSubtitle": "Descubre los tratamientos que nos hacen únicos",
+    "peelingTitle": "Peeling Hollywood",
+    "peelingDescription": "El tratamiento de las estrellas. Rejuvenecimiento facial con resultados visibles desde la primera sesión.",
+    "laserTitle": "Depilación Láser Diodo",
+    "laserDescription": "Última generación en depilación láser. Resultados permanentes con la máxima comodidad.",
+    "makeupTitle": "Maquillaje Profesional",
+    "makeupDescription": "Novias, eventos, madrinas. Maquillaje a domicilio con productos de primera calidad.",
+    "hairdressingTitle": "Peluquería Completa",
+    "hairdressingDescription": "Corte, color, mechas, tratamientos capilares. Tu pelo en las mejores manos.",
+    "scheduleTitle": "Horario",
+    "scheduleMondayFriday": "Lunes a Viernes",
+    "scheduleMondayFridayHours": "9:00 — 20:00",
+    "scheduleSaturday": "Sábados",
+    "scheduleSaturdayHours": "9:00 — 14:00",
+    "scheduleSunday": "Domingos",
+    "scheduleSundayHours": "Cerrado",
+    "locationTitle": "Encuéntranos",
+    "address": "C/ Coso, 33 · Zaragoza"
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "legalNotice": "Aviso legal",
+    "privacyPolicy": "Política de privacidad",
+    "cookiePolicy": "Política de cookies",
+    "phone": "Teléfono de citas",
+    "whatsapp": "WhatsApp",
+    "followUs": "Síguenos"
+  },
+  "LanguageSwitcher": {
+    "es": "Español",
+    "en": "English"
+  }
+}

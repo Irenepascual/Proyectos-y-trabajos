@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF7F2"/>
+      <stop offset="1" stop-color="#EFD9D9"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#C9A961" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#C9A961" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <rect width="800" height="800" fill="url(#glow)"/>
+  <rect x="48" y="48" width="704" height="704"
+    fill="none" stroke="#C9A961" stroke-width="0.75" opacity="0.5"/>
+  
+    <path d="M 48 70 L 48 48 L 70 48"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  
+    <path d="M 752 70 L 752 48 L 730 48"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  
+    <path d="M 48 730 L 48 752 L 70 752"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  
+    <path d="M 752 730 L 752 752 L 730 752"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  <g transform="translate(400 400)" text-anchor="middle">
+    <path d="M -34 -4 L 0 -22 L 34 -4 L 0 14 Z" fill="none" stroke="#C9A961" stroke-width="1" opacity="0.5"/>
+    <circle cx="0" cy="-4" r="3" fill="#C9A961" opacity="0.55"/>
+    <text x="0" y="52" font-family="'Snell Roundhand','Segoe Script','Apple Chancery',cursive"
+      font-size="64" fill="#A8873E">Le Petit Palace</text>
+    <text x="0" y="88" font-family="'Helvetica Neue',Arial,sans-serif" font-size="14"
+      letter-spacing="4" fill="rgba(43,43,43,0.55)">PEINADO</text>
+  </g>
+</svg>

@@ -1,0 +1,52 @@
+{
+  "Metadata": {
+    "title": "Belle Epoque Zaragoza — Le Petit Palace",
+    "description": "Premium hair salon and beauty center in Zaragoza. Hairdressing, professional makeup, laser hair removal, and facial treatments."
+  },
+  "Navigation": {
+    "home": "Home",
+    "services": "Services",
+    "gallery": "Gallery",
+    "booking": "Book appointment",
+    "contact": "Contact"
+  },
+  "Home": {
+    "heroTitle": "Belle Epoque Zaragoza",
+    "heroSubtitle": "Le Petit Palace",
+    "heroDescription": "Your premium beauty salon in the heart of Zaragoza. Where elegance and personal care meet.",
+    "ctaBooking": "Book appointment",
+    "ctaServices": "View services",
+    "featuredTitle": "Our signature services",
+    "featuredSubtitle": "Discover the treatments that make us unique",
+    "peelingTitle": "Hollywood Peeling",
+    "peelingDescription": "The treatment of the stars. Facial rejuvenation with visible results from the very first session.",
+    "laserTitle": "Diode Laser Hair Removal",
+    "laserDescription": "Latest generation laser hair removal. Permanent results with maximum comfort.",
+    "makeupTitle": "Professional Makeup",
+    "makeupDescription": "Brides, events, godmothers. On-site makeup with premium quality products.",
+    "hairdressingTitle": "Full Hairdressing",
+    "hairdressingDescription": "Cut, color, highlights, hair treatments. Your hair in the best hands.",
+    "scheduleTitle": "Opening Hours",
+    "scheduleMondayFriday": "Monday to Friday",
+    "scheduleMondayFridayHours": "9:00 AM — 8:00 PM",
+    "scheduleSaturday": "Saturdays",
+    "scheduleSaturdayHours": "9:00 AM — 2:00 PM",
+    "scheduleSunday": "Sundays",
+    "scheduleSundayHours": "Closed",
+    "locationTitle": "Find Us",
+    "address": "C/ Coso, 33 · Zaragoza"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "legalNotice": "Legal notice",
+    "privacyPolicy": "Privacy policy",
+    "cookiePolicy": "Cookie policy",
+    "phone": "Appointments phone",
+    "whatsapp": "WhatsApp",
+    "followUs": "Follow us"
+  },
+  "LanguageSwitcher": {
+    "es": "Español",
+    "en": "English"
+  }
+}

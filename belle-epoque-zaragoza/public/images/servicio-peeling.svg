@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="675" viewBox="0 0 900 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF7F2"/>
+      <stop offset="1" stop-color="#F4D9D0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#C9A961" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#C9A961" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="675" fill="url(#bg)"/>
+  <rect width="900" height="675" fill="url(#glow)"/>
+  <rect x="41" y="41" width="818" height="593"
+    fill="none" stroke="#C9A961" stroke-width="0.75" opacity="0.5"/>
+  
+    <path d="M 41 63 L 41 41 L 63 41"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  
+    <path d="M 859 63 L 859 41 L 837 41"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  
+    <path d="M 41 612 L 41 634 L 63 634"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  
+    <path d="M 859 612 L 859 634 L 837 634"
+      fill="none" stroke="#C9A961" stroke-width="1.5" />
+  <g transform="translate(450 337.5)" text-anchor="middle">
+    <path d="M -34 -4 L 0 -22 L 34 -4 L 0 14 Z" fill="none" stroke="#C9A961" stroke-width="1" opacity="0.5"/>
+    <circle cx="0" cy="-4" r="3" fill="#C9A961" opacity="0.55"/>
+    <text x="0" y="52" font-family="'Snell Roundhand','Segoe Script','Apple Chancery',cursive"
+      font-size="54" fill="#A8873E">Le Petit Palace</text>
+    <text x="0" y="88" font-family="'Helvetica Neue',Arial,sans-serif" font-size="14"
+      letter-spacing="4" fill="rgba(43,43,43,0.55)">PEELING HOLLYWOOD</text>
+  </g>
+</svg>

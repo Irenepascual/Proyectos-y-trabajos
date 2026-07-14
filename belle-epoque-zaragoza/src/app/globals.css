@@ -1,0 +1,293 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Belle Epoque Theme Tokens ─── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Custom brand colors */
+  --color-rose-blush: #F4D9D0;
+  --color-rose-accent: #E8B4B8;
+  --color-gold: #C9A961;
+  --color-gold-dark: #A8873E;
+  --color-ivory: #FAF7F2;
+  --color-charcoal: #2B2B2B;
+
+  /* Font families */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
+  --font-script: var(--font-allura);
+  --font-heading: var(--font-cormorant);
+
+  /* Fluid type scale */
+  --text-display: clamp(2.5rem, 6vw, 5rem);
+  --text-h1: clamp(2.25rem, 4vw + 0.5rem, 4.5rem);
+  --text-h2: clamp(1.75rem, 3vw + 0.5rem, 3rem);
+  --text-h3: clamp(1.375rem, 2vw + 0.5rem, 1.875rem);
+  --text-body-lg: clamp(1.0625rem, 0.5vw + 0.9rem, 1.1875rem);
+  --text-script-hero: clamp(2rem, 4vw + 0.5rem, 4rem);
+
+  /* shadcn mappings */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ─── Belle Epoque Light Theme (default) ─── */
+:root {
+  --background: #FAF7F2;
+  --foreground: #2B2B2B;
+  --card: #FFFFFF;
+  --card-foreground: #2B2B2B;
+  --popover: #FFFFFF;
+  --popover-foreground: #2B2B2B;
+  --primary: #C9A961;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F4D9D0;
+  --secondary-foreground: #2B2B2B;
+  --muted: #F0EBE4;
+  --muted-foreground: #6B6560;
+  --accent: #E8B4B8;
+  --accent-foreground: #2B2B2B;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #E8E2D9;
+  --input: #E8E2D9;
+  --ring: #C9A961;
+  --chart-1: #C9A961;
+  --chart-2: #E8B4B8;
+  --chart-3: #F4D9D0;
+  --chart-4: #A8873E;
+  --chart-5: #2B2B2B;
+  --radius: 0.625rem;
+  --sidebar: #FAF7F2;
+  --sidebar-foreground: #2B2B2B;
+  --sidebar-primary: #C9A961;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F4D9D0;
+  --sidebar-accent-foreground: #2B2B2B;
+  --sidebar-border: #E8E2D9;
+  --sidebar-ring: #C9A961;
+}
+
+/* ─── Dark theme ─── */
+.dark {
+  --background: #1A1714;
+  --foreground: #FAF7F2;
+  --card: #231F1A;
+  --card-foreground: #FAF7F2;
+  --popover: #231F1A;
+  --popover-foreground: #FAF7F2;
+  --primary: #C9A961;
+  --primary-foreground: #1A1714;
+  --secondary: #3D2C2E;
+  --secondary-foreground: #F4D9D0;
+  --muted: #2E2A25;
+  --muted-foreground: #A89F96;
+  --accent: #5C3A3D;
+  --accent-foreground: #F4D9D0;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #C9A961;
+  --chart-1: #C9A961;
+  --chart-2: #E8B4B8;
+  --chart-3: #F4D9D0;
+  --chart-4: #A8873E;
+  --chart-5: #FAF7F2;
+  --sidebar: #231F1A;
+  --sidebar-foreground: #FAF7F2;
+  --sidebar-primary: #C9A961;
+  --sidebar-primary-foreground: #1A1714;
+  --sidebar-accent: #3D2C2E;
+  --sidebar-accent-foreground: #F4D9D0;
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: #C9A961;
+}
+
+/* ─── Base Styles ─── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #E8B4B8;
+    color: #2B2B2B;
+  }
+
+  /* ── Editorial Typography ── */
+  .heading-display {
+    font-family: var(--font-serif);
+    font-size: var(--text-display);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    color: #2B2B2B;
+  }
+
+  .heading-1 {
+    font-family: var(--font-serif);
+    font-size: var(--text-h1);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: 0.025em;
+    color: #2B2B2B;
+  }
+
+  .heading-2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-h2);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    color: #2B2B2B;
+  }
+
+  .heading-3 {
+    font-family: var(--font-serif);
+    font-size: var(--text-h3);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.015em;
+    color: #2B2B2B;
+  }
+
+  .text-script {
+    font-family: var(--font-script);
+    font-size: var(--text-script-hero);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .body-lg {
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    color: #2B2B2B;
+    opacity: 0.7;
+  }
+
+  .label-caps {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #C9A961;
+  }
+}
+
+/* ─── Belle Epoque Utilities ─── */
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C9A961 0%, #A8873E 50%, #C9A961 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A961, transparent);
+  }
+
+  .shimmer-gold {
+    background: linear-gradient(110deg, #C9A961 0%, #E8D5A0 45%, #C9A961 55%, #A8873E 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Gold line accent (useful for editorial layouts) */
+  .gold-line-left {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .gold-line-left::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    bottom: 0.25em;
+    width: 2px;
+    background: linear-gradient(180deg, #C9A961, #A8873E);
+  }
+}
