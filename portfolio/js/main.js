@@ -61,26 +61,40 @@
   }
 
   /* ---------------- Detalles de proyecto (diálogos) ---------------- */
-  // Guardamos la posición de la página al abrir para restaurarla al cerrar,
-  // de modo que no se salte arriba del todo.
+  // Fijamos el fondo en su posición mientras el modal está abierto, para que
+  // la página no salte arriba del todo ni al abrir ni al cerrar.
   let scrollBeforeModal = 0;
+  function lockBackground() {
+    scrollBeforeModal = window.scrollY;
+    const sbw = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollBeforeModal}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
+  }
+  function unlockBackground() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.paddingRight = '';
+    window.scrollTo(0, scrollBeforeModal);
+  }
   document.querySelectorAll('[data-open]').forEach(btn => {
     const dialog = document.getElementById(btn.dataset.open);
     if (!dialog) return;
     btn.addEventListener('click', () => {
-      scrollBeforeModal = window.scrollY;
+      lockBackground();
       dialog.showModal();
       const body = dialog.querySelector('.pmodal__body');
       if (body) body.scrollTop = 0;
     });
   });
   document.querySelectorAll('dialog.pmodal').forEach(dialog => {
-    dialog.addEventListener('close', () => {
-      // Restauramos ahora y en el siguiente frame, por si el navegador
-      // reenfoca el botón y desplaza la página al cerrar.
-      window.scrollTo(0, scrollBeforeModal);
-      requestAnimationFrame(() => window.scrollTo(0, scrollBeforeModal));
-    });
+    dialog.addEventListener('close', unlockBackground);
     dialog.querySelectorAll('[data-close]').forEach(btn => {
       btn.addEventListener('click', () => dialog.close());
     });
